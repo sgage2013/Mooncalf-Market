@@ -24,13 +24,13 @@ type ItemCreationAttributes = Optional<
 module.exports = (sequelize: any, DataTypes: any) => {
   class Item extends Model<ItemAttributes, ItemCreationAttributes> {
     declare id: CreationOptional<number>;
-    declare listId: CreationOptional<number>;
+    declare listId: number;
     declare name: string;
     declare description: string;
     declare price: number;
     declare imageUrl: string;
-    declare categoryId: CreationOptional<number>;
-    declare subCategoryId: CreationOptional<number>;
+    declare categoryId: number;
+    declare subCategoryId: number;
     declare createdAt: CreationOptional<Date>;
     declare updatedAt: CreationOptional<Date>;
 
@@ -57,7 +57,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
       },
       listId: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: "Lists",
           key: "id",
