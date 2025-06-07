@@ -74,6 +74,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
             username: {
                 type: DataTypes.STRING,
                 allowNull: false,
+                unique: true,
                 validate: {
                     isGoodLength(value: string) {
                         if (value.length < 6 || value.length > 12) {
@@ -90,6 +91,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
             email: {
                 type: DataTypes.STRING,
                 allowNull: false,
+                unique: true,
                 validate: {
                     isGoodLength(value: string) {
                         if (value.length < 3 || value.length > 256) {
