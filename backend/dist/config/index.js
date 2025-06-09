@@ -1,4 +1,5 @@
-export = {
+"use strict";
+module.exports = {
     environment: process.env.NODE_ENV || 'development',
     port: process.env.PORT || 8000,
     dbFile: process.env.DB_FILE,
@@ -14,3 +15,4 @@ export = {
         expiresIn: process.env.JWT_EXPIRES_IN
     }
 };
+//# sourceMappingURL=index.js.map
