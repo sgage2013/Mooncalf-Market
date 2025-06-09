@@ -28,9 +28,25 @@ module.exports = {
         type: Sequelize.DECIMAL(10, 2),
         allowNull: false
       },
-      imageUrl: {
+      mainImageUrl: {
         type: Sequelize.STRING,
         allowNull: false,
+      },
+      image2Url: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      image3Url: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      image4Url: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      image5Url: {
+        type: Sequelize.STRING,
+        allowNull: true
       },
       categoryId: {
         type: Sequelize.INTEGER,
@@ -39,8 +55,7 @@ module.exports = {
           model: "Categories",
           key: "id"
         },
-        onDelete: "CASCADE",
-        onUpdate: "CASCADE"
+        onDelete: "CASCADE"
       },
       subCategoryId: {
         type: Sequelize.INTEGER,
@@ -49,8 +64,7 @@ module.exports = {
           model: "SubCategories",
           key: "id"
         },
-        onDelete: "CASCADE",
-        onUpdate: "CASCADE"
+        onDelete: "CASCADE"
       },
         listId: {
         type: Sequelize.INTEGER,
@@ -59,8 +73,7 @@ module.exports = {
           model: "Lists",
           key: "id"
         },
-        onDelete: "CASCADE",
-        onUpdate: "CASCADE"
+        onDelete: "CASCADE"
       },
       createdAt: {
         allowNull: false,

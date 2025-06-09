@@ -57,7 +57,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    isIn: [["pending", "completed", "cancelled"]],
+                    isIn: [["pending","processing", "confirmed", "shipped", "out for delivery", "delivered", "cancelled"]],
                 },
             },
             createdAt: {
@@ -74,7 +74,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
         {
             sequelize,
             modelName: "Order",
-            tableName: "Orders",
+            timestamps: true,
         }
     );
 

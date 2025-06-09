@@ -5,7 +5,11 @@ type ItemAttributes = {
   name: string;
   description: string;
   price: number;
-  imageUrl: string;
+  mainImageUrl: string;
+  image2Url: string;
+  image3Url: string
+  image4Url: string;
+  image5Url: string;
   categoryId: number;
   subCategoryId: number;
   listId: number;
@@ -28,7 +32,11 @@ module.exports = (sequelize: any, DataTypes: any) => {
     declare name: string;
     declare description: string;
     declare price: number;
-    declare imageUrl: string;
+    declare mainImageUrl: string;
+    declare image2Url: string;
+    declare image3Url: string
+    declare image4Url: string;
+    declare image5Url: string;
     declare categoryId: number;
     declare subCategoryId: number;
     declare createdAt: CreationOptional<Date>;
@@ -81,12 +89,40 @@ module.exports = (sequelize: any, DataTypes: any) => {
           len: [0, 250],
         },
       },
-      imageUrl: {
+      mainImageUrl: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
           isUrl: true,
         },
+      },
+      image2Url:{
+        type: DataTypes.STRING,
+        allowNull:true,
+        validate:{
+          isUrl: true
+        }
+      },
+      image3Url:{
+        type: DataTypes.STRING,
+        allowNull:true,
+        validate:{
+          isUrl: true
+        }
+      },
+      image4Url:{
+        type: DataTypes.STRING,
+        allowNull:true,
+        validate:{
+          isUrl: true
+        }
+      },
+      image5Url:{
+        type: DataTypes.STRING,
+        allowNull:true,
+        validate:{
+          isUrl: true
+        }
       },
       categoryId: {
         type: DataTypes.INTEGER,
