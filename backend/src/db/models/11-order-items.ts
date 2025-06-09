@@ -1,60 +1,64 @@
 import { DataTypes, Model, Optional, CreationOptional } from "sequelize";
 
-type ListAttributes = {
+type OrderItemAttributes = {
   id: number;
-  userId: number;
-  name: string;
-  description: string;
+  orderId: number;
+  itemId: number;
+  quantity: number;
   createdAt: Date;
   updatedAt: Date;
 };
-type ListCreationAttributes = Optional<
-  ListAttributes,
-  "id" | "createdAt" | "updatedAt" | "userId"
+type OrderItemCreationAttributes = Optional<
+  OrderItemAttributes,
+  "id" | "createdAt" | "updatedAt"
 >;
-
 module.exports = (sequelize: any, DataTypes: any) => {
-  class List extends Model<ListAttributes, ListCreationAttributes> {
+  class OrderItem extends Model<
+    OrderItemAttributes,
+    OrderItemCreationAttributes
+  > {
     declare id: CreationOptional<number>;
-    declare userId: CreationOptional<number>;
-    declare name: string;
-    declare description: string;
+    declare orderId: number;
+    declare itemId: number;
+    declare quantity: number;
     declare createdAt: CreationOptional<Date>;
     declare updatedAt: CreationOptional<Date>;
 
     static associate(models: any) {
-      List.belongsTo(models.User, { foreignKey: "userId", as: "user" });
-      List.hasMany(models.Item, { foreignKey: "listId", as: "items" });
+      OrderItem.belongsTo(models.Order, { foreignKey: "orderId", as: "order" });
+      OrderItem.belongsTo(models.Item, { foreignKey: "itemId", as: "item" });
     }
   }
 
-  List.init(
+  OrderItem.init(
     {
       id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
       },
-      userId: {
+      orderId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: "Users",
+          model: "Orders",
           key: "id",
         },
       },
-      name: {
-        type: DataTypes.STRING,
+      itemId: {
+        type: DataTypes.INTEGER,
         allowNull: false,
-        validate: {
-          len: [1, 50],
+        references: {
+          model: "Items",
+          key: "id",
         },
       },
-      description: {
-        type: DataTypes.STRING,
-        allowNull: true,
+      quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 1,
         validate: {
-          len: [0, 250],
+          min: 1,
         },
       },
       createdAt: {
@@ -68,9 +72,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
     },
     {
       sequelize,
-      modelName: "List",
+      modelName: "OrderItem",
       timestamps: true,
     }
   );
-  return List;
-};
+
+  return OrderItem;
+}

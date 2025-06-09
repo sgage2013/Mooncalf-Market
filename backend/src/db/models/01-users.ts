@@ -35,12 +35,30 @@ module.exports = (sequelize: any, DataTypes: any) => {
             };
             return safeUser
         }
+    
 
         static associate(models: any) {
-            // Associations go here
+            User.hasMany(models.Cart, {
+                foreignKey: 'userId',
+                as: 'carts'
+            });
+            User.hasMany(models.Order, {
+                foreignKey: 'userId',
+                as: 'orders'
+            });
+            User.hasMany(models.Review, {
+                foreignKey: 'userId',
+                as: 'reviews'
+            });
+            User.hasMany(models.List, {
+                foreignKey: 'userId',
+                as: 'list'
+            });
+            User.hasOne(models.Cart, {
+                foreignKey: 'userId',
+                as: 'cart'
+            });
         }
-        // declare public static associations: { [key: string]: Association<Model<any, any>, Model<any, any>>; };
-
     }
     User.init(
         {
