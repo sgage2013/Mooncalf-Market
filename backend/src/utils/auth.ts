@@ -1,5 +1,5 @@
 import { NextFunction, Response } from "express";
-import { AuthReq, JwtPayload } from "../typings/express";
+import { AuthReq, JwtPayload, ValidUser } from "../typings/express";
 import { AuthError } from "../errors/customErrors";
 
 const jwt = require('jsonwebtoken')
@@ -15,6 +15,13 @@ interface ISafeUser {
   lastName: string;
   email: string;
   username: string;
+}
+
+export const validateUser = (req: ValidUser, res: Response, next: NextFunction) => {
+    if (!req.user) {
+        return res.status(401).json({message: 'Unauthorized'})
+    }
+    next();
 }
 
 export const setMobileToken = (res:Response, user:any) => {

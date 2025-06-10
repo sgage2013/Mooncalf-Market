@@ -1,45 +1,44 @@
 import { NextFunction, Response } from "express";
 import { CustomeRequest } from "../../typings/express";
-import { restoreUser} from "../../utils/auth";
+import { restoreUser } from "../../utils/auth";
 
-import db from '../../db/models';
+import db from "../../db/models";
 
 //imports from router files
-import userRouter from './users';
-import sessionRouter from './session';
-// import homeRouter from './home'
-import { ForbiddenError, NoResourceError, UnauthorizedError } from "../../errors/customErrors";
+import userRouter from "./users";
+import sessionRouter from "./session";
+import homeRouter from "./home";
+import categoryRouter from "./category";
+import {
+  ForbiddenError,
+  NoResourceError,
+  UnauthorizedError,
+} from "../../errors/customErrors";
 import csurf from "csurf";
 
-const{User, SpotImage, ReviewImage, Review, Spot} = db;
-const router = require('express').Router();
-const { environment } = require('../../config');
-const isProduction = environment === 'production';
+const { User, SpotImage, ReviewImage, Review, Spot } = db;
+const router = require("express").Router();
+const { environment } = require("../../config");
+const isProduction = environment === "production";
 
 //route usage
 router.use(restoreUser);
 router.use(
-    csurf({
-        cookie: {
-            secure: isProduction,
-            sameSite: isProduction && "lax",
-            httpOnly: true
-        }
-    })
+  csurf({
+    cookie: {
+      secure: isProduction,
+      sameSite: isProduction && "lax",
+      httpOnly: true,
+    },
+  })
 );
-router.use('/session', sessionRouter);
-router.use('/users', userRouter);
-// router.use('/home', homeRouter)
+router.use("/session", sessionRouter);
+router.use("/users", userRouter);
+router.use("/home", homeRouter);
+router.use("/category", categoryRouter);
 
-
-
-router.get(
-    '/restore-user',
-    (req:any, res:Response) => {
-        return res.json(req.user);
-    }
-);
-
-
+router.get("/restore-user", (req: any, res: Response) => {
+  return res.json(req.user);
+});
 
 export = router;
