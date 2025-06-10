@@ -50,7 +50,7 @@ router.get(
             ).toFixed(2)
           : null;
 
-           res.status(200).json({
+           return res.json({
             id: item.id,
             name: item.name,
             mainImageUrl: item.mainImageUrl,
@@ -70,3 +70,5 @@ router.get(
     }
   }
 );
+
+export = router
