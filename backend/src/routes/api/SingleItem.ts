@@ -30,27 +30,26 @@ router.get(
               },
             ],
           },
-          {
-            model: Review,
-            as: "reviews",
-            attributes: ["id", "stars", "reviewBody", "userId", "createdAt"],
-            order: ['createdAt', 'DESC'],
-            limit: 3,
-          },
         ],
       });
       if (!item) {
         return res.status(404).json({ message: "Item not Found" });
       }
+       const reviews = await Review.findAll({
+        where: {itemId: item.id},
+         attributes: ["id", "stars", "reviewBody", "userId", "createdAt"],
+         order: ['createdAt', 'DESC'],
+         limit: 3,
+        });
       const avgRating =
-        item.reviews.length > 0
+        reviews.length > 0
           ? (
-              item.reviews.reduce((sum: number, review: { stars: number}) => sum + review.stars, 0) /
-              item.reviews.length
+              reviews.reduce((sum: number, review: { stars: number}) => sum + review.stars, 0) /
+              reviews.length
             ).toFixed(2)
           : null;
 
-           res.status(200).json({
+           return res.json({
             id: item.id,
             name: item.name,
             mainImageUrl: item.mainImageUrl,
@@ -63,10 +62,12 @@ router.get(
             stars: avgRating,
             category: item.subCategory.category.name,
             subCategory: item.subCategory.name,
-            reviews: item.reviews
+            reviews
     });
  } catch (error) {
       return res.status(500).json({ message: "Internal Server Error" });
     }
   }
 );
+
+export = router

@@ -4,10 +4,18 @@ import { validateUser } from "../../utils/auth";
 import db from "../../db/models";
 const router = require("express").Router();
 
-const { Item, Review } = db;
+const { Item, Review, Category, SubCategory } = db;
 
 router.get("/home", validateUser, async (req: ValidUser, res: Response) => {
   try {
+    const categories = await Category.findAll({
+      attributes: ['id', 'name'],
+        include: [{
+          model: SubCategory,
+          as: 'subCategories',
+          attributes: ['id', 'name'],
+        }],
+    })
     const newArrivals = await Item.findAll({
       order: [["createdAt", "DESC"]],
       limit: 10,
@@ -34,6 +42,7 @@ router.get("/home", validateUser, async (req: ValidUser, res: Response) => {
       limit: 10,
     });
     return res.json({
+      categories,
       newArrivals,
       highestRated,
     });
