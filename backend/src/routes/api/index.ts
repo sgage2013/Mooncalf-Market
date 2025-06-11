@@ -13,6 +13,10 @@ import categoryRouter from "./category";
 import subCategoryItemRouter from './subcategoryItems'
 import singleItemrouter from './SingleItem'
 import reviewRouter from './review'
+import cartRouter from './cart'
+import listRouter from './list'
+import orderRouter from './orders'
+import checkoutRouter from './checkout'
 
 import {
   ForbiddenError,
@@ -43,8 +47,12 @@ router.use("/users", userRouter);
 router.use("/home", homeRouter);
 router.use("/category", categoryRouter);
 router.use('/subCategoryItem', subCategoryItemRouter);
-router.use('./singleItem', singleItemrouter)
-router.use('./review', reviewRouter)
+router.use('./singleItem', singleItemrouter);
+router.use('./review', reviewRouter);
+router.use('./list', listRouter);
+router.use('./cart', cartRouter);
+router.use('./order', orderRouter);
+router.use('./checkout', checkoutRouter)
 
 router.get("/restore-user", (req: any, res: Response) => {
   return res.json(req.user);

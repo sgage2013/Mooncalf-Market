@@ -5,6 +5,10 @@ type OrderAttributes = {
     userId: number;
     orderNumber: number;
     orderTotal: number;
+    address: string;
+    city: string;
+    state: string;
+    zip: string;
     status: string;
     createdAt: Date;
     updatedAt: Date;
@@ -19,6 +23,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
         declare userId: number;
         declare orderNumber: number;
         declare orderTotal: number;
+        declare address: string;
+        declare city: string;
+        declare state: string;
+        declare zip: string;
         declare status: string;
         declare createdAt: CreationOptional<Date>;
         declare updatedAt: CreationOptional<Date>;
@@ -50,14 +58,30 @@ module.exports = (sequelize: any, DataTypes: any) => {
                 unique: true,
             },
             orderTotal: {
-                type: DataTypes.FLOAT,
+                type: DataTypes.DECIMAL,
                 allowNull: false,
+            },
+            address: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            city: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            state: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            zip: {
+                type: DataTypes.STRING,
+                allowNull: false
             },
             status: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    isIn: [["pending","processing", "confirmed", "shipped", "out for delivery", "delivered", "cancelled"]],
+                    isIn: [["Pending","Processing", "Confirmed", "Shipped", "Out for Delivery", "Delivered", "Cancelled"]],
                 },
             },
             createdAt: {

@@ -104,12 +104,16 @@ router.put(
   validateUser,
   async (req: ValidUser, res: Response) => {
     try {
+        const {listId} = req.params;
       const { name, description } = req.body;
-      const list = await List.create({
-        name,
-        description,
-        userId: req.user.id,
+      const list = await List.findOne({
+        where: {id: listId, userId: req.user.id}
       });
+      list.name = name;
+      list.description = description;
+
+      await list.save()
+
       return res.json(list);
     } catch (error) {
       return res.status(500).json({ message: "Unable to update list" });

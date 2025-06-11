@@ -28,6 +28,7 @@ router.get(
             model: Review,
             as: "reviews",
             attributes: [],
+            required: false,
           },
         ],
         attributes: {

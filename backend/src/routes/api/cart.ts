@@ -1,11 +1,11 @@
 import { Response } from "express";
-import { check } from "express-validator";
+
 import { ValidUser } from "../../typings/express";
 import { validateUser } from "../../utils/auth";
 import db from "../../db/models";
 const router = require("express").Router();
 
-const { Cart, CartItem, Item, Review, User } = db;
+const { Cart, CartItem, Item , Review} = db;
 
 //get current user cart
 router.get("/cart", validateUser, async (req: ValidUser, res: Response) => {
@@ -14,22 +14,55 @@ router.get("/cart", validateUser, async (req: ValidUser, res: Response) => {
       where: { userId: req.user.id },
       include: [
         {
-          model: Item,
-          through: { attributes: ["quantity"] },
-          attributes: [
-            "id",
-            "name",
-            "price",
-            [db.sequelize.fn("AVG", db.sequelize.col("items.reviews"))],
-          ],
-        },
+          model: CartItem,
+          include: [
+            {
+              model: Item,
+              attributes: [
+                "id",
+                'mainImageUrl',
+                "name",
+                "price",
+                [db.sequelize.fn("AVG", db.sequelize.col("reviews.rating")), 'avgRating'],
+              ],
+              include: [
+                {
+                    model: Review,
+                    as: 'reviews',
+                    attributes: []
+          
+                }
+              ]
+            },
+        ],
+    },
       ],
+      group: ['Cart.id', 'cartItems.id', 'cartItems.item.id'],
     });
     if (!cart) {
       const newCart = await Cart.create({ userId: req.user.id });
-      return res.json({ cart: newCart, items: [] });
+      return res.json({
+        cart: newCart,
+        items: [],
+        subTotal: 0,
+        shipping: 0,
+        tax: 0,
+        orderTotal: 0,
+      });
     }
-    return res.json(cart);
+    const subTotal = cart.cartItems.reduce((sum: number, cartItem: any) => {
+      return sum + cartItem.quantity * cartItem.item.price;
+    }, 0);
+    const tax = parseFloat((subTotal * 0.07).toFixed(2));
+    const shipping = 5.0;
+    const orderTotal = parseFloat(subTotal + tax + shipping).toFixed(2);
+    return res.json({
+      cart,
+      subTotal,
+      tax,
+      shipping,
+      orderTotal,
+    });
   } catch (error) {
     return res.status(500).json({ message: "Could not load cart" });
   }
@@ -75,7 +108,7 @@ router.put("/cart", validateUser, async (req: ValidUser, res: Response) => {
     if (!itemId || !quantity || quantity <= 0) {
       return res.status(400).json({ message: "Invalid itemId or quantity" });
     }
-    const cart = await Cart.findOne({ where: { userid: req.user.id } });
+    const cart = await Cart.findOne({ where: { userId: req.user.id } });
     if (!cart) {
       return res.status(404).json({ message: "Cart not found" });
     }
