@@ -5,7 +5,7 @@ import { ValidUser } from "../../typings/express";
 import db from "../../db/models";
 const router = require("express").Router();
 
-const { Item, Cart, CartItem } = db;
+const { Item, Cart, CartItem, Order, OrderItem } = db;
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
@@ -62,5 +62,34 @@ router.post(
     }
   }
 );
+
+router.get('/checkout/success/:orderId', validateUser, async (req: ValidUser, res: Response) => {
+  try{
+    const {orderId} = req.params;
+
+    const order = await Order.findOne({
+      where: { id: orderId, userId: req.user.id },
+      include: [
+            {
+              model: OrderItem,
+              as: 'orderItems',
+              include: [
+                {
+                  model: Item,
+                  as: 'item',
+                  attributes: ['id', 'name', 'mainImageUrl', 'price']
+                }
+              ]
+            }
+      ]
+    });
+    if(!order){
+      return res.status(404).json({ message: 'Order not found' })
+    }
+    return res.json({order})
+  } catch(error){
+    return res.status(500).json({ message: 'Unable to load order'})
+  }
+});
 
 export = router;
