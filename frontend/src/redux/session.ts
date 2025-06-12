@@ -6,12 +6,12 @@ import { ICredentials, ISignUpUser, IUser, SessionInitialState } from "./types/s
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
 
-const setUser = (user: IUser) => ({
+export const setUser = (user: IUser) => ({
   type: SET_USER,
   payload: user
 });
 
-const removeUser = () => ({
+export const removeUser = () => ({
   type: REMOVE_USER
 });
 
