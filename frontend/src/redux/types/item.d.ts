@@ -1,3 +1,6 @@
+import { IReview } from './review';
+
+
 export interface IFullItem {
     id: number;
     name: string;
@@ -27,18 +30,7 @@ export interface IItem {
     avgRating?: number
 }
 
-export interface IReview {
-    id: number;
-    userId: number;
-    itemId: number;
-    stars: number;
-    reviewBody: string;
-    createdAt: string;
-    user: {
-        id: number;
-        username: string;
-    };
-}
+
 
 export interface IItemWithReviews extends IFullItem {
     reviews: IReview[];

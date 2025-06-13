@@ -31,7 +31,7 @@ const validateLogin = [
         .withMessage('Password is required'),
     handleValidationErrors
 ];
-router.post('/', validateLogin, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+router.post('/login', validateLogin, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { credential, password } = req.body;
     if (credential && password) {
         try {
@@ -85,7 +85,7 @@ router.post('/', validateLogin, (req, res, next) => __awaiter(void 0, void 0, vo
         }
     }
 }));
-router.get('/', restoreUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/login', restoreUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     if (req.user) {
         const user = yield req.user.getSafeUser();
         res.json({ user });
@@ -94,7 +94,7 @@ router.get('/', restoreUser, (req, res) => __awaiter(void 0, void 0, void 0, fun
         res.json({ "user": null });
     }
 }));
-router.delete('/', (_req, res) => {
+router.delete('/login', (_req, res) => {
     res.clearCookie('token');
     return res.json({ message: 'success' });
 });

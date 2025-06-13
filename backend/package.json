@@ -18,7 +18,7 @@
     "sequelize-cli": "sequelize-cli",
     "sqlite-reset": "rm -rf ./dist/db/dev.db && npm run db:migrate && npm run db:seed:all",
     "start": "per-env",
-    "start:development": "tsc && npm run db:reset && ts-node-dev --poll src/bin/www",
+    "start:development": "tsc && npm run sqlite-reset && ts-node-dev --poll src/bin/www",
     "start:production": "node dist/psql-setup-script && npm run fill-schema && node dist/bin/www",
     "build": "tsc",
     "fill-schema": "npx dotenv sequelize db:migrate && npx dotenv sequelize db:seed:all",

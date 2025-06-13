@@ -11,13 +11,17 @@ import usersReducer from "./users";
 import homeReducer from "./home";
 import itemsReducer from "./items";
 import categoriesReducer from "./categories";
+import reviewsReducer from "./reviews";
+import checkoutReducer from "./checkout";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   users: usersReducer,
   home: homeReducer,
   items: itemsReducer,
-  categories: categoriesReducer
+  categories: categoriesReducer,
+  reviews: reviewsReducer,
+  checkout: checkoutReducer
 });
 
 
