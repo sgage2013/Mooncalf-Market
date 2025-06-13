@@ -12,13 +12,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.requireAuth = exports.restoreUser = exports.setTokenCookie = exports.setMobileToken = void 0;
+exports.requireAuth = exports.restoreUser = exports.setTokenCookie = exports.setMobileToken = exports.validateUser = void 0;
 const customErrors_1 = require("../errors/customErrors");
 const jwt = require('jsonwebtoken');
 const { jwtConfig } = require('../config');
 const models_1 = __importDefault(require("../db/models"));
 const { User } = models_1.default;
 const { secret, expiresIn } = jwtConfig;
+const validateUser = (req, res, next) => {
+    if (!req.user) {
+        return res.status(401).json({ message: 'Unauthorized' });
+    }
+    next();
+};
+exports.validateUser = validateUser;
 const setMobileToken = (res, user) => {
     const safeUser = {
         id: user.id,

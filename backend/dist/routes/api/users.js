@@ -13,39 +13,34 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 const auth_1 = require("../../utils/auth");
 const validation_1 = require("../../utils/validation");
-const { check } = require('express-validator');
-const bcrypt = require('bcryptjs');
-const { Op } = require('sequelize');
+const { check } = require("express-validator");
+const bcrypt = require("bcryptjs");
+const { Op } = require("sequelize");
 const models_1 = __importDefault(require("../../db/models"));
 const customErrors_1 = require("../../errors/customErrors");
 const { User, UserImage } = models_1.default;
-const router = require('express').Router();
+const router = require("express").Router();
 const validateSignup = [
-    check('email')
-        .isEmail()
-        .withMessage('Please provide a valid email.'),
-    check('username')
+    check("email").isEmail().withMessage("Please provide a valid email."),
+    check("username")
         .isLength({ min: 4 })
-        .withMessage('Please provide a username with at least 4 characters.'),
-    check('username')
-        .not()
-        .isEmail()
-        .withMessage('Username cannot be an email.'),
-    check('password')
+        .withMessage("Please provide a username with at least 4 characters."),
+    check("username").not().isEmail().withMessage("Username cannot be an email."),
+    check("password")
         .isLength({ min: 6 })
-        .withMessage('Password must be 6 characters or more.'),
-    validation_1.handleValidationErrors
+        .withMessage("Password must be 6 characters or more."),
+    validation_1.handleValidationErrors,
 ];
-router.post('/', validateSignup, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+router.post("/signUp", validateSignup, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { firstName, lastName, email, password, username, isHost } = req.body;
     const hashedPassword = bcrypt.hashSync(password);
     let existingUser = yield User.findOne({
         where: {
             [Op.or]: {
                 username,
-                email
-            }
-        }
+                email,
+            },
+        },
     });
     if (existingUser) {
         if (existingUser)
@@ -62,7 +57,14 @@ router.post('/', validateSignup, (req, res, next) => __awaiter(void 0, void 0, v
     }
     else {
         try {
-            const user = yield User.create({ firstName, lastName, email, username, hashedPassword, isHost: isHost || false });
+            const user = yield User.create({
+                firstName,
+                lastName,
+                email,
+                username,
+                hashedPassword,
+                isHost: isHost || false,
+            });
             const safeUser = yield user.getSafeUser();
             yield (0, auth_1.setTokenCookie)(res, safeUser);
             return res.json(Object.assign({}, safeUser));
@@ -72,28 +74,28 @@ router.post('/', validateSignup, (req, res, next) => __awaiter(void 0, void 0, v
         }
     }
 }));
-router.get('/', auth_1.restoreUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get("/login", auth_1.restoreUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { user } = req;
     if (user) {
         const safeUser = user.getSafeUser();
         return res.json({
-            user: safeUser
+            user: safeUser,
         });
     }
     else
         return res.json({ user: null });
 }));
-router.get('/all', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get("/all", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const users = yield User.findAll({
         include: {
             model: UserImage,
-        }
+        },
     });
     res.json(users);
 }));
-router.delete('/:id', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+router.delete("/profile", auth_1.validateUser, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const userId = req.params.id;
+        const userId = req.user.id;
         if (userId !== String(userId)) {
             const user = yield User.findByPk(userId);
             if (!user)
@@ -105,6 +107,58 @@ router.delete('/:id', (req, res, next) => __awaiter(void 0, void 0, void 0, func
         else {
             throw new Error("You can not delete the Demo User account.");
         }
+    }
+    catch (error) {
+        next(error);
+    }
+}));
+router.get("/profile", auth_1.validateUser, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        if (!req.user) {
+            return res.status(403).json({ message: "Unauthorized" });
+        }
+        const user = yield User.findByPk(req.user.id, {
+            attributes: ["id", "username", "email", "firstName", "lastName"],
+        });
+        if (!user) {
+            return res.status(403).json({ message: "User not found" });
+        }
+        return res.json({ user });
+    }
+    catch (error) {
+        next(error);
+    }
+}));
+router.put("/profile", auth_1.validateUser, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        if (!req.user) {
+            return res.status(403).json({ message: "Unauthorized" });
+        }
+        const { email, username, password } = req.body;
+        const user = yield User.findByPk(req.user.id);
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        if (username && username !== user.username) {
+            const existingUsername = yield User.findOne({ where: { username } });
+            if (existingUsername) {
+                return res.status(400).json({ message: "Username already taken" });
+            }
+            user.username = username;
+        }
+        if (email && email !== user.email) {
+            const existingEmail = yield User.findOne({ where: { email } });
+            if (existingEmail) {
+                return res.status(400).json({ message: "Email already taken" });
+            }
+            user.email = email;
+        }
+        if (password) {
+            (user.hashedPassword = bcrypt.hashSync(password));
+        }
+        yield user.save();
+        const safeUser = yield user.getSafeUser();
+        return res.json({ user: safeUser });
     }
     catch (error) {
         next(error);

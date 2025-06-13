@@ -6,6 +6,7 @@ const router = require("express").Router();
 
 const { SubCategory, Category, Item } = db;
 
+//get one category and all subcategories
 router.get(
   "/category/:categoryId",
   validateUser,
@@ -36,6 +37,29 @@ router.get(
       });
     } catch (error) {
       return res.status(500).json({ message: "Failed to load Categories" });
+    }
+  }
+);
+
+//get all categories for sitewide navigation
+router.get(
+  "/categories",
+  validateUser,
+  async (req: ValidUser, res: Response) => {
+    try {
+      const categories = await Category.findAll({
+        include: [
+          {
+            model: SubCategory,
+            as: "subCategories",
+            attribures: ["id", "name", "categoryId"],
+          },
+        ],
+        attributes: ["id", "name"],
+      });
+      return res.json({ categories });
+    } catch (error) {
+      return res.status(500).json({ message: "Failed to load categories" });
     }
   }
 );

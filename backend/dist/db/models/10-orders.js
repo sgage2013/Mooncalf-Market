@@ -28,14 +28,30 @@ module.exports = (sequelize, DataTypes) => {
             unique: true,
         },
         orderTotal: {
-            type: DataTypes.FLOAT,
+            type: DataTypes.DECIMAL,
             allowNull: false,
+        },
+        address: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        city: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        state: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        zip: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
         status: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                isIn: [["pending", "processing", "confirmed", "shipped", "out for delivery", "delivered", "cancelled"]],
+                isIn: [["Pending", "Processing", "Confirmed", "Shipped", "Out for Delivery", "Delivered", "Cancelled"]],
             },
         },
         createdAt: {
