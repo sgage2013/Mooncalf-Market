@@ -1,0 +1,77 @@
+.main-container {
+    background-color: rgb(41, 0, 72);
+    position: relative;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.sigil{
+    height: auto;
+    width: 300px;
+    top: 15%;
+    left: 50%;
+    position: absolute;
+    z-index: 10;
+    height: auto;
+    color: gold;
+    margin-bottom: 30px;
+    filter: drop-shadow( 0 0 6px black);
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+    0% {
+    filter: drop-shadow( 0 0 6px black);
+}
+100% {
+    filter: drop-shadow(0 0 6px black)
+}
+50% {
+    filter: drop-shadow( 0 0 60px white);
+}
+}
+
+.door {
+    position: relative;
+    z-index: 5;
+    width: 90vw;
+    max-height: 90vh;
+    height: auto;
+    margin-top: 125px;
+    cursor: pointer;
+    transition: transform 1s ease, opacity 1s ease;
+}
+.door-closed:hover {
+    transform: scale(1.05);
+}
+.door-open{
+    transform: rotate(12deg);
+    opacity: 0.5;
+    cursor: default;
+}
+.message-container{
+    margin-top: 2rem;
+    max-width: 24rem;
+    padding: 0 1rem;
+}
+.main-message {
+    font-style: italic;
+    font-family: 'Cinzel', serif;
+    font-weight: 500;
+    color: gray;
+    font-size: large;
+}
+.sub-message {
+    font-style: italic;
+    font-family: 'Cinzel', serif;;
+    font-weight: 400;
+    margin-top: 0.5rem;
+    color: gray;
+    font-size: medium;
+}
