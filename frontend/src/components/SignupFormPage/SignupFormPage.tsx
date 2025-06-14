@@ -35,7 +35,7 @@ function SignupFormPage() {
     confirmPassword: ""
   });
 
-  if (sessionUser) return <Navigate to="/" replace={true} />;
+  if (sessionUser) return <Navigate to="/home" replace={true} />;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -60,7 +60,7 @@ function SignupFormPage() {
     if (serverResponse) {
       setErrors(serverResponse);
     } else {
-      navigate("/");
+      navigate("/home");
     }
   };
 
@@ -70,7 +70,7 @@ function SignupFormPage() {
     <>
       <h1>Sign Up</h1>
       {errors.server && <p>{errors.server}</p>}
-      <form onSubmit={(e) => handleSubmit}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <label>
           Email
           <input
