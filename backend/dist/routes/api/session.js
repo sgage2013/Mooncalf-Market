@@ -94,7 +94,7 @@ router.get('/login', restoreUser, (req, res) => __awaiter(void 0, void 0, void 0
         res.json({ "user": null });
     }
 }));
-router.delete('/login', (_req, res) => {
+router.delete('/logout', (_req, res) => {
     res.clearCookie('token');
     return res.json({ message: 'success' });
 });

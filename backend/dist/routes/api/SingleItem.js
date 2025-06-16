@@ -71,4 +71,4 @@ router.get("/category/:categoryId/:subCategoryId/items/:itemId", auth_1.validate
     }
 }));
 module.exports = router;
-//# sourceMappingURL=SingleItem.js.map
+//# sourceMappingURL=singleItem.js.map

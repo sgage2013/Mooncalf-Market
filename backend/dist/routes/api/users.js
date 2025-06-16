@@ -31,7 +31,7 @@ const validateSignup = [
         .withMessage("Password must be 6 characters or more."),
     validation_1.handleValidationErrors,
 ];
-router.post("/signUp", validateSignup, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+router.post("/signup", validateSignup, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { firstName, lastName, email, password, username, isHost } = req.body;
     const hashedPassword = bcrypt.hashSync(password);
     let existingUser = yield User.findOne({
@@ -73,17 +73,6 @@ router.post("/signUp", validateSignup, (req, res, next) => __awaiter(void 0, voi
             return next(e);
         }
     }
-}));
-router.get("/login", auth_1.restoreUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { user } = req;
-    if (user) {
-        const safeUser = user.getSafeUser();
-        return res.json({
-            user: safeUser,
-        });
-    }
-    else
-        return res.json({ user: null });
 }));
 router.get("/all", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const users = yield User.findAll({

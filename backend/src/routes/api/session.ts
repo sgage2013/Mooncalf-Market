@@ -107,7 +107,7 @@ router.get('/login', restoreUser, async(req:any, res:Response) => {
 
 
 // Log out
-router.delete('/login', (_req:Request, res:Response) => {
+router.delete('/logout', (_req:Request, res:Response) => {
     res.clearCookie('token');
     return res.json({ message: 'success' });
 });

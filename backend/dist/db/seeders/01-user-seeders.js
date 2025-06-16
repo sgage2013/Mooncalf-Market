@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
     up: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
         options.tableName = 'Users';
-        return queryInterface.bulkInsert(options, [
+        return queryInterface.bulkInsert('Users', [
             {
                 firstName: "SpongeBob",
                 lastName: "Squarepants",
@@ -43,7 +43,7 @@ module.exports = {
     down: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
         options.tableName = 'Users';
         const Op = Sequelize.Op;
-        return queryInterface.bulkDelete(options, {
+        return queryInterface.bulkDelete('Users', {
             username: { [Op.in]: [''] }
         }, {});
     })

@@ -11,11 +11,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-const auth_1 = require("../../utils/auth");
 const models_1 = __importDefault(require("../../db/models"));
 const router = require("express").Router();
 const { Item, Review, Category, SubCategory } = models_1.default;
-router.get("/home", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const categories = yield Category.findAll({
             attributes: ['id', 'name'],
@@ -29,30 +28,9 @@ router.get("/home", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0,
             order: [["createdAt", "DESC"]],
             limit: 10,
         });
-        const highestRated = yield Item.findAll({
-            attributes: {
-                include: [
-                    [
-                        models_1.default.sequelize.fn("AVG", models_1.default.sequelize.col("reviews.stars")),
-                        "avgRating",
-                    ],
-                ],
-            },
-            include: [
-                {
-                    model: Review,
-                    as: "reviews",
-                    attributes: [],
-                },
-            ],
-            group: ["Item.id"],
-            order: [[models_1.default.sequelize.literal("avgRating"), "DESC"]],
-            limit: 10,
-        });
         return res.json({
             categories,
             newArrivals,
-            highestRated,
         });
     }
     catch (error) {

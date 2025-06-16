@@ -8,7 +8,6 @@ import { useAppSelector } from "../../redux/store";
 
 
 function LoginFormPage() {
-  console.log('LoginFormPage is rendering')
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const sessionUser = useAppSelector((state) => state.session.user);

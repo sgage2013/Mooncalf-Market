@@ -28,6 +28,8 @@ export interface IItem {
     price: number;
     mainImageUrl: string;
     avgRating?: number
+    categoryId: number;
+    subCategoryId: number;
 }
 
 
