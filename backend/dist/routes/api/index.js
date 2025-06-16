@@ -4,13 +4,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 const auth_1 = require("../../utils/auth");
 const models_1 = __importDefault(require("../../db/models"));
-const splash_1 = __importDefault(require("./splash"));
 const users_1 = __importDefault(require("./users"));
 const session_1 = __importDefault(require("./session"));
 const home_1 = __importDefault(require("./home"));
 const category_1 = __importDefault(require("./category"));
 const subcategoryItems_1 = __importDefault(require("./subcategoryItems"));
-const SingleItem_1 = __importDefault(require("./SingleItem"));
+const singleItem_1 = __importDefault(require("./singleItem"));
 const review_1 = __importDefault(require("./review"));
 const cart_1 = __importDefault(require("./cart"));
 const list_1 = __importDefault(require("./list"));
@@ -29,18 +28,17 @@ router.use((0, csurf_1.default)({
         httpOnly: true,
     },
 }));
-router.use('./splash', splash_1.default);
 router.use("/session", session_1.default);
 router.use("/users", users_1.default);
 router.use("/home", home_1.default);
 router.use("/category", category_1.default);
 router.use('/subCategoryItem', subcategoryItems_1.default);
-router.use('./singleItem', SingleItem_1.default);
-router.use('./review', review_1.default);
-router.use('./list', list_1.default);
-router.use('./cart', cart_1.default);
-router.use('./order', orders_1.default);
-router.use('./checkout', checkout_1.default);
+router.use('/singleItem', singleItem_1.default);
+router.use('/review', review_1.default);
+router.use('/list', list_1.default);
+router.use('/cart', cart_1.default);
+router.use('/order', orders_1.default);
+router.use('/checkout', checkout_1.default);
 router.get("/restore-user", (req, res) => {
     return res.json(req.user);
 });

@@ -1,3 +1,105 @@
 .profile-dropdown {
   position: absolute;
+  top: 185px;
+  right: 20px;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px black;
+  z-index: 100;
+  padding: 10px;
+  min-width: 120px;
+}
+.main-header {
+  background-color: silver;
+  color :black;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  width: 100%;
+  padding: 0 20px 10px 20px;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+.logo {
+  height: 45px;
+  width: 50px;
+}
+.search-bar {
+  display: flex;
+  flex-grow: 1;
+  max-width: 600px;
+  margin-right: 20px;
+}
+.search-input {
+  flex-grow: 1;
+  padding: 8px 12px;
+  border: 1px solid black;
+  border-radius: 4px 0 0 4px;
+}
+.search-button {
+  background-color: rgb(175, 160, 211);
+  color: black;
+  margin-left: 20px;
+  border-radius: 1px solid black;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.search-button:hover {
+  background-color: blueviolet;
+}
+.categories-nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px 0;
+  background-color: rgb(201, 200, 202);
+  border-top: 1px solid black;
+  width: 100%;
+}
+.category-item {
+  position: relative;
+}
+.category-link {
+  text-decoration: none;
+  color:blueviolet;
+  font-weight: bold;
+  padding: 5px 10px;
+  transition: color 0.2s;
+}
+.category-link:hover{
+  color: rgb(108, 37, 173);
+}
+.sub-category-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: antiquewhite;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px black;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+}
+.sub-category-link {
+  padding: 8px 15px;
+  text-decoration: none;
+  color: black;
+  transition: background-color 0.2s;
+}
+.sub-category-link:hover {
+  background-color: silver;
 }

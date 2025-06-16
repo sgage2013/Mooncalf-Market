@@ -1,1 +1,1 @@
-{"version":3,"file":"splash.js","sourceRoot":"","sources":["../../../src/routes/api/splash.ts"],"names":[],"mappings":";AACA,MAAM,MAAM,GAAG,OAAO,CAAC,SAAS,CAAC,CAAC,MAAM,EAAE,CAAA;AAG1C,MAAM,CAAC,GAAG,CAAC,GAAG,EAAE,CAAC,GAAY,EAAE,GAAa,EAAE,EAAE;IAC5C,GAAG,CAAC,QAAQ,CAAC,QAAQ,CAAC,CAAA;AAC1B,CAAC,CAAC,CAAA;AAEF,iBAAS,MAAM,CAAA"}
+{"version":3,"file":"splash.js","sourceRoot":"","sources":["../../../src/routes/api/splash.ts"],"names":[],"mappings":""}

@@ -1,5 +1,5 @@
 export interface IHomeState {
     categories: ICategory[];
-    newest: IItem[];
+    newArrivals: IItem[];
     highestRated: IItem[]
 }

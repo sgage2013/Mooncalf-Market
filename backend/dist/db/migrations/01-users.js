@@ -15,6 +15,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 module.exports = {
     up: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
+        options.tableName = "Users";
         return queryInterface.createTable("Users", {
             id: {
                 allowNull: false,

@@ -8,7 +8,7 @@ const GET_HOME_DATA = 'items/getHomeData'
 
 export const getHomeData = (data: {
     highestRated: IItem[];
-    newest: IItem[];
+    newArrivals: IItem[];
     categories: ICategory[];
 }): any => ({
     type: GET_HOME_DATA,
@@ -22,7 +22,7 @@ export const getHomeDataThunk = (): any => async (dispatch: any) => {
     if(res.ok){
     dispatch(getHomeData({
         highestRated: data.highestRated,
-        newest: data.newest,
+        newArrivals: data.newArrivals,
         categories: data.categories
     }));
 }
@@ -34,7 +34,7 @@ export const getHomeDataThunk = (): any => async (dispatch: any) => {
 
 const initialState: IHomeState = {
     highestRated: [],
-    newest: [],
+    newArrivals: [],
     categories: [],
 };
 
@@ -44,7 +44,7 @@ function homeReducer(state = initialState, action: IActionCreator){
             return {
                 ...state,
                 highestRated: action.payload.highestRated,
-                newest: action.payload.newest,
+                newArrivals: action.payload.newArrivals,
                 categories: action.payload.categories,
             };
             default: 

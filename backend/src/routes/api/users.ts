@@ -34,7 +34,7 @@ const validateSignup = [
 
 // Sign up
 router.post(
-  "/signUp",
+  "/signup",
   validateSignup,
   async (req: Request, res: Response, next: NextFunction) => {
     const { firstName, lastName, email, password, username, isHost } = req.body;
@@ -86,15 +86,15 @@ router.post(
   }
 );
 // Restore session user
-router.get("/login", restoreUser, async (req: AuthReq, res: Response) => {
-  const { user } = req;
-  if (user) {
-    const safeUser = user.getSafeUser();
-    return res.json({
-      user: safeUser,
-    });
-  } else return res.json({ user: null });
-});
+// router.get("/login", restoreUser, async (req: AuthReq, res: Response) => {
+//   const { user } = req;
+//   if (user) {
+//     const safeUser = user.getSafeUser();
+//     return res.json({
+//       user: safeUser,
+//     });
+//   } else return res.json({ user: null });
+// });
 
 //get all users
 router.get("/all", async (req: Request, res: Response) => {
