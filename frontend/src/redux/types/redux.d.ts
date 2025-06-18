@@ -11,3 +11,4 @@ export interface IActionCreator {
     type: string;
     payload: IUser
 }
+

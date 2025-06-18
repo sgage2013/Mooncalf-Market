@@ -6,18 +6,18 @@ import { ICredentials, ISignUpUser, IUser, SessionInitialState } from "./types/s
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
 
-const setUser = (user: IUser) => ({
+export const setUser = (user: IUser) => ({
   type: SET_USER,
   payload: user
 });
 
-const removeUser = () => ({
+export const removeUser = () => ({
   type: REMOVE_USER
 });
 
 export const thunkAuthenticate = (): any => async (dispatch: any) => {
   try {
-    const response = await csrfFetch("/api/restore-user");
+    const response = await csrfFetch("/api/session/login");
     if (response.ok) {
       const data = await response.json();
       if (data.errors) {
@@ -51,7 +51,7 @@ export const thunkLogin = (credentials: ICredentials): any => async (dispatch: a
       credential
     }
 
-    const response = await csrfFetch("/api/session/", {
+    const response = await csrfFetch("/api/session/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(credentialRequest)
@@ -73,7 +73,7 @@ export const thunkLogin = (credentials: ICredentials): any => async (dispatch: a
 };
 
 export const restoreUser = () => async (dispatch: any) => {
-  const response = await csrfFetch('/api/session');
+  const response = await csrfFetch('/api/session/login');
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data));
@@ -86,7 +86,7 @@ export const restoreUser = () => async (dispatch: any) => {
 export const thunkSignup = (user: ISignUpUser): any => async (dispatch: any) => {
   const { firstName, lastName, email, username, password } = user;
   try {
-    const response = await csrfFetch("/api/users", {
+    const response = await csrfFetch("/api/users/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -108,7 +108,7 @@ export const thunkSignup = (user: ISignUpUser): any => async (dispatch: any) => 
 };
 
 export const thunkLogout = (): any => async (dispatch: any) => {
-  const response = await csrfFetch('/api/session', {
+  const response = await csrfFetch('/api/session/logout', {
     method: 'DELETE',
     headers: { "Content-Type": "application/json" }
   });

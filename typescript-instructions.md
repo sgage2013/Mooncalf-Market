@@ -111,7 +111,7 @@ function spotReducer(state = initialState, action: IActionCreator) {
     allSpots: [...state.allSpots]
 };
 
-    // variable for us to use int he switch cases
+    // variable for us to use in the switch cases
     let newById: ISpotById ;
     // variable for us to use in the switch cases
     let newAllSpots: ISpot[] = [];

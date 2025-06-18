@@ -20,6 +20,10 @@ export interface RestoreResponseInterface extends Request{
     cookies: {token: string}
 }
 
+export interface ValidUser extends Request{
+    user: SafeUser
+}
+
 export interface JwtPayload {
     data: {id:number |string};
 }

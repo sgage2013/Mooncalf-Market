@@ -5,7 +5,26 @@ export interface SessionInitialState {
 
 export interface IUser {
     id: number;
+    username: string;
     email: string;
+}
+export interface IFullUser {
+    id: number;
+    email: string;
+    username: string;
+    firstName: string;
+    lastName: string;
+}
+
+export interface IPublicUser {
+    id: number;
+    username: string;
+}
+
+export interface IUserState {
+    currentUser: IFullUser | null;
+    allUsers: { [id: number]: IPublicUser}
+    errors: string | null
 }
 
 export interface ISignUpUser{

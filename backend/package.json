@@ -18,7 +18,7 @@
     "sequelize-cli": "sequelize-cli",
     "sqlite-reset": "rm -rf ./dist/db/dev.db && npm run db:migrate && npm run db:seed:all",
     "start": "per-env",
-    "start:development": "tsc && npm run db:reset && ts-node-dev --poll src/bin/www",
+    "start:development": "tsc && npm run sqlite-reset && ts-node-dev --poll src/bin/www",
     "start:production": "node dist/psql-setup-script && npm run fill-schema && node dist/bin/www",
     "build": "tsc",
     "fill-schema": "npx dotenv sequelize db:migrate && npx dotenv sequelize db:seed:all",
@@ -38,7 +38,7 @@
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "csurf": "^1.11.0",
-    "dotenv": "^16.3.1",
+    "dotenv": "^16.5.0",
     "dotenv-cli": "^7.2.1",
     "email-validator": "^2.0.4",
     "express": "^4.21.1",
@@ -53,7 +53,8 @@
     "per-env": "^1.0.2",
     "pg": "^8.11.1",
     "sequelize": "^6.32.1",
-    "sequelize-cli": "^6.6.1"
+    "sequelize-cli": "^6.6.1",
+    "stripe": "^18.2.1"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.2.0",
