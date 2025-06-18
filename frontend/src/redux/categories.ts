@@ -11,7 +11,7 @@ export const getCategories = (categories: ICategory[]) => ({
 
 export const getCategoriesThunk = (): any => async (dispatch: any) => {
   try {
-    const res = await csrfFetch("api/categories");
+    const res = await csrfFetch("/api/category");
     if (res.ok) {
       const data = await res.json();
       dispatch(getCategories(data.categories));

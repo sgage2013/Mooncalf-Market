@@ -3,6 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ModalProvider, Modal } from "../context/Modal";
 import { thunkAuthenticate } from "../redux/session";
+import { getCategoriesThunk } from "../redux/categories";
 import Navigation from "../components/Navigation/Navigation";
 
 export default function Layout():JSX.Element {
@@ -15,6 +16,7 @@ export default function Layout():JSX.Element {
 
   useEffect(() => {
     dispatch(thunkAuthenticate()).then(() => setIsLoaded(true));
+    dispatch(getCategoriesThunk())
   }, [dispatch]);
 
   return (

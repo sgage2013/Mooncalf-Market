@@ -45,14 +45,14 @@ router.get("/category/:categoryId", auth_1.validateUser, (req, res) => __awaiter
         return res.status(500).json({ message: "Failed to load Categories" });
     }
 }));
-router.get("/categories", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const categories = yield Category.findAll({
             include: [
                 {
                     model: SubCategory,
                     as: "subCategories",
-                    attribures: ["id", "name", "categoryId"],
+                    attributes: ["id", "name", "categoryId"],
                 },
             ],
             attributes: ["id", "name"],

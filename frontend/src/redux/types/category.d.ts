@@ -12,6 +12,6 @@ export interface ICategory {
 }
 
 export interface ICategoryState {
-    categories: [],
+    categories: ICategory[],
     errors: null
 }

@@ -27,6 +27,8 @@ router.get("/", validateUser, async (req: ValidUser, res: Response) => {
         'name',
         'mainImageUrl',
         'price',
+        'categoryId',
+        'subCategoryId',
          [db.sequelize.fn("AVG", db.sequelize.col("reviews.stars")),
             "avgRating"],
     ],

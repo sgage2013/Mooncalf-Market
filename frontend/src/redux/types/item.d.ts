@@ -17,7 +17,8 @@ export interface IFullItem {
 }
 
 export interface IItemState {
-    allItems: { [id: number]: IItem}
+    subCategoryItems: { [id: number]: IItem}
+    categoryItems: IItem[];
     currentItem: IItemWithReviews | null;
     errors: string | null
 }
@@ -28,6 +29,7 @@ export interface IItem {
     price: number;
     mainImageUrl: string;
     avgRating?: number
+    reviewCount?: number;
     categoryId: number;
     subCategoryId: number;
 }

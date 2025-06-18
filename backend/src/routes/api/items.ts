@@ -8,11 +8,11 @@ const { Category, SubCategory, Item, Review } = db;
 
 router.get(
   "/category/:categoryId/:subCategoryId/items/:itemId",
-  validateUser,
+  
   async (req: ValidUser, res: Response) => {
     try {
       const { categoryId, subCategoryId, itemId } = req.params;
-
+      console.log(`backend: fetchinf item with categoryId: ${categoryId}, subcategoryid: ${subCategoryId}, itemid:, ${itemId}`)
       const item = await Item.findOne({
         where: {
           id: itemId,
@@ -32,13 +32,14 @@ router.get(
           },
         ],
       });
+      console.log('backend: item found', !!item)
       if (!item) {
         return res.status(404).json({ message: "Item not Found" });
       }
        const reviews = await Review.findAll({
         where: {itemId: item.id},
          attributes: ["id", "stars", "reviewBody", "userId", "createdAt"],
-         order: ['createdAt', 'DESC'],
+         order: [['createdAt', 'DESC']],
          limit: 3,
         });
       const avgRating =
@@ -46,7 +47,7 @@ router.get(
           ? (
               reviews.reduce((sum: number, review: { stars: number}) => sum + review.stars, 0) /
               reviews.length
-            ).toFixed(2)
+            )
           : null;
 
            return res.json({
@@ -65,9 +66,34 @@ router.get(
             reviews
     });
  } catch (error) {
+  console.error("Backend: Error in single item route:", error);
       return res.status(500).json({ message: "Internal Server Error" });
     }
   }
 );
+
+router.get('/category/:categoryId/items', validateUser, async (req: ValidUser, res: Response) => {
+  const paramCategoryId = parseInt(req.params.categoryId, 10);
+  try{
+    const items = await Item.findAll({
+      include: [
+        { model: SubCategory,
+          as: 'subCategory',
+          where: {categoryId: paramCategoryId},
+          attributes: ['id'],
+          required: true
+      }
+    ],
+    attributes: ['id', 'name', 'price', 'mainImageUrl', 'subCategoryId'],
+    order: [['createdAt', 'DESC']]
+    })
+    if(!items.length){
+      return res.json({items})
+    }
+    return res.json({ items})
+  } catch(error){
+    return res.status(500).json({ message: 'Internal Server Error'})
+  }
+})
 
 export = router
