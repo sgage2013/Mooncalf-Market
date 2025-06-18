@@ -43,7 +43,7 @@ router.get(
 
 //get all categories for sitewide navigation
 router.get(
-  "/categories",
+  "/",
   validateUser,
   async (req: ValidUser, res: Response) => {
     try {
@@ -52,7 +52,7 @@ router.get(
           {
             model: SubCategory,
             as: "subCategories",
-            attribures: ["id", "name", "categoryId"],
+            attributes: ["id", "name", "categoryId"],
           },
         ],
         attributes: ["id", "name"],

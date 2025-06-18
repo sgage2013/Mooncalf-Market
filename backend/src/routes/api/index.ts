@@ -11,7 +11,7 @@ import sessionRouter from "./session";
 import homeRouter from "./home";
 import categoryRouter from "./category";
 import subCategoryItemRouter from './subcategoryItems'
-import singleItemrouter from './singleItem'
+import itemrouter from './items'
 import reviewRouter from './review'
 import cartRouter from './cart'
 import listRouter from './list'
@@ -46,8 +46,8 @@ router.use("/session", sessionRouter);
 router.use("/users", userRouter);
 router.use("/home", homeRouter);
 router.use("/category", categoryRouter);
-router.use('/subCategoryItem', subCategoryItemRouter);
-router.use('/singleItem', singleItemrouter);
+router.use('/subCategoryItems', subCategoryItemRouter);
+router.use('/', itemrouter);
 router.use('/review', reviewRouter);
 router.use('/list', listRouter);
 router.use('/cart', cartRouter);

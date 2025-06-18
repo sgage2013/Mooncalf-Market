@@ -5,6 +5,8 @@ import Layout from './Layout';
 import SingleItem from '../components/SingleItem/singleItem';
 import LandingPage from '../components/Landing/Landing';
 import Home from '../components/Home/home'
+import CategoryPage from '../components/Categories/Categories';
+import SubcategoryItems from '../components/SubCategories/Subcategories';
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +31,14 @@ export const router = createBrowserRouter([
       {
         path: '/category/:categoryId/:subCategoryId/items/:itemId',
         element: <SingleItem/>
+      },
+      {
+        path: '/category/:categoryId',
+        element: <CategoryPage/>
+      },
+      {
+        path: '/category/:categoryId/:subCategoryId/items',
+        element: <SubcategoryItems/>
       }
     ],
   },

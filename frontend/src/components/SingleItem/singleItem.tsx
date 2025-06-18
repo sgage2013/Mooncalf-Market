@@ -17,8 +17,7 @@ function SingleItem() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.session.user);
-
-  const [item, setItem] = useState<IItemWithReviews | null>(null);
+  const item: IItemWithReviews | null = useAppSelector((state) => state.items.currentItem)
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState<string | null>(null);
   const [currentImage, setCurrentImage] = useState(0);
@@ -44,23 +43,18 @@ function SingleItem() {
       return;
     }
 
-    setLoading(true);
+    setLoading(false);
     setErrors(null);
 
     const categoryNumber = parseInt(currentCategory);
     const subCategoryNumber = parseInt(currentSubcategory);
     const itemNumber = parseInt(currentItem);
 
-    dispatch(getOneItemThunk(categoryNumber, subCategoryNumber, itemNumber))
-      .then((data: IItemWithReviews) => {
-        setItem(data);
-        setLoading(false);
-      })
-      .catch(() => {
-        setErrors("Failed to load items");
-        setLoading(false);
-      });
-  }, [dispatch, categoryId, subCategoryId, itemId]);
+    if(!item || item.id !== itemNumber){
+      dispatch(getOneItemThunk(categoryNumber, subCategoryNumber, itemNumber ))
+    }
+  }, [dispatch, categoryId, subCategoryId, itemId, item]);
+
 
   if (loading) {
     return <div className="loading">Loading Item</div>;
@@ -69,7 +63,7 @@ function SingleItem() {
     return <div className="item-error">Item not found</div>;
   }
   if (errors) {
-    <div className="errors">Error: {errors}</div>;
+    return <div className="errors">Error: {errors}</div>;
   }
   const images = [
     item.mainImageUrl,
