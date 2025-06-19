@@ -20,7 +20,7 @@ module.exports = {
             {
                 name: "Iron Cauldron",
                 description: "A sturdy iron cauldron, perfect for brewing potions.",
-                price: "20.00",
+                price: 20.00,
                 mainImageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkm3W6xtw_srABJrBtNKTtv4HxmNh9Ww4k-0J0lnGmLNoYXx8mEHsV2JFEiDSUI6p0vWM&usqp=CAU",
                 image2Url: "",
                 image3Url: "",
@@ -34,7 +34,7 @@ module.exports = {
             {
                 name: "Miniature Cauldron",
                 description: "A small, decorative cauldron for brewing small batches.",
-                price: "15.99",
+                price: 15.99,
                 mainImageUrl: "https://thumbs.dreamstime.com/b/incense-burning-mini-cauldron-witch-s-altar-brass-bells-crystals-132387669.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -48,7 +48,7 @@ module.exports = {
             {
                 name: "Copper Cauldron",
                 description: "A beautiful copper cauldron, ideal for alchemy.",
-                price: "16.50",
+                price: 16.50,
                 mainImageUrl: "https://www.shutterstock.com/image-illustration/copper-pot-handles-isolated-on-600nw-375716212.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -62,7 +62,7 @@ module.exports = {
             {
                 name: "Cauldron Stand",
                 description: "A sturdy stand for your cauldron.",
-                price: "9.99",
+                price: 9.99,
                 mainImageUrl: "https://www.thegreenhead.com/imgs/xl/spooky-fogging-metal-cauldron-on-stand-xl.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -76,7 +76,7 @@ module.exports = {
             {
                 name: "Self Stirring Spoon",
                 description: "A self-stirring spoon that does all of the work for you.",
-                price: "7.50",
+                price: 7.50,
                 mainImageUrl: "https://t4.ftcdn.net/jpg/02/80/13/41/360_F_280134199_pe6nTuqC09KbjHcmgdWqKFHWZgpy39sj.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -90,7 +90,7 @@ module.exports = {
             {
                 name: "Rune Charms",
                 description: "Pack of 10 rune charms to attach to cauldrons for protection or enchantment.",
-                price: "3.50",
+                price: 3.50,
                 mainImageUrl: "https://c8.alamy.com/comp/BM2ETJ/handmade-rune-set-on-the-fur-BM2ETJ.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -104,7 +104,7 @@ module.exports = {
             {
                 name: "Cauldron Blanket",
                 description: "Heat-resistant blanket to wrap around your cauldron to preserve heat.",
-                price: "15.00",
+                price: 15.00,
                 mainImageUrl: "https://media.istockphoto.com/id/140263951/photo/purple-crochet-afghan.jpg?s=612x612&w=0&k=20&c=kRy_2QFIV-IrOSF9YDOWkiA7S1LOS8f8fh7OWkUj9sw=",
                 image2Url: "",
                 image3Url: "",
@@ -118,7 +118,7 @@ module.exports = {
             {
                 name: "Gillyweed",
                 description: "A magical potion ingredient best used in water-breathing potions.",
-                price: "4.00",
+                price: 4.00,
                 mainImageUrl: "https://media.istockphoto.com/id/653084104/photo/fresh-and-dried-oregano-herb-on-wooden-background.jpg?s=612x612&w=0&k=20&c=Sh8lYuD_WTQypgK4RXbHRcW_6fzvk_ib2toNEf2uhH8=",
                 image2Url: "",
                 image3Url: "",
@@ -132,7 +132,7 @@ module.exports = {
             {
                 name: "Crushed Moonstone",
                 description: "Pre-crushed moonstone for divination or clairvoyance spells.",
-                price: "8.99",
+                price: 8.99,
                 mainImageUrl: "https://img.freepik.com/premium-photo/pink-himalayan-coarse-salt-white-background-close-up-top-view_96549-668.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -146,7 +146,7 @@ module.exports = {
             {
                 name: "Phoenix ashes",
                 description: "Incredibly rare and potent ashes, best used in powerful healing and restorative elixirs.",
-                price: "49.99",
+                price: 49.99,
                 mainImageUrl: "https://scattering-ashes.co.uk/wp-content/uploads/2013/04/ashes.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -160,7 +160,7 @@ module.exports = {
             {
                 name: "Acromantula Venom",
                 description: "A potent, highly viscous venom, strictly for advanced curses and dissolving solutions.",
-                price: "20.00",
+                price: 20.00,
                 mainImageUrl: "https://lh3.googleusercontent.com/gg-dl/AJfQ9KSvykxP8SFZ14R3WqBuPfrHBHiJL0JNqEBFfq0GunwmsGmrUel9q4vIhgVaaCvbd0jmsQQF-ZETIfYYGxfjxCCb8PrUUdwcm-khJ4itd9IkwWEjtdYzZ0mp2oZQub5bjXXlfzncJpJe62agfSdFejnLEcWI5_l97V7bWeVz1xlnU4q_wA=s1024",
                 image2Url: "",
                 image3Url: "",
@@ -174,7 +174,7 @@ module.exports = {
             {
                 name: "Wormwood",
                 description: "A foundational ingredient for many complex potions, often used for memory charms",
-                price: "6.99",
+                price: 6.99,
                 mainImageUrl: "https://d4c5gb8slvq7w.cloudfront.net/eyJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjcwMH19LCJidWNrZXQiOiJmaW5lZ2FyZGVuaW5nLnMzLnRhdW50b25jbG91ZC5jb20iLCJrZXkiOiJhcHBcL3VwbG9hZHNcLzIwMThcLzAxXC8yMzE0MzYzMVwvYXJ0ZW1pc2lhYWJzaW50aGl1bV9qd2JfMl94bGctbWFpbi01MDB4NTAwLmpwZyJ9",
                 image2Url: "",
                 image3Url: "",
@@ -188,7 +188,7 @@ module.exports = {
             {
                 name: "Standard Potion Vial",
                 description: "A classic, clear glass vial for storing potions and elixirs",
-                price: "1.99",
+                price: 1.99,
                 mainImageUrl: "https://d3h4jppqn0j59k.cloudfront.net/pub/media/catalog/product/cache/d0bf5759f0a44d37d7714632ad81fe0d/r/_/r_w_image_224832_1.png",
                 image2Url: "",
                 image3Url: "",
@@ -202,7 +202,7 @@ module.exports = {
             {
                 name: "Dark Corked Bottle",
                 description: "A dark glass bottle with a cork, prefect for light-sensitive potions",
-                price: "4.99",
+                price: 4.99,
                 mainImageUrl: "https://m.media-amazon.com/images/I/71LiFFXa-6L._AC_UF894,1000_QL80_.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -216,7 +216,7 @@ module.exports = {
             {
                 name: "Dropper Bottle",
                 description: "A beautiful bottle with a precision dropper, ideal for potent, drop-specific application.",
-                price: "4.99",
+                price: 4.99,
                 mainImageUrl: "https://i5.walmartimages.com/asr/3bd3fc5a-cc06-4916-bb87-9de3a5f517a6.a6b5eb5b1c16c16049b165b8748bc0b4.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF",
                 image2Url: "",
                 image3Url: "",
@@ -230,7 +230,7 @@ module.exports = {
             {
                 name: "Temperature-Regulating Vial",
                 description: "A magically insulated vial that maintains the exact temperature for delicate brews.",
-                price: "7.00",
+                price: 7.00,
                 mainImageUrl: "https://png.pngtree.com/png-clipart/20250211/original/pngtree-iridescent-glass-bottle-with-a-cork-stopper-reflects-magical-and-dreamy-png-image_20415813.png",
                 image2Url: "",
                 image3Url: "",
@@ -244,7 +244,7 @@ module.exports = {
             {
                 name: "Standard Student Robes",
                 description: "Essential, durable robes for everyday magical studies, perfect for any aspiring witch or wizard.",
-                price: "35.00",
+                price: 35.00,
                 mainImageUrl: "https://www.medievalcollectibles.com/wp-content/uploads/2019/09/MCI-515-Blk_2.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -258,7 +258,7 @@ module.exports = {
             {
                 name: "Deluxe Formal Robes",
                 description: "Beautifully tailored robes designed to make a grand magical impression at any formal event.",
-                price: "79.00",
+                price: 79.00,
                 mainImageUrl: "https://m.media-amazon.com/images/I/71Qr+4R13OL._AC_UY1000_.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -272,7 +272,7 @@ module.exports = {
             {
                 name: "Winter Warming Robes",
                 description: "Thick, charmed robes infused with a permanent warming enchantment, ideal for staying cozy in the coldest weather.",
-                price: "65.00",
+                price: 65.00,
                 mainImageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl-m11BHG9bZfcN6qYZnEsFgujZPxY63sdSw&s",
                 image2Url: "",
                 image3Url: "",
@@ -286,7 +286,7 @@ module.exports = {
             {
                 name: "Child's Playtime Robes",
                 description: "Durable and easy-to-clean robes, designed for comfort and resilience during a young wizard's adventures.",
-                price: "16.00",
+                price: 16.00,
                 mainImageUrl: "https://images.pexels.com/photos/7978216/pexels-photo-7978216.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                 image2Url: "",
                 image3Url: "",
@@ -300,7 +300,7 @@ module.exports = {
             {
                 name: "Stealth Cloak",
                 description: "A dark, magically woven cloak designed to aid in concealment and dampen sound for discreet movement.",
-                price: "16.00",
+                price: 16.00,
                 mainImageUrl: "https://t3.ftcdn.net/jpg/07/22/08/42/360_F_722084276_MUFHUUmGRr0rXDgOmkZKowDvmk100t0s.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -314,7 +314,7 @@ module.exports = {
             {
                 name: "Red Hooded Cloak",
                 description: "A classic, vibrant cloak with a deep hood, perfect for making a bold statement or adding a touch of drama to any outfit.",
-                price: "16.00",
+                price: 16.00,
                 mainImageUrl: "https://t3.ftcdn.net/jpg/02/59/39/72/360_F_259397283_6wY3SqsZcQbrzW73PhkqB1IAVMPjqbUn.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -328,7 +328,7 @@ module.exports = {
             {
                 name: "Green Velvet Shawl",
                 description: "A luxurious, green velvet shawl, ideal for adding elegance to formal wear.",
-                price: "12.00",
+                price: 12.00,
                 mainImageUrl: "https://i5.walmartimages.com/seo/Namzi-Velvet-Collar-Shawl-Short-Cape-Women-s-Accessory-One-Size-Fits-Everyone-Green_11a75621-b53c-4900-a277-4209a96b0013.a1b8e80776764f9adbdc1d6d2e8f2950.jpeg",
                 image2Url: "",
                 image3Url: "",
@@ -342,7 +342,7 @@ module.exports = {
             {
                 name: "Creature Handler's Cape",
                 description: "A durable and reinforced cape designed to offer protection against minor nips and scratches from magical creatures.",
-                price: "23.99",
+                price: 23.99,
                 mainImageUrl: "https://i.etsystatic.com/33231627/r/il/d277c3/4685313421/il_fullxfull.4685313421_exil.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -356,7 +356,7 @@ module.exports = {
             {
                 name: "Standard Pointed Wizard Hat",
                 description: "The iconic, comfortable, and versatile hat for daily wizarding wear and magical studies.",
-                price: "14.99",
+                price: 14.99,
                 mainImageUrl: "https://t3.ftcdn.net/jpg/08/56/37/76/360_F_856377676_BwKtXyc3BcUEd9ljR7r6qRyDPaxICVZb.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -370,7 +370,7 @@ module.exports = {
             {
                 name: "Simple Headscarf",
                 description: "A lightweight scarf perfect for keeping hair tidy or adding a subtle touch of color.",
-                price: "11.00",
+                price: 11.00,
                 mainImageUrl: "https://st2.depositphotos.com/1003410/6007/i/950/depositphotos_60078103-stock-photo-beautiful-young-woman-in-head.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -384,7 +384,7 @@ module.exports = {
             {
                 name: "Potion Maker's Protective Hood",
                 description: "A durable, fume-resistant hood designed to shield the wearer from noxious vapors and minor potion splashes.",
-                price: "23.99",
+                price: 23.99,
                 mainImageUrl: "https://media.istockphoto.com/id/901960024/photo/man-wearing-hood-with-face-mask.jpg?s=1024x1024&w=is&k=20&c=9nRnEH__paLh2IF9h-3Jorev72CT85uOE5lgiWDaStM=",
                 image2Url: "",
                 image3Url: "",
@@ -398,7 +398,7 @@ module.exports = {
             {
                 name: "Sturdy Seeker's Helmet",
                 description: " A streamlined, magically reinforced helmet offering protection and minimal wind resistance for Quidditch Seekers.",
-                price: "29.99",
+                price: 29.99,
                 mainImageUrl: "https://hogwartslegacy.wiki.fextralife.com/file/Hogwarts-Legacy//quidditch_captain's_helmet_malegear_hogwarts_legacy_wiki_guide_250px.png",
                 image2Url: "",
                 image3Url: "",
@@ -412,7 +412,7 @@ module.exports = {
             {
                 name: "Protection Amulet (Elemental",
                 description: " A magically charged amulet designed to offer minor protection against specific elemental harms.",
-                price: "27.99",
+                price: 27.99,
                 mainImageUrl: "https://cdn.pixabay.com/photo/2015/03/01/15/18/the-amulet-654761_640.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -426,7 +426,7 @@ module.exports = {
             {
                 name: "Wand Holster",
                 description: "A secure, quick-draw holster designed to keep your wand safely and conveniently by your side.",
-                price: "8.00",
+                price: 8.00,
                 mainImageUrl: "https://i.etsystatic.com/22131559/r/il/86926b/3270439868/il_570xN.3270439868_evet.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -440,7 +440,7 @@ module.exports = {
             {
                 name: "Expendable Bag (Charmed)",
                 description: "A standard messenger bag that has been charmed with the undetectable extension charm so it can hold a surprising amount of items.",
-                price: "19.50",
+                price: 19.50,
                 mainImageUrl: "https://images.pexels.com/photos/29464416/pexels-photo-29464416/free-photo-of-leather-messenger-bag-on-park-bench-in-autumn.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 image2Url: "",
                 image3Url: "",
@@ -454,7 +454,7 @@ module.exports = {
             {
                 name: "Quidditch Goggles",
                 description: "Classic Quidditch goggles offering clear vision and wind protection during high-speed broomstick travel.",
-                price: "15.99",
+                price: 15.99,
                 mainImageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2zNv5kyAu-48PKgXOly88E1VIj9pSupWd7w&s",
                 image2Url: "",
                 image3Url: "",
@@ -468,7 +468,7 @@ module.exports = {
             {
                 name: "Potion Vial Bandolier",
                 description: "A practical strap with loops to securely carry multiple small potion vials for easy access.",
-                price: "13.99",
+                price: 13.99,
                 mainImageUrl: "https://i.etsystatic.com/15840031/r/il/2ad73d/6065043055/il_fullxfull.6065043055_rh4l.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -482,7 +482,7 @@ module.exports = {
             {
                 name: "Grindylow Tentacle Fiber",
                 description: "A remarkably rare and unusual core, this fiber produces wands known for their tenacious grip on spells and an unpredictable affinity for water-based magic. Wands with this core are often fiercely loyal, though their wild nature makes them less suited for delicate or subtle enchantments.",
-                price: "129.99",
+                price: 129.99,
                 mainImageUrl: "https://images.stockcake.com/public/4/7/3/473707ca-4862-4ffb-b5e0-4fa6ab80ddfc_medium/plant-root-close-up-stockcake.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -496,7 +496,7 @@ module.exports = {
             {
                 name: "Unicorn Hair",
                 description: " This core produces the most consistent magic and is the least prone to fluctuations or blockages. Wands with unicorn hair are the most faithful and are difficult to turn to the Dark Arts. They may not be the most powerful, and can become melancholy if mishandled.",
-                price: "49.99",
+                price: 49.99,
                 mainImageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqFKGHP0rSvyoaA-Rkzx0kp9_1KOX59-U_aQ&s",
                 image2Url: "",
                 image3Url: "",
@@ -510,7 +510,7 @@ module.exports = {
             {
                 name: "Phoenix Feather",
                 description: "This is the rarest core type. Phoenix feathers are capable of the greatest range of magic, though they may take longer to reveal this. These wands show the most initiative, sometimes acting on their own. They are the pickiest when it comes to potential owners and are hard to tame.",
-                price: "239.00",
+                price: 239.00,
                 mainImageUrl: "https://media.istockphoto.com/id/500941489/photo/red-yellow-feathers.jpg?s=612x612&w=0&k=20&c=-bk5x4fj9Bn3AnhaEkv4xT2VZzMJRsY_us6YGbhSC58=",
                 image2Url: "",
                 image3Url: "",
@@ -524,7 +524,7 @@ module.exports = {
             {
                 name: "Dragon heartstring",
                 description: "Dragon heartstring cores produce wands with the most power and are capable of the most flamboyant spells. These wands learn quickly and bond strongly with their owners. They can be easier to turn to the Dark Arts and are prone to accidents due to their temperamental nature.",
-                price: "59.99",
+                price: 59.99,
                 mainImageUrl: "https://media.istockphoto.com/id/1279020142/photo/close-up-texture-of-a-lot-of-threads-in-a-weaving-machine-called-a-loom.jpg?s=612x612&w=0&k=20&c=eOJ9xMxR8D2vYorXFYAFIEz19doUEHOGRHdRX41SdoI=",
                 image2Url: "",
                 image3Url: "",
@@ -538,7 +538,7 @@ module.exports = {
             {
                 name: "Hawthorn",
                 description: " Hawthorn wands can be complex and intriguing in their natures, just like the owners who best suit them. Hawthorn wands may be particularly suited to healing magic, but they are also adept at curses.",
-                price: "49.99",
+                price: 49.99,
                 mainImageUrl: "https://www.shutterstock.com/image-photo/hawthorn-tree-branch-showing-spikes-260nw-1569451654.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -552,7 +552,7 @@ module.exports = {
             {
                 name: "Mahogany",
                 description: "Mahogany wands are suited to transfiguration and are often drawn to those who are independent and brave.",
-                price: "39.50",
+                price: 39.50,
                 mainImageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgKLIi9gVBZKcLh8OT8TnP3ciZSl7R_yh4MQ&s",
                 image2Url: "",
                 image3Url: "",
@@ -566,7 +566,7 @@ module.exports = {
             {
                 name: "Oak",
                 description: "A core for good times and bad, oak wands are for the brave, the loyal and the faithful.",
-                price: "19.99",
+                price: 19.99,
                 mainImageUrl: "https://img.pikbest.com/wp/202343/oak-wood-grain-close-up-view-of-texture_9941671.jpg!f305cw",
                 image2Url: "",
                 image3Url: "",
@@ -580,7 +580,7 @@ module.exports = {
             {
                 name: "Yew",
                 description: "A rare and notoriously powerful wand wood, the yew wand is said to bestow its owner with the power over life and death, making it particularly formidable in dueling and protective magic. Wands with this wood often seek out unusual or even notorious individuals, and are loyal to the last, known for their exceptionally long lives.",
-                price: "149.00",
+                price: 149.00,
                 mainImageUrl: "https://thumbs.dreamstime.com/b/natural-yew-bark-abstract-background-taxus-baccata-close-up-reddish-true-bark-natural-texture-yew-tree-natural-yew-bark-267095435.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -594,7 +594,7 @@ module.exports = {
             {
                 name: "Core Cleansing Solution",
                 description: "A mild, magically infused solution designed to gently cleanse and re-energize a wand's core.",
-                price: "9.00",
+                price: 9.00,
                 mainImageUrl: "https://images.pexels.com/photos/4021773/pexels-photo-4021773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 image2Url: "",
                 image3Url: "",
@@ -608,7 +608,7 @@ module.exports = {
             {
                 name: "Wand Sleeve",
                 description: "A discreet, flexible sleeve designed to hide a wand within clothing, with a subtle drawing charm.",
-                price: "17.00",
+                price: 17.00,
                 mainImageUrl: "https://customleatherandpen.com/cdn/shop/files/72F3BF73-F754-4F7C-A017-AFE10E754EA3_1946x.jpg?v=1698838038",
                 image2Url: "",
                 image3Url: "",
@@ -622,7 +622,7 @@ module.exports = {
             {
                 name: "Wand Display Box",
                 description: "A beautifully crafted box with a velvet interior, perfect for presenting or protecting a treasured wand.",
-                price: "43.00",
+                price: 43.00,
                 mainImageUrl: "https://www.shutterstock.com/image-photo/closed-slim-wooden-box-blank-260nw-1976393321.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -636,7 +636,7 @@ module.exports = {
             {
                 name: "Wand Tracing Quill",
                 description: "A special quill that records wand movements during spellcasting for practice and review.",
-                price: "10.00",
+                price: 10.00,
                 mainImageUrl: "https://images.stockcake.com/public/3/4/9/349d7648-f1a2-46ef-94de-8614b63732a7_large/antique-feather-pen-stockcake.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -650,7 +650,7 @@ module.exports = {
             {
                 name: "Standard Apprentice Wand",
                 description: " A well-balanced and reliable first wand, perfect for mastering fundamental charms and transfigurations. Crafted for consistency and ease of use.",
-                price: "120.00",
+                price: 120.00,
                 mainImageUrl: "https://images.pexels.com/photos/7979113/pexels-photo-7979113.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 image2Url: "",
                 image3Url: "",
@@ -664,7 +664,7 @@ module.exports = {
             {
                 name: "Dueling Master's Wand",
                 description: "A formidable and precise wand crafted for quick reflexes and powerful offensive and defensive spellcasting. Favored by duelists and aurors.",
-                price: "250.00",
+                price: 250.00,
                 mainImageUrl: "https://images.pexels.com/photos/3526380/pexels-photo-3526380.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 image2Url: "",
                 image3Url: "",
@@ -678,7 +678,7 @@ module.exports = {
             {
                 name: "Charms Enthusiast Wand",
                 description: " Lively and responsive, this wand makes everyday charms a joyous and effortless experience, enhancing light magic.",
-                price: "250.00",
+                price: 250.00,
                 mainImageUrl: "https://images.pexels.com/photos/7979100/pexels-photo-7979100.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 image2Url: "",
                 image3Url: "",
@@ -692,7 +692,7 @@ module.exports = {
             {
                 name: "Ancient Root Wand",
                 description: "Carved from ancient, magically saturated roots, this wand channels primal earth magic and deep, foundational spells.",
-                price: "300.00",
+                price: 300.00,
                 mainImageUrl: "https://images.pexels.com/photos/8390947/pexels-photo-8390947.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 image2Url: "",
                 image3Url: "",
@@ -706,7 +706,7 @@ module.exports = {
             {
                 name: "Little Nimbus",
                 description: "The ultimate first broom, engineered for maximum stability and gentle lift, ensuring a safe and encouraging initial flight experience.",
-                price: "100.00",
+                price: 100.00,
                 mainImageUrl: "https://i.pinimg.com/736x/57/04/fa/5704faca07f35d985cdb80795e33b174.jpg",
                 image2Url: "",
                 image3Url: "https://media.istockphoto.com/id/184833069/photo/flying-broom.jpg?s=612x612&w=0&k=20&c=4M2dEkHJ41HbHZDXpgRDca-LRVgKId4Nsa4iYA2elGg=",
@@ -720,7 +720,7 @@ module.exports = {
             {
                 name: "Safety Seeker's Training Broom",
                 description: "A robust and forgiving broom, ideal for early Quidditch training with built-in cushioning charms for soft landings.",
-                price: "120.00",
+                price: 120.00,
                 mainImageUrl: "https://www.shutterstock.com/image-photo/broom-rods-wooden-handle-isolate-260nw-1517464433.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -734,7 +734,7 @@ module.exports = {
             {
                 name: "Two-Seater Instructor's Broom",
                 description: " A unique tandem broom allowing an instructor to guide a student through flight lessons from behind.",
-                price: "350.00",
+                price: 350.00,
                 mainImageUrl: "https://lh3.googleusercontent.com/gg-dl/AJfQ9KQXteoBTL0qfDhCzvhecwTFkWzbDNNofPhiWPWqj3q3H7kwOgYAe4R_tyqs-xtsn_JOSKVt6Yog1pK82UW7Imir_NFpJGp3PCfw8QBMhFIW9gdCqGPzE3gCnHz6ylNJoFUgyyBtWPfpRWmqjBHnxmbynlb_EMg0_EbcoKDzngWRBN4DpQ=s1024",
                 image2Url: "",
                 image3Url: "",
@@ -748,7 +748,7 @@ module.exports = {
             {
                 name: "Silver Arrow Starter",
                 description: "A reliable and swift broom designed to introduce aspiring racers to higher speeds while maintaining good stability. A popular choice for school teams.",
-                price: "450.00",
+                price: 450.00,
                 mainImageUrl: "https://static.wikia.nocookie.net/harrypotter/images/7/74/Firebolt.jpg/revision/latest?cb=20141122220040",
                 image2Url: "",
                 image3Url: "",
@@ -762,7 +762,7 @@ module.exports = {
             {
                 name: "Cleansweep Eleven (Modern)",
                 description: "A modern reimagining of the beloved Cleansweep series, updated with the latest enchantments for superior speed and precise control. A favorite among competitive teams.",
-                price: "475.00",
+                price: 475.00,
                 mainImageUrl: "https://images.halloweencostumes.com/products/66113/1-1/harry-potter-nimbus-2000-broom.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -776,7 +776,7 @@ module.exports = {
             {
                 name: "Firebolt Supreme",
                 description: " The undisputed champion of racing brooms, the Firebolt Supreme combines breathtaking speed, razor-sharp handling, and unmatched magical engineering. The choice of elite Quidditch leagues worldwide.",
-                price: "575.00",
+                price: 575.00,
                 mainImageUrl: "https://potterheadonline.wordpress.com/wp-content/uploads/2015/06/623941_1295507289267_full.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -790,7 +790,7 @@ module.exports = {
             {
                 name: "The Diplomat's Discreet Broom",
                 description: " Designed for high-profile magical officials, this broom combines luxurious comfort with subtle concealment charms and secure document storage",
-                price: "700.00",
+                price: 700.00,
                 mainImageUrl: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/hogwarts-legacy/2/20/Aeromancer_broom.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -804,7 +804,7 @@ module.exports = {
             {
                 name: "Starlight Voyager",
                 description: "This broom is designed for those who appreciate the beauty of the night sky. Crafted from dark, polished wood inlaid with shimmering, star-like crystals, it features a built-in telescope and subtle light charms to enhance nighttime journeys.",
-                price: "800.00",
+                price: 800.00,
                 mainImageUrl: "https://i.mmo.cm/is/image/mmoimg/se-product-max/harry-potter-firebolt-life-size-broom--mw-116236-1.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -818,7 +818,7 @@ module.exports = {
             {
                 name: "Whispering Breeze Floater Broom",
                 description: "Glide through the skies in blissful silence on this broom, designed to minimize wind resistance and sound for truly tranquil journeys.",
-                price: "650.00",
+                price: 650.00,
                 mainImageUrl: "https://designwanted.com/wp-content/uploads/2022/03/Nimbus-2022-by-Simone-Caronni-_-Harry-Potters-broom-for-the-modern-age-6.jpg.webp",
                 image2Url: "",
                 image3Url: "",
@@ -832,7 +832,7 @@ module.exports = {
             {
                 name: "Cushioned Rider's Seat",
                 description: "A magically padded saddle designed to attach to any broomstick shaft, providing superior comfort on long flights.",
-                price: "20.00",
+                price: 20.00,
                 mainImageUrl: "https://www.shutterstock.com/image-photo/vintage-motorcycle-cushion-leather-seat-260nw-1077922232.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -846,7 +846,7 @@ module.exports = {
             {
                 name: "Anti-Theft Charm Kit",
                 description: "A simple, attachable pouch that casts a protective charm, making your broomstick invisible or immovable to unauthorized users.",
-                price: "17.50",
+                price: 17.50,
                 mainImageUrl: "https://www.shutterstock.com/image-photo/close-photo-small-leather-jewelery-260nw-2040320927.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -860,7 +860,7 @@ module.exports = {
             {
                 name: "Lumos Flight Light",
                 description: "A bright, durable light charm that easily attaches to the broom's handle, illuminating your path during nighttime flights.",
-                price: "6.00",
+                price: 6.00,
                 mainImageUrl: "https://media.istockphoto.com/id/1281698594/photo/front-bicycle-light-lighting-up-background.jpg?s=612x612&w=0&k=20&c=o6pG0rhQWmqS6CJXcU4jRMSnGPR6tZloCeUphtlnelE=",
                 image2Url: "",
                 image3Url: "",
@@ -874,7 +874,7 @@ module.exports = {
             {
                 name: "Personal Altitude Indicator",
                 description: "A compact, magically calibrated device that attaches to your broom, providing a clear display of your current altitude.",
-                price: "11.00",
+                price: 11.00,
                 mainImageUrl: "https://www.shutterstock.com/image-photo/close-retro-analog-vintage-altimeter-260nw-2159631833.jpg",
                 image2Url: "",
                 image3Url: "",
@@ -888,7 +888,7 @@ module.exports = {
             {
                 name: "Snowy Owl",
                 description: "A striking and majestic snowy owl, prized for its beauty, exceptional intelligence, and discreet long-distance messaging capabilities.",
-                price: "1,200.00",
+                price: 1200.00,
                 mainImageUrl: "https://images.pexels.com/photos/2649916/pexels-photo-2649916.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 image2Url: "https://images.pexels.com/photos/16596052/pexels-photo-16596052/free-photo-of-close-up-of-a-flying-snowy-owl.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 image3Url: "https://images.pexels.com/photos/14497364/pexels-photo-14497364.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -902,7 +902,7 @@ module.exports = {
             {
                 name: "Small Elf Owl",
                 description: "A tiny, highly agile owl, perfect for quick, covert messages and as a discreet, charming companion for any witch or wizard.",
-                price: "850.00",
+                price: 850.00,
                 mainImageUrl: "https://www.sdakotabirds.com/species_photos/owls/elf_owl_1.jpg",
                 image2Url: "https://media.sciencephoto.com/f0/31/32/29/f0313229-800px-wm.jpg",
                 image3Url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYo5OrPXxvKU8pUfyQ3rPd0t6NtHroII-PLQ&s",
@@ -916,7 +916,7 @@ module.exports = {
             {
                 name: "Great Horned Owl",
                 description: "A formidable and exceptionally intelligent owl, known for its powerful flight, impressive stature, and ability to carry heavier parcels with ease.",
-                price: "1,700.00",
+                price: 1700.00,
                 mainImageUrl: "https://t4.ftcdn.net/jpg/02/30/16/09/360_F_230160933_RPV35Cbx9yMqzForu2eP6GDXXNS3Ospf.jpg",
                 image2Url: "https://media.istockphoto.com/id/139897715/photo/great-horned-owl.jpg?s=612x612&w=0&k=20&c=ThxBMlCDUkZnl3j_OX66Vw-RcacAf3AP3cbg8E-_k1c=",
                 image3Url: "https://t3.ftcdn.net/jpg/00/71/92/02/360_F_71920230_BNi3kMh6opWyxAf5nvdJ5bSpmcadnuBp.jpg",
@@ -930,7 +930,7 @@ module.exports = {
             {
                 name: "Barn Owl",
                 description: "A reliable and intelligent owl, expertly trained for swift and accurate postal delivery to any corner of the wizarding world. Comes with basic mail-carrying harness.",
-                price: "1,000.00",
+                price: 1000.00,
                 mainImageUrl: "https://media.istockphoto.com/id/1391564461/photo/barn-owl-sitting-in-a-tree.jpg?s=612x612&w=0&k=20&c=ksyYaGEqiMmox7Csh9-vOw2F_kpq3sb-cBN_Qt6W-Yc=",
                 image2Url: "https://media.gettyimages.com/id/1047600222/photo/barn-owl.jpg?s=612x612&w=gi&k=20&c=4UV9tCDWxxAKhRGNDTGS4dDf2ZKlB7XkYAcdq_owkEA=",
                 image3Url: "https://www.shutterstock.com/image-photo/common-barn-owl-tyto-albahead-600nw-379547776.jpg",
@@ -944,7 +944,7 @@ module.exports = {
             {
                 name: "Kneazle-Hybrid Comapanion",
                 description: "A particularly intelligent and perceptive feline with hints of Kneazle ancestry, known for detecting suspicious individuals and guiding its owner safely.",
-                price: "1,250.00",
+                price: 1250.00,
                 mainImageUrl: "https://media.istockphoto.com/id/1319774380/photo/british-cat-lying-cat-tree-scratching-post.jpg?s=612x612&w=0&k=20&c=xHChZkY0pRw5-ZMdT_qulNxWS1sWP_OUXUihYg3cZjo=",
                 image2Url: "https://media.istockphoto.com/id/104355461/photo/front-view-of-british-shorthair-cat-7-months-old-sitting.jpg?s=612x612&w=0&k=20&c=OXg47eem5DnX2WkX_kcDaZcl5-ARAbaBt6Bu5kLY7LM=",
                 image3Url: "https://www.shutterstock.com/image-photo/fat-blue-british-shorthair-cat-600nw-2219486019.jpg",
@@ -958,7 +958,7 @@ module.exports = {
             {
                 name: "Savannah Cat",
                 description: "A striking, spotted feline with a wild beauty and energetic intelligence, known for its dog-like loyalty and adventurous spirit",
-                price: "1,100.00",
+                price: 1100.00,
                 mainImageUrl: "https://media.istockphoto.com/id/1312275149/photo/serval-kitten-in-red-background.jpg?s=612x612&w=0&k=20&c=E0RHtYDvfiJPiJMF5jKzTahOGMHyznq0wbkFjlCRpc4=",
                 image2Url: "https://media.istockphoto.com/id/1383013984/photo/incredible-savannah-cat-that-almost-looks-like-a-serval.jpg?s=612x612&w=0&k=20&c=qHnQDuiUIvgW9yu3yfxUGnBofSSEyNPxEOCi4Wm1F_8=",
                 image3Url: "https://t4.ftcdn.net/jpg/01/07/52/53/360_F_107525341_RCVhmOjfEBq8J30qx2VcujJdociCRvej.jpg",
@@ -972,7 +972,7 @@ module.exports = {
             {
                 name: "Siamese Cat",
                 description: "A vocal and intelligent feline with distinctive pointed markings and piercing blue eyes, known for its strong personality and devoted companionship.",
-                price: "1,100.00",
+                price: 1100.00,
                 mainImageUrl: "https://media.istockphoto.com/id/1335374640/photo/cat-looking.jpg?s=612x612&w=0&k=20&c=Y9_6wD-b8Bz77rgrKZN64bGqxYMmgsmlWFarzhcQ8uI=",
                 image2Url: "https://media.istockphoto.com/id/508701888/photo/siamese-cat-lying-down-at-bed.jpg?s=612x612&w=0&k=20&c=G2gOmVBF1fEOLbptJ9557rcFipeArfKW3D7MvPFd6u8=",
                 image3Url: "https://media.istockphoto.com/id/1076432222/photo/siamese-kitten.jpg?s=612x612&w=0&k=20&c=KjJzsMuiJYBzlxDpVeOBv9bYcjZQlnEd7W-dP7oEUh0=",
@@ -986,7 +986,7 @@ module.exports = {
             {
                 name: "Fire-Bellied Toad",
                 description: "A uniquely attuned toad said to possess a subtle ability to sense changes in magical currents or approaching weather.",
-                price: "600.00",
+                price: 600.00,
                 mainImageUrl: "https://as1.ftcdn.net/v2/jpg/07/88/25/04/1000_F_788250497_eYI0VXzupH2AECIJozK3KrtpCPP2NgE8.jpg",
                 image2Url: "https://as2.ftcdn.net/v2/jpg/08/52/90/45/1000_F_852904511_AN9GFY0mh6yYyTMUQSrrAmC7qxrnpH1X.jpg",
                 image3Url: "https://as1.ftcdn.net/v2/jpg/07/38/67/84/1000_F_738678427_N4yhIfzGHJ23YnhlAOFET8yG6E4SlB2l.jpg",
@@ -1000,7 +1000,7 @@ module.exports = {
             {
                 name: "True Toad",
                 description: "A classic, robust amphibian companion, valued for its steady demeanor and reliable presence in any magical household.",
-                price: "450.00",
+                price: 450.00,
                 mainImageUrl: "https://media.istockphoto.com/id/1433204252/photo/adult-cururu-toad.jpg?s=612x612&w=0&k=20&c=R9CIQ2eeun57nFaSRJYj80EKdCsHYCasmu00ci5Yimg=",
                 image2Url: "https://as1.ftcdn.net/v2/jpg/05/92/67/22/1000_F_592672220_0p0TD0sMKTnUUvG0ryW2SPvB8vINaAAc.jpg",
                 image3Url: "https://www.shutterstock.com/image-photo/cane-toad-rhinella-marina-known-260nw-2010682019.jpg",
@@ -1014,7 +1014,7 @@ module.exports = {
             {
                 name: "Green Toad",
                 description: "A delightful and whimsical toad known for its unique ability to inflate slightly when content or about to share a minor magical insight",
-                price: "500.00",
+                price: 500.00,
                 mainImageUrl: "https://as1.ftcdn.net/v2/jpg/06/11/73/34/1000_F_611733441_FQhzpVN1aMiwrirT6Uw4shHHsMXcBUKI.jpg",
                 image2Url: "https://nplimages.infradoxxs.com/cache/pcache2/01704921.jpg",
                 image3Url: "https://www.shutterstock.com/image-photo/green-toad-bufo-viridis-sitting-260nw-569378017.jpg",
@@ -1026,9 +1026,9 @@ module.exports = {
                 updatedAt: new Date(),
             },
             {
-                name: "Owl Seed ",
+                name: "Owl Seed",
                 description: "Nutritionally balanced and magically enriched seeds, ensuring optimal health and flight performance for all owl breeds.",
-                price: "20.00",
+                price: 20.00,
                 mainImageUrl: "https://media.istockphoto.com/id/160353256/photo/pile-of-bird-seed-including-sunflower-seeds-wheat-and-maize.jpg?s=612x612&w=0&k=20&c=fZLcqumeiS4sYnUWjeuh5ja1XDKEBAmotd2ZxuOCm0k=",
                 image2Url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQSO1p0wq68h1SRlMsl-urResvYS0xAA9lKQzK8Gh70B5sAmgG5oqbR02w1Fj6AvGvcbQ&usqp=CAU",
                 image3Url: "https://media.gettyimages.com/id/964194962/photo/pet-food.jpg?s=612x612&w=gi&k=20&c=lGKacY572LZyWvXTtOZyqBBMDAmNV5BXp-Ef1aAnhXE=",
@@ -1042,7 +1042,7 @@ module.exports = {
             {
                 name: "Feline Feast",
                 description: "A delicious and magically fortified food blend, promoting a shiny coat and vibrant energy in all cat and Kneazle-hybrid companions.",
-                price: "30.00",
+                price: 30.00,
                 mainImageUrl: "https://media.istockphoto.com/id/1131841641/photo/dry-pet-food.jpg?s=612x612&w=0&k=20&c=zNKlNVZ-gCYC-b6VUjfrardCC0bYkfPk-C3qlnFxfts=",
                 image2Url: "https://img.freepik.com/free-photo/still-life-pet-food-composition_23-2148982345.jpg",
                 image3Url: "https://media.istockphoto.com/id/1690664358/photo/dry-cat-food-flies-out-of-a-bowl-on-a-white-background-isolated.jpg?s=612x612&w=0&k=20&c=PbF4lYlSI1PHvmf90wQybMCyvBmklPtfo4UPa1Wty5o=",
@@ -1056,7 +1056,7 @@ module.exports = {
             {
                 name: "Amphibian Ambrosa",
                 description: "A nutrient-dense, magically enhanced insect blend, perfect for keeping toads and other amphibians healthy and active.",
-                price: "26.00",
+                price: 26.00,
                 mainImageUrl: "https://as1.ftcdn.net/jpg/05/00/67/66/1000_F_500676618_1a5GKpM1sOQ1jWQzFAdfkBGwyKRgzhsj.jpg",
                 image2Url: "https://www.shutterstock.com/image-photo/owner-feeds-lizard-special-food-260nw-1771664231.jpg",
                 image3Url: "https://www.shutterstock.com/image-photo/food-pet-dried-cricket-treats-260nw-2531694981.jpg",
@@ -1070,7 +1070,7 @@ module.exports = {
             {
                 name: "Bristle Smoothing Brush",
                 description: "A gentle, enchanted brush that detangles fur and feathers while imparting a healthy sheen and repelling minor jinxes.",
-                price: "22.00",
+                price: 22.00,
                 mainImageUrl: "https://static.vecteezy.com/system/resources/thumbnails/050/752/493/small/of-plastic-pet-grooming-brush-with-white-background-in-forced-perspective-view-photo.jpg",
                 image2Url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScDWr7oFjHHr2o-xWX8_XU8u_EPqn2Q1sdXDNG6CFSsHMXTVDVqmWf3qSPi_Zg2cCGY9A&usqp=CAU",
                 image3Url: "",
@@ -1084,7 +1084,7 @@ module.exports = {
             {
                 name: "Calming Elixir",
                 description: "A gentle elixir designed to soothe anxious magical companions during travel, loud events, or periods of stress.",
-                price: "18.00",
+                price: 18.00,
                 mainImageUrl: "https://www.shutterstock.com/image-photo/stack-drug-vial-colored-solution-600nw-2161641541.jpg",
                 image2Url: "https://st3.depositphotos.com/1169411/14296/i/1600/depositphotos_142964465-stock-photo-vial-filled-with-colored-liquid.jpg",
                 image3Url: "https://c8.alamy.com/comp/R4JC8A/vial-detail-with-yellow-medication-isolated-side-shadow-on-white-background-R4JC8A.jpg",
@@ -1098,7 +1098,7 @@ module.exports = {
             {
                 name: "Padded Owl Carrier Glove",
                 description: "A comfortable and secure glove designed for carrying your owl discreetly and safely outside their cage, allowing them to perch on your arm without discomfort.",
-                price: "61.00",
+                price: 61.00,
                 mainImageUrl: "https://www.shutterstock.com/image-photo/hunting-barn-owl-on-falconry-260nw-40015435.jpg",
                 image2Url: "https://media.istockphoto.com/id/518659220/photo/falconry-glove.jpg?s=1024x1024&w=is&k=20&c=slyqyPKdplBT0ACPiG9SneTDf-50ILkJQtL_ElDisms=",
                 image3Url: "https://img.freepik.com/premium-photo/barn-owl-its-falconer39s-glove_633872-1286.jpg",
@@ -1112,7 +1112,7 @@ module.exports = {
             {
                 name: "Anti-Jinx Cat Collar",
                 description: "A stylish and durable collar with a subtle charm to deflect minor hexes and identify your cat, ensuring their safety on magical trips.",
-                price: "9.00",
+                price: 9.00,
                 mainImageUrl: "https://www.shutterstock.com/image-photo/yellow-leather-dog-collar-tag-600nw-2193036887.jpg",
                 image2Url: "https://media1.popsugar-assets.com/files/thumbor/FM-5ElAfg8fsSIDyc64HDY9Cp8k=/fit-in/570x570/filters:format_auto():upscale()/2015/07/18/009/n/1922243/a44e6f681ccc60df_collar5.jpg",
                 image3Url: "https://images.pexels.com/photos/979248/pexels-photo-979248.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -1126,7 +1126,7 @@ module.exports = {
             {
                 name: "Warming Stone",
                 description: "A self-regulating, charmed stone that provides a gentle, consistent warmth for your amphibian, mimicking their natural habitat.",
-                price: "11.00",
+                price: 11.00,
                 mainImageUrl: "https://st4.depositphotos.com/6168506/24505/i/450/depositphotos_245059096-stock-photo-big-rock-isolated-white-background.jpg",
                 image2Url: "https://media.istockphoto.com/id/1354415013/photo/stone-from-limestone-and-shale-isolated-on-white-background-flat-stone-shale-closeup-top-view.jpg?s=612x612&w=0&k=20&c=am6QduTMGZ5-H4_SjXQdCO79n6G51ngQhHIQX8GZwJA=",
                 image3Url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMiJIYv6O8Lew5ZkJE2iX63hrPjvX-CTCPi11fs3m11XECntWLJweu_Da4WR5knj_4v1E&usqp=CAU",
@@ -1140,7 +1140,7 @@ module.exports = {
             {
                 name: "Charmed Self-CLeaning Litterbox",
                 description: "A convenient, magically enhanced litter box that automatically cleans and refreshes itself, ensuring a hygienic environment for cats and other small magical companions. (self-filling litter bag included)",
-                price: "77.99",
+                price: 77.99,
                 mainImageUrl: "https://www.shutterstock.com/image-photo/ginger-cat-going-out-selfcleaning-260nw-1975443818.jpg",
                 image2Url: "https://www.shutterstock.com/image-photo/automatic-toilet-cats-pet-gadgets-260nw-2218784355.jpg",
                 image3Url: "https://thumbs.dreamstime.com/b/hooded-litter-box-cat-isolated-white-covered-high-sides-lid-background-hygiene-372197219.jpg",
@@ -1154,7 +1154,7 @@ module.exports = {
             {
                 name: "Potion Master's SpellBook",
                 description: "A rare manual detailing complex potion-related charms, stirring spells, and safety incantations for the advanced potioneer.",
-                price: "43.00",
+                price: 43.00,
                 mainImageUrl: "https://thumbs.dreamstime.com/b/vintage-leather-bound-journal-rests-wooden-table-371863786.jpg",
                 image2Url: "https://thumbs.dreamstime.com/b/old-green-book-worn-cover-image-shows-resting-dark-brown-wooden-surface-s-faded-pages-lighter-shade-376327109.jpg",
                 image3Url: "https://thumbs.dreamstime.com/b/ancient-green-gold-decorated-book-lying-rustic-wooden-table-evoking-history-knowledge-literature-366550784.jpg",
@@ -1168,7 +1168,7 @@ module.exports = {
             {
                 name: "Ancient Runes and Glyphs",
                 description: "A scholarly collection deciphering ancient magical languages, symbols, and their powerful inherent properties.",
-                price: "45.00",
+                price: 45.00,
                 mainImageUrl: "https://www.shutterstock.com/image-photo/old-leather-brown-book-isolated-260nw-2491126003.jpg",
                 image2Url: "https://static.vecteezy.com/system/resources/previews/045/909/125/non_2x/a-leather-bound-book-with-a-leather-strap-stock-png.png",
                 image3Url: "https://i.ebayimg.com/thumbs/images/g/5YoAAOSwbD1nZD4-/s-l1200.jpg",
@@ -1182,7 +1182,7 @@ module.exports = {
             {
                 name: "The Complete Book of Vanishing Spells",
                 description: "A notoriously difficult and elusive tome, offering insights into complex vanishing acts and temporary concealment charms.",
-                price: "32.00",
+                price: 32.00,
                 mainImageUrl: "https://static.vecteezy.com/system/resources/thumbnails/041/912/500/small/ai-generated-a-weathered-antique-book-with-a-leather-cover-generative-ai-photo.jpeg",
                 image2Url: "https://static.vecteezy.com/system/resources/previews/028/133/271/non_2x/antique-leather-book-photo.jpg",
                 image3Url: "https://static.vecteezy.com/system/resources/previews/050/533/610/non_2x/aged-leather-bound-book-on-a-dark-textured-background-free-photo.jpeg",
@@ -1196,7 +1196,7 @@ module.exports = {
             {
                 name: "Grimoire of Elemental Mastery",
                 description: "A weighty, leather-bound tome dedicated to controlling and summoning elemental forces, filled with complex rituals and incantations.",
-                price: "69.00",
+                price: 69.00,
                 mainImageUrl: "https://media.istockphoto.com/id/1676148396/photo/ancient-magic-spell-book-grimoire-with-an-eye-set-in-the-cover-isolated-3d-rendering.jpg?s=612x612&w=0&k=20&c=MAKjdYzs7owxVZ-jJ2HWA76VwFtLp_9Y4IwCxsHmtvU=",
                 image2Url: "https://media.istockphoto.com/id/1960187763/photo/ancient-wizard-magic-spell-book-open-with-yellow-parchment-pages-3d-rendering.jpg?s=612x612&w=is&k=20&c=APeKxJHwWp8gVkIa0a7J_vNSMuJpiHnVu-Zke_PIbpE=",
                 image3Url: "https://t3.ftcdn.net/jpg/08/44/63/86/360_F_844638691_5YOMM88dgB7jY4SbYp9nyEXWxqSq5yoV.jpg",
@@ -1210,7 +1210,7 @@ module.exports = {
             {
                 name: "Bestiary of Cursed Creatures",
                 description: "A heavily warded compendium detailing the behaviors, weaknesses, and counter-curses for dangerous and magically afflicted beings.",
-                price: "58.00",
+                price: 58.00,
                 mainImageUrl: "https://c8.alamy.com/comp/2EG6CAR/vintage-leather-bound-book-resting-on-a-white-surface-showcasing-its-worn-pages-and-black-cover-2EG6CAR.jpg",
                 image2Url: "https://images.stockcake.com/public/7/f/6/7f63801e-0abd-46c8-8d30-adf57c633233_large/ancient-open-book-stockcake.jpg",
                 image3Url: "https://media.istockphoto.com/id/534892891/photo/book.jpg?s=612x612&w=0&k=20&c=2cYYRN0JQzh8OBzmRizaUtqMgaVCeN0RHZVd42_o1mU=",
@@ -1224,7 +1224,7 @@ module.exports = {
             {
                 name: "Beginner's Enchanted Scroll",
                 description: "A durable, self-rolling scroll pre-loaded with essential charms and quick-reference spell diagrams, perfect for on-the-go study.",
-                price: "26.00",
+                price: 26.00,
                 mainImageUrl: "https://thumbs.dreamstime.com/b/ancient-scroll-handwritten-text-aged-parchment-paper-resting-wooden-surface-ai-generated-375077823.jpg",
                 image2Url: "https://thumbs.dreamstime.com/z/parchment-scroll-feather-pen-bottle-ink-scroll-written-cursive-handwriting-legal-document-321965897.jpg",
                 image3Url: "https://thumbs.dreamstime.com/b/medieval-parchment-paper-inked-calligraphy-medieval-parchment-paper-inked-calligraphy-ai-generated-image-background-283445652.jpg",
@@ -1238,7 +1238,7 @@ module.exports = {
             {
                 name: "Standard Book of SPells (Year 1)",
                 description: "he essential first textbook for every young witch and wizard, covering foundational charms and basic spellcasting theory.",
-                price: "20.00",
+                price: 20.00,
                 mainImageUrl: "https://t3.ftcdn.net/jpg/02/16/67/50/360_F_216675048_39petQYPtJ9cv5ycUg1LOmCtcNCoqtdk.jpg",
                 image2Url: "https://thumbs.dreamstime.com/b/book-open-flipping-pages-aged-worn-hardcover-white-background-cataloging-historical-information-textbook-dictionary-educational-369896853.jpg",
                 image3Url: "https://us.123rf.com/450wm/liudmilachernetska/liudmilachernetska2301/liudmilachernetska230120314/196511053-open-old-hardcover-book-on-blue-background-space-for-text.jpg?ver=6",
@@ -1252,7 +1252,7 @@ module.exports = {
             {
                 name: "Potion Crafting for Beginners",
                 description: "An accessible guide to the art of potion-making, covering fundamental ingredients, simple brewing techniques, and safety precautions for budding potioneers.",
-                price: "34.00",
+                price: 34.00,
                 mainImageUrl: "https://thumbs.dreamstime.com/b/elegant-brown-leather-book-marble-surface-detailed-textured-cover-369555131.jpg",
                 image2Url: "https://img.freepik.com/premium-photo/old-book-with-chemistry-symbols-wooden-background-science-education-concept_1308175-70665.jpg",
                 image3Url: "https://img.freepik.com/premium-photo/vintage-chemistry-background-old-book-with-formulas-testtubes_1308175-70569.jpg",
@@ -1266,7 +1266,7 @@ module.exports = {
             {
                 name: "Introduction to Magical Theory",
                 description: " A clear and concise overview of the fundamental principles of magic, essential for understanding how spells work.",
-                price: "32.00",
+                price: 32.00,
                 mainImageUrl: "https://t4.ftcdn.net/jpg/13/69/29/17/360_F_1369291773_1DDMF6KNWDNUSYirna73hYptulAsCMC1.jpg",
                 image2Url: "https://www.shutterstock.com/image-photo/red-leather-book-cover-isolated-260nw-2470312561.jpg",
                 image3Url: "https://thumbs.dreamstime.com/z/antique-map-leather-tag-red-stone-wooden-table-book-treasure-363439309.jpg",
@@ -1280,7 +1280,7 @@ module.exports = {
             {
                 name: "Introduction to Herbology",
                 description: "Discover the wonders of the wizarding world's flora in this introductory text, detailing how to identify, care for, and utilize various magical plants for charms and potions.",
-                price: "26.00",
+                price: 26.00,
                 mainImageUrl: "https://thumbs.dreamstime.com/b/beautifully-crafted-green-gardening-book-rests-small-potted-plant-both-arranged-pristine-white-surface-creating-365914663.jpg",
                 image2Url: "https://images.stockcake.com/public/1/7/4/174bcf17-9e18-4386-923d-dbb240496599_large/book-with-herbs-stockcake.jpg",
                 image3Url: "https://thumbs.dreamstime.com/b/open-journal-botanical-sketches-tall-grass-page-flipping-due-to-breeze-old-tome-like-book-herbs-jar-pens-stones-381686011.jpg",
@@ -1294,7 +1294,7 @@ module.exports = {
             {
                 name: "Transfiguration 101",
                 description: " Learn the intricate art of transforming objects and living beings with this in-depth textbook, from basic match-to-needle to advanced cross-species transfigurations.",
-                price: "26.00",
+                price: 26.00,
                 mainImageUrl: "https://thumbs.dreamstime.com/b/blank-white-book-cover-mockup-gray-background-ai-generated-361232889.jpg",
                 image2Url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScssx7-LUBSDIGvc71uOZBH3VeGRF1eoTiBw&s",
                 image3Url: "https://images.pexels.com/photos/267586/pexels-photo-267586.jpeg?cs=srgb&dl=pexels-pixabay-267586.jpg&fm=jpg",
@@ -1308,7 +1308,7 @@ module.exports = {
             {
                 name: "Astrology: Celestial Influences on Magic",
                 description: "Chart the magical cosmos to understand how celestial alignments influence magical abilities and destinies",
-                price: "26.00",
+                price: 26.00,
                 mainImageUrl: "https://media.istockphoto.com/id/1279528867/photo/book-with-cover-blue-color-isolated-on-white-background-top-view-close-up.jpg?s=612x612&w=0&k=20&c=k0My9rA2f4QtlDLDDIy_5LA3bJ2eyagdNGmKJQ8fgOU=",
                 image2Url: "https://media.istockphoto.com/id/616249650/photo/astrology-magic-book.jpg?s=612x612&w=0&k=20&c=55y_U-x6EaGYMzpcocEIF9dGbWqcfkWeSscTTG3-LOE=",
                 image3Url: "https://media.istockphoto.com/id/488250648/vector/old-book-astrology-icon.jpg?s=612x612&w=is&k=20&c=B5QWfMNN5I1Tg9Gxz0WOjezAcU6JHAzgUubHwzuP0TQ=",
@@ -1322,7 +1322,7 @@ module.exports = {
             {
                 name: "Divination for Beginners",
                 description: "Peer beyond the veil with this insightful text, exploring mystic arts like crystal gazing and tea leaves to glimpse hidden truths.",
-                price: "26.00",
+                price: 26.00,
                 mainImageUrl: "https://t4.ftcdn.net/jpg/11/64/96/23/360_F_1164962357_yfuec2GvUoQzSHVdUMjrPHI2El9wWS7O.jpg",
                 image2Url: "https://www.shutterstock.com/image-photo/crystal-ball-fortune-teller-spell-260nw-2020417775.jpg",
                 image3Url: "https://as1.ftcdn.net/jpg/03/25/49/10/1000_F_325491083_t50q1hOKyigCBRCjey1c891HGO2D8Car.jpg",
@@ -1336,7 +1336,7 @@ module.exports = {
             {
                 name: "Underwater Wonders: A Guide to Aquatic Magical Life",
                 description: "An invaluable, waterproof guide to the mysterious merpeople, grindylows, and other enchanting (and perilous) magical creatures of the world's waterways.",
-                price: "34.00",
+                price: 34.00,
                 mainImageUrl: "https://t4.ftcdn.net/jpg/14/49/40/55/360_F_1449405522_Un8gQrLXVh8c5juj6x0Q1fTAcuJqgvkp.jpg",
                 image2Url: "https://images.stockcake.com/public/f/f/3/ff3b1638-cdde-4c30-9009-3dc5fbf86cfd_large/submerged-open-book-stockcake.jpg",
                 image3Url: "https://img.freepik.com/free-photo/open-book-blue-background-isolated-closeup_169016-25939.jpg?semt=ais_items_boosted&w=740",
@@ -1350,7 +1350,7 @@ module.exports = {
             {
                 name: "Perilous Plants: A Cautionary Field Guide ",
                 description: "An indispensable pocket guide to recognizing and safely avoiding the most venomous and dangerous magical plants, crucial for any adventurer.",
-                price: "34.00",
+                price: 34.00,
                 mainImageUrl: "https://www.shutterstock.com/image-photo/old-blank-hardcover-leather-bound-260nw-65617657.jpg",
                 image2Url: "https://c8.alamy.com/comp/BMP0PT/a-woman-in-the-field-looking-at-a-common-spotted-orchid-and-checking-BMP0PT.jpg",
                 image3Url: "https://www.shutterstock.com/image-illustration/sheet-antique-botanical-lithography-1890s1900s-600nw-2088353989.jpg",
@@ -1364,7 +1364,7 @@ module.exports = {
             {
                 name: "Mysteries of the Mist",
                 description: "A fascinating guide to identifying and understanding fleeting magical occurrences, from shimmering apparitions to unusual weather patterns and localized charms.",
-                price: "34.00",
+                price: 34.00,
                 mainImageUrl: "https://i.etsystatic.com/5393636/r/il/7bf792/1542828775/il_1080xN.1542828775_e92s.jpg",
                 image2Url: "https://lh3.googleusercontent.com/gg-dl/AJfQ9KTv5UBNn6BJEPXiXpWURtE7Yp9CFr4yeC-frmDNhNwm67I0sHblUWpgHqBW8BUlOZMZO05h0LcC7uRmB5vu6TUFNi58mqqxvySU_y6LMdaa-Q_rZv-DWapFl1uEAH60PBYTCqxg5yowsqIQxv12iaZxtrGEONYVTG1bO_7yYfnnYRmnQg=s1024",
                 image3Url: "https://thumbs.dreamstime.com/b/book-opens-to-unleash-stormy-cloud-lightning-mystical-night-setting-creating-enchanting-atmosphere-magical-opened-373822661.jpg",
@@ -1378,7 +1378,7 @@ module.exports = {
             {
                 name: "Every Flavor Beans",
                 description: "A wildly unpredictable assortment of jelly beans, ranging from delicious and delightful to utterly bizarre and unexpected flavors. A true test of courage (and taste buds!).",
-                price: "7.00",
+                price: 7.00,
                 mainImageUrl: "https://thumbs.dreamstime.com/b/colorful-jelly-beans-clear-plastic-bag-isolated-transparent-background-350714901.jpg",
                 image2Url: "https://c8.alamy.com/comp/C358Y2/multi-colored-jelly-beans-spilling-out-of-a-brown-paper-bag-against-C358Y2.jpg",
                 image3Url: "https://media.istockphoto.com/id/157607879/photo/jelly-beans.jpg?s=612x612&w=0&k=20&c=P_chA85rE6929ndTR5G5sp43nHNGgzOsrggDL-_-be0=",
@@ -1392,7 +1392,7 @@ module.exports = {
             {
                 name: "Drooble's Best Blowing Gum",
                 description: "A magical chewing gum that allows you to blow enormous, long-lasting bubbles that can be manipulated into various shapes.",
-                price: "2.00",
+                price: 2.00,
                 mainImageUrl: "https://t4.ftcdn.net/jpg/01/28/40/59/360_F_128405928_Yp7t9gmqzaDNrzYHTboxuX9057I3txAH.jpg",
                 image2Url: "https://www.shutterstock.com/image-photo/trendy-girl-blowing-bubble-gum-600nw-2406216395.jpg",
                 image3Url: "",
@@ -1406,7 +1406,7 @@ module.exports = {
             {
                 name: "Acid Pops",
                 description: "Dangerously delicious lollipops that cause a tingling, slightly acidic sensation on the tongue, but are surprisingly addictive.",
-                price: "3.00",
+                price: 3.00,
                 mainImageUrl: "https://media.istockphoto.com/id/159037644/photo/isolated-lollipops.jpg?s=612x612&w=0&k=20&c=A7JfygdY_Ei3yqWWWLZhsT1rQns2txcXe0ohlSO-ggc=",
                 image2Url: "https://media.gettyimages.com/id/171114113/photo/lollipops.jpg?s=612x612&w=gi&k=20&c=k19kjob0oUsQdmZOZFYLr4P7v8dHBSAGUGa3mlqxfsw=",
                 image3Url: "https://thumbs.dreamstime.com/b/lollipop-cover-19852224.jpg",
@@ -1420,7 +1420,7 @@ module.exports = {
             {
                 name: "Pumpkin Pastries",
                 description: "Warm and flaky pastries filled with a sweet and spiced pumpkin mixture. A quintessential autumn and holiday treat.",
-                price: "9.00",
+                price: 9.00,
                 mainImageUrl: "https://thumbs.dreamstime.com/b/mini-pumpkin-tart-26788597.jpg",
                 image2Url: "https://www.shutterstock.com/image-photo/mini-pumpkin-pies-thanksgiving-topped-260nw-2341432487.jpg",
                 image3Url: "https://www.shutterstock.com/image-photo/mini-pumpkin-pies-wipped-cream-260nw-2197454721.jpg",
@@ -1434,7 +1434,7 @@ module.exports = {
             {
                 name: "Exploding Bonbons",
                 description: "Delicious chocolate bonbons with a surprising fizzy, popping candy center that bursts in your mouth. Popular during celebrations.",
-                price: "10.00",
+                price: 10.00,
                 mainImageUrl: "https://media.istockphoto.com/id/908259584/photo/various-chocolate-pralines.jpg?s=612x612&w=0&k=20&c=Nqv-2Foy0yFJ7OrlO-PrLa0bkh_HEFcIeCY2Dg8JL5I=",
                 image2Url: "https://st.depositphotos.com/1010050/4727/i/450/depositphotos_47277639-stock-photo-chocolate-truffles-and-pralines.jpg",
                 image3Url: "https://media.istockphoto.com/id/488182109/photo/chocolates.jpg?s=612x612&w=0&k=20&c=OAzD-G8GZZfzb5bgZ5CJd_PdSIJqdnInLmEeeiDGRe0=",
@@ -1448,7 +1448,7 @@ module.exports = {
             {
                 name: "Goblin Grub Trail Mix",
                 description: "A hearty and magically preserved trail mix, packed with crunchy nuts, dried enchanted berries, and savory bits, perfect for sustaining any wizarding adventurer on their journeys.",
-                price: "12.00",
+                price: 12.00,
                 mainImageUrl: "https://media.istockphoto.com/id/1464316628/photo/homemade-cereal-nut-and-prezel-trail-mix-on-a-wooden-table.jpg?s=612x612&w=0&k=20&c=s7JPeu-9efcwhgpP_GLuNuaScOl1-TMcBeMUZ6a1of8=",
                 image2Url: "https://media.istockphoto.com/id/526728423/photo/party-snack-mix.jpg?s=612x612&w=0&k=20&c=O89RsB7JgPTMYB7KQxwK9PMn7XERzByNvYLeCyGObUg=",
                 image3Url: "https://houseofnasheats.com/wp-content/uploads/2024/03/FB-Classic-Chex-Mix-Recipe-2-680x850.jpg",
@@ -1462,7 +1462,7 @@ module.exports = {
             {
                 name: "Treacle Tart Bites",
                 description: "Miniature, gooey tarts filled with rich, sticky treacle and a hint of lemon, a comforting classic in bite-sized form.",
-                price: "10.00",
+                price: 10.00,
                 mainImageUrl: "https://www.shutterstock.com/shutterstock/photos/2357629245/display_1500/stock-photo-closeup-of-a-homemade-lemon-tart-decorated-and-lime-slices-2357629245.jpg",
                 image2Url: "https://c8.alamy.com/comp/RT5P6K/treacle-tarts-RT5P6K.jpg",
                 image3Url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaey_aIeEpeOjpRbxRuECay84mKmM5SrlEOg&s",
@@ -1476,7 +1476,7 @@ module.exports = {
             {
                 name: "Puffskein Puffs (Cheese Flavored)",
                 description: "Light and airy cheese flavored puffs that occasionally let out a faint, adorable 'puff' sound as you eat them.",
-                price: "13.00",
+                price: 13.00,
                 mainImageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS593fiPWTZrcWKnPFd4oATLpkf6PixxiEOA_eGmoWTXpWZDmlSCtEgdkwTao2rbB_OdSs&usqp=CAU",
                 image2Url: "https://www.shutterstock.com/image-photo/cheese-corn-balls-texture-pattern-600nw-2323202755.jpg",
                 image3Url: "https://india.neelamfoodland.in/cdn/shop/products/IMG_9762_1200x.jpg?v=1734379611",
@@ -1490,7 +1490,7 @@ module.exports = {
             {
                 name: "Enchanted Fruit Chews",
                 description: "Soft, chewy gummies bursting with concentrated fruit flavor, enchanted to provide a delightful, lingering magical zest.",
-                price: "8.00",
+                price: 8.00,
                 mainImageUrl: "https://media.istockphoto.com/id/1831831117/photo/a-girl-holds-a-gummy-bear-vitamines-in-her-hands.jpg?s=612x612&w=0&k=20&c=FIhz0Nvvktju7oYMqHdF496s2CM-3_A1rsFivFL_9_8=",
                 image2Url: "https://thumbs.dreamstime.com/b/organic-fruit-gummy-snacks-kids-28595488.jpg",
                 image3Url: "https://www.shutterstock.com/image-photo/multivitamin-gummies-fruit-shaped-copy-260nw-2378968461.jpg",
@@ -1504,7 +1504,7 @@ module.exports = {
             {
                 name: "Pepper-Up Potion",
                 description: "A warming, invigorating tonic that instantly cures the common cold, banishes chills, and leaves the drinker steaming from the ears.",
-                price: "56.00",
+                price: 56.00,
                 mainImageUrl: "https://thumbs.dreamstime.com/b/witch-s-brew-red-potion-mysterious-red-potion-witch-s-brew-isolated-white-background-perfect-halloween-366930254.jpg",
                 image2Url: "https://thumbs.dreamstime.com/b/red-potion-isolated-white-background-vibrant-glass-bottle-capturing-mystical-magical-essence-creative-projects-363613825.jpg",
                 image3Url: "https://thumbs.dreamstime.com/b/steaming-black-cauldron-red-potion-punch-decorated-mint-leaves-berries-surrounded-pumpkins-dark-background-334287490.jpg",
@@ -1518,7 +1518,7 @@ module.exports = {
             {
                 name: "Felix Felicis (Liquid Luck)",
                 description: "A highly sought-after and illicit potion that grants the drinker immense luck for a limited period, making every endeavor succeed.",
-                price: "150.00",
+                price: 150.00,
                 mainImageUrl: "https://thumbs.dreamstime.com/b/glowing-magical-potion-bottle-intricate-design-sparkling-contents-ai-generated-369580934.jpg",
                 image2Url: "https://i.pinimg.com/736x/b8/67/a5/b867a59a079ba2543ec45af349131ea2.jpg",
                 image3Url: "https://thumbs.dreamstime.com/b/magical-potion-brewing-mystical-cauldron-sparkling-golden-dust-captivating-image-dark-rustic-bubbling-floats-around-378821464.jpg",
@@ -1532,7 +1532,7 @@ module.exports = {
             {
                 name: "Veritaserum",
                 description: " A powerful, colorless truth serum that compels the drinker to answer all questions truthfully, used with extreme caution and regulation.",
-                price: "130.00",
+                price: 130.00,
                 mainImageUrl: "https://c8.alamy.com/comp/2RW9PJ2/old-bottle-half-full-of-clear-liquid-2RW9PJ2.jpg",
                 image2Url: "https://thumbs.dreamstime.com/b/closeup-witcher-cauldron-blue-potions-halloween-closeup-witcher-cauldron-blue-potions-halloween-dark-99341521.jpg",
                 image3Url: "https://images.pexels.com/photos/6387845/pexels-photo-6387845.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -1546,7 +1546,7 @@ module.exports = {
             {
                 name: "Wolfesbane Potion",
                 description: " A complex and incredibly difficult potion to brew, Wolfsbane Potion allows a werewolf to retain their human mind during transformation, preventing them from harming others",
-                price: "200.00",
+                price: 200.00,
                 mainImageUrl: "https://t4.ftcdn.net/jpg/08/39/63/07/360_F_839630769_PajoxdVJsJjGPtQR1xTsRh7wKgDpfD5L.jpg",
                 image2Url: "https://images.stockcake.com/public/9/c/5/9c588d09-165b-4e56-a657-75bc262a6470_large/mystical-blue-potion-stockcake.jpg",
                 image3Url: "https://thumbs.dreamstime.com/b/mystic-cauldron-blue-smoke-ornate-copper-pot-dark-wood-background-348146399.jpg",
@@ -1560,7 +1560,7 @@ module.exports = {
             {
                 name: "Polyjuice Potion",
                 description: "A thick, complex, and time-consuming potion that allows the drinker to assume the appearance of another person for a limited time.",
-                price: "100.00",
+                price: 100.00,
                 mainImageUrl: "",
                 image2Url: "https://thumbs.dreamstime.com/b/glass-vial-detoxifying-sea-mud-transparent-containing-thick-grayish-brown-substance-likely-simple-cylindrical-378470070.jpg",
                 image3Url: "https://lh3.googleusercontent.com/gg-dl/AJfQ9KTLxKvIhnnkooaC4a6aiUT2rIMx2DkGm5U3NkvQPOTGKL3FIAH6Vd8BpLSZwUphmllwSpivoySOPNbgoOWJp-sjLkC3V3SPZW3pZA5NGIoMZVG5g9LiylpJSx0NA59Gw9Li9d5OLvz4KpGt2umnoQ4-2qT9NYuPra8vPVaEQuvfcb49gg=s1024",
