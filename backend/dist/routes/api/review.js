@@ -26,59 +26,14 @@ function validateReview(body) {
     }
     return null;
 }
-router.get("/items/:itemId/reviews", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const { itemId } = req.params;
-        const reviews = yield Review.findAll({
-            where: { itemId },
-            include: [
-                {
-                    model: User,
-                    as: "user",
-                    attributes: ["username"],
-                },
-            ],
-            attributes: ["id", "stars", "reviewBody", "createdAt"],
-            order: [["createdAt", "DESC"]],
-        });
-        return res.status(200).json({ reviews });
-    }
-    catch (error) {
-        return res.status(500).json({ message: "Failed to load reviews" });
-    }
-}));
-router.post("/items/:itemId/reviews", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const { itemId } = req.params;
-        const { reviewBody, stars } = req.body;
-        const validationError = validateReview({ reviewBody, stars });
-        if (validationError) {
-            return res.status(400).json({ message: validationError });
-        }
-        const existingReview = yield Review.findOne({
-            where: { userId: req.user.id, itemId },
-        });
-        if (existingReview) {
-            return res.status(400).json({
-                message: "You cannot leave more than one review for an item.",
-            });
-        }
-        const newReview = yield Review.create({
-            userId: req.user.id,
-            itemId,
-            reviewBody,
-            stars,
-        });
-        return res.json({ newReview });
-    }
-    catch (error) {
-        return res.status(500).json({ message: "Unable to create review" });
-    }
-}));
-router.put("/items/:itemId/reviews/:reviewId", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.put("/:reviewId", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { reviewId } = req.params;
         const { reviewBody, stars } = req.body;
+        const reviewIdNum = parseInt(reviewId, 10);
+        if (isNaN(reviewIdNum)) {
+            return res.status(400).json({ message: "Invalid review ID" });
+        }
         const validationError = validateReview({ reviewBody, stars });
         if (validationError) {
             return res.status(400).json({ message: validationError });
@@ -93,13 +48,14 @@ router.put("/items/:itemId/reviews/:reviewId", auth_1.validateUser, (req, res) =
         review.reviewBody = reviewBody;
         review.stars = stars;
         yield review.save();
-        return res.json({ review });
+        return res.json(review);
     }
-    catch (_a) {
+    catch (error) {
+        console.error("Error updating review:", error);
         return res.status(500).json({ message: "Failed to update review" });
     }
 }));
-router.delete("/items/:itemId/reviews/:reviewId", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.delete("/:reviewId", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { reviewId } = req.params;
         const review = yield Review.findByPk(reviewId);

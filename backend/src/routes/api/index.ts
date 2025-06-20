@@ -48,7 +48,7 @@ router.use("/home", homeRouter);
 router.use("/category", categoryRouter);
 router.use('/subCategoryItems', subCategoryItemRouter);
 router.use('/', itemrouter);
-router.use('/review', reviewRouter);
+router.use('/reviews', reviewRouter);
 router.use('/list', listRouter);
 router.use('/cart', cartRouter);
 router.use('/order', orderRouter);

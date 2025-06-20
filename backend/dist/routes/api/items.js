@@ -14,11 +14,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 const auth_1 = require("../../utils/auth");
 const models_1 = __importDefault(require("../../db/models"));
 const router = require("express").Router();
-const { Category, SubCategory, Item, Review } = models_1.default;
+const { Category, SubCategory, Item, Review, User } = models_1.default;
+function validateReview(body) {
+    if (typeof body.reviewBody !== "string" ||
+        body.reviewBody.length < 25 ||
+        body.reviewBody.length > 250) {
+        return "Review must be between 25 and 250 characters";
+    }
+    if (typeof body.stars !== "number" || body.stars < 1 || body.stars > 5) {
+        return "Stars must be between 1 and 5";
+    }
+    return null;
+}
 router.get("/category/:categoryId/:subCategoryId/items/:itemId", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { categoryId, subCategoryId, itemId } = req.params;
-        console.log(`backend: fetchinf item with categoryId: ${categoryId}, subcategoryid: ${subCategoryId}, itemid:, ${itemId}`);
         const item = yield Item.findOne({
             where: {
                 id: itemId,
@@ -38,13 +48,19 @@ router.get("/category/:categoryId/:subCategoryId/items/:itemId", (req, res) => _
                 },
             ],
         });
-        console.log('backend: item found', !!item);
         if (!item) {
             return res.status(404).json({ message: "Item not Found" });
         }
         const reviews = yield Review.findAll({
             where: { itemId: item.id },
             attributes: ["id", "stars", "reviewBody", "userId", "createdAt"],
+            include: [
+                {
+                    model: User,
+                    as: 'user',
+                    attributes: ['username'],
+                }
+            ],
             order: [['createdAt', 'DESC']],
             limit: 3,
         });
@@ -69,7 +85,6 @@ router.get("/category/:categoryId/:subCategoryId/items/:itemId", (req, res) => _
         });
     }
     catch (error) {
-        console.error("Backend: Error in single item route:", error);
         return res.status(500).json({ message: "Internal Server Error" });
     }
 }));
@@ -95,6 +110,111 @@ router.get('/category/:categoryId/items', auth_1.validateUser, (req, res) => __a
     }
     catch (error) {
         return res.status(500).json({ message: 'Internal Server Error' });
+    }
+}));
+router.get("/items/:itemId", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const itemId = parseInt(req.params.itemId, 10);
+    try {
+        const item = yield Item.findByPk(itemId, {
+            include: [
+                {
+                    model: SubCategory,
+                    as: "subCategory",
+                    include: [
+                        {
+                            model: Category,
+                            as: "category",
+                        },
+                    ],
+                },
+            ],
+        });
+        if (!item) {
+            return res.status(404).json({ message: "Item not Found" });
+        }
+        const reviews = yield Review.findAll({
+            where: { itemId: item.id },
+            attributes: ["id", "stars", "reviewBody", "userId", "createdAt"],
+            include: [
+                {
+                    model: User,
+                    as: "user",
+                    attributes: ["username"],
+                },
+            ],
+            order: [["createdAt", "DESC"]],
+        });
+        const avgRating = reviews.length > 0
+            ? (reviews.reduce((sum, review) => sum + review.stars, 0) /
+                reviews.length)
+            : null;
+        return res.json({
+            id: item.id,
+            name: item.name,
+            mainImageUrl: item.mainImageUrl,
+            image2Url: item.image2Url,
+            image3Url: item.image3Url,
+            image4Url: item.image4Url,
+            image5Url: item.image5Url,
+            price: item.price,
+            description: item.description,
+            stars: avgRating,
+            category: item.subCategory.category.name,
+            subCategory: item.subCategory.name,
+            reviews,
+        });
+    }
+    catch (error) {
+        return res.status(500).json({ message: "Internal Server Error" });
+    }
+}));
+router.post("/items/:itemId/reviews", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { itemId } = req.params;
+        const { reviewBody, stars } = req.body;
+        const validationError = validateReview({ reviewBody, stars });
+        if (validationError) {
+            return res.status(400).json({ message: validationError });
+        }
+        const existingReview = yield Review.findOne({
+            where: { userId: req.user.id, itemId },
+        });
+        if (existingReview) {
+            return res.status(400).json({
+                message: "You cannot leave more than one review for an item.",
+            });
+        }
+        const newReview = yield Review.create({
+            userId: req.user.id,
+            itemId,
+            reviewBody,
+            stars,
+        });
+        return res.json({ newReview });
+    }
+    catch (error) {
+        return res.status(500).json({ message: "Unable to create review" });
+    }
+}));
+router.get("/items/:itemId/reviews", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { itemId } = req.params;
+        const reviews = yield Review.findAll({
+            where: { itemId },
+            include: [
+                {
+                    model: User,
+                    as: "user",
+                    attributes: ["username"],
+                },
+            ],
+            attributes: ["id", "stars", "reviewBody", "createdAt"],
+            order: [["createdAt", "DESC"]],
+        });
+        return res.status(200).json(reviews);
+    }
+    catch (error) {
+        return res.status(500).json({ message: "Failed to load reviews" });
     }
 }));
 module.exports = router;

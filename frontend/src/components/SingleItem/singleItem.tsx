@@ -1,23 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { IItemWithReviews } from "../../redux/types/item";
-import { IReview } from "../../redux/types/review";
-import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { IReview, IExistingReview } from "../../redux/types/review";
+import { useAppDispatch, useAppSelector, RootState } from "../../redux/store";
 import { getOneItemThunk } from "../../redux/items";
+import { getReviewByItemThunk } from "../../redux/reviews";
 import { Rating } from "@mui/material";
+import OpenModalButton from "../OpenModalButton";
+import CreateReviewModal from "../Reviews/CreateReviewModal";
+import UpdateReviewModal from "../Reviews/UpdateReviewModal";
+import DeleteReviewModal from "../Reviews/DeleteReviewModal";
 import "./singleItem.css";
 
 function SingleItem() {
-  const { categoryId, subCategoryId, itemId } = useParams<{
+  const { itemId } = useParams<{
     categoryId: string;
     subCategoryId: string;
     itemId: string;
   }>();
-
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.session.user);
-  const item: IItemWithReviews | null = useAppSelector((state) => state.items.currentItem)
+  const item: IItemWithReviews | null = useAppSelector(
+    (state) => state.items.currentItem
+  );
+  const reviews: IReview[] = useAppSelector((state: RootState) =>
+    itemId ? state.reviews.reviewsByItem[parseInt(itemId, 10)] || [] : []
+  );
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState<string | null>(null);
   const [currentImage, setCurrentImage] = useState(0);
@@ -28,33 +37,41 @@ function SingleItem() {
     }
   }, [user, navigate]);
 
+  const refreshReviews = useCallback(() => {
+    if (itemId) {
+      const itemNumber = parseInt(itemId, 10);
+      dispatch(getReviewByItemThunk(itemNumber));
+    }
+  }, [dispatch, itemId]);
+
+  const handleReviewClose = useCallback(() => {
+    refreshReviews();
+  }, [refreshReviews]);
+
   useEffect(() => {
-    let currentCategory: string;
-    let currentSubcategory: string;
+    refreshReviews();
+  }, [refreshReviews]);
+
+  useEffect(() => {
     let currentItem: string;
 
-    if (categoryId && subCategoryId && itemId) {
-      currentCategory = categoryId;
-      currentSubcategory = subCategoryId;
+    if (itemId) {
       currentItem = itemId;
     } else {
-      setErrors("Missing params");
       setLoading(false);
+      setErrors("Missing params");
       return;
     }
 
     setLoading(false);
     setErrors(null);
 
-    const categoryNumber = parseInt(currentCategory);
-    const subCategoryNumber = parseInt(currentSubcategory);
     const itemNumber = parseInt(currentItem);
 
-    if(!item || item.id !== itemNumber){
-      dispatch(getOneItemThunk(categoryNumber, subCategoryNumber, itemNumber ))
+    if (!item || item.id !== itemNumber) {
+      dispatch(getOneItemThunk(itemNumber));
     }
-  }, [dispatch, categoryId, subCategoryId, itemId, item]);
-
+  }, [dispatch, itemId, item]);
 
   if (loading) {
     return <div className="loading">Loading Item</div>;
@@ -106,94 +123,111 @@ function SingleItem() {
               </button>
             </>
           )}
-                </div>
-          {images.length > 1 && (
-            <div className="image-previews">
-                {images.map((imgUrl, index) => (
-                    <img
-                    key={index}
-                    src={imgUrl}
-                    alt={`${item.name} preview ${index + 1}`}
-                    className={`preview-thumbnail ${index === currentImage ? 'active' : ''}`}
-                    onClick={() => setCurrentImage(index)}
-                    />
-                ))}
         </div>
-          )}
+        {images.length > 1 && (
+          <div className="image-previews">
+            {images.map((imgUrl, index) => (
+              <img
+                key={index}
+                src={imgUrl}
+                alt={`${item.name} preview ${index + 1}`}
+                className={`preview-thumbnail ${
+                  index === currentImage ? "active" : ""
+                }`}
+                onClick={() => setCurrentImage(index)}
+              />
+            ))}
+          </div>
+        )}
       </div>
       <div className="item-info">
-        <p className="price">
-            ${item.price.toFixed(2)}
-        </p>
-        {item.reviewCount ? (
-            <div className="rating">
-                <Rating
-                name='read-only-avg-rating'
-                value={item.averageRating}
-                precision={0.1}
-                readOnly
-                size='medium'
-                />
-                <span>
-                    ({item.averageRating.toFixed(1)})
-                </span>
-            </div>) : (
-                <p>No Reviews Yet</p>
-        )};
-        <p className="description">
-        {item.description}
-        </p>
+        <p className="price">${item.price.toFixed(2)}</p>
+        {item.averageRating ? (
+          <div className="rating">
+            <Rating
+              name="read-only-avg-rating"
+              value={item.averageRating}
+              precision={0.1}
+              readOnly
+              size="medium"
+            />
+            <span>({item.averageRating.toFixed(1)})</span>
+          </div>
+        ) : (
+          <p>No Reviews Yet</p>
+        )}
+        <p className="description">{item.description}</p>
         <div className="item-actions">
-            <button className="add-to-cart">
-                Add to Cart
-            </button>
+          <button className="add-to-cart">Add to Cart</button>
         </div>
-
       </div>
       <div className="reviews-container">
-        <h2>
-            Recent Reviews ({item.reviewCount})
-        </h2>
-        {item.reviews.length > 0 ? (
-            <div className="recent-reviews">
-                {item.reviews.map((review: IReview) => (
-                    <div key={review.id} className='review-card'>
-                        <Rating 
-                        name={`review-stars${review.id}`}
-                        value={review.stars}
-                        readOnly
-                        size="small"
+        <h2>Recent Reviews {item.reviewCount}</h2>
+        {reviews.length > 0 ? (
+          <div className="recent-reviews">
+            {reviews.map((review: IReview) => (
+              <div key={review.id} className="review-card">
+                <Rating
+                  name={`review-stars${review.id}`}
+                  value={review.stars}
+                  readOnly
+                  size="small"
+                />
+                <p className="review-body">{review.reviewBody}</p>
+                <span className="review-author">
+                  {review.user ? review.user.username : "unknown"}
+                </span>
+                <span className="review-date">
+                  {new Date(review.createdAt).toLocaleDateString()}
+                </span>
+                {user && user.id === review.userId && (
+                  <div className="review-actions">
+                    <OpenModalButton
+                      buttonText="Update Review"
+                      modalComponent={
+                        <UpdateReviewModal
+                          itemId={item.id}
+                          review={review as IExistingReview}
                         />
-                        <p className="review-body">
-                            {review.reviewBody}
-                        </p>
-                        <span className="review-date">
-                        {new Date(review.createdAt).toLocaleDateString()}
-                        </span>
-                    </div>
-                ))}
-            </div>
+                      }
+                      onModalClose={handleReviewClose}
+                    />
+                  </div>
+                )}
+                {user && user.id === review.userId && (
+                  <div className="review-actions">
+                    <OpenModalButton
+                      buttonText="Delete Review"
+                      modalComponent={
+                        <DeleteReviewModal review={review as IExistingReview} />
+                      }
+                      onModalClose={handleReviewClose}
+                    />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         ) : (
-            <p className="no-reviews">No Reviews Yet</p>
+          <p className="no-reviews">No Reviews Yet</p>
         )}
         <div className="review-action">
-            <Link to={`/items/${item.id}/reviews`}
-            >
-                <button className="create-review">
-                    Create Review
-                </button>
-                </Link>
-                <Link to={`/items/${item.id}/reviews`}>
-                <button>
-                    View All Reviews ({item.reviewCount})
-                </button>
-                </Link>
-
+          {item.id !== undefined && (
+            <OpenModalButton
+              modalComponent={<CreateReviewModal itemId={item.id} />}
+              buttonText="Write a Review"
+              onModalClose={handleReviewClose}
+            />
+          )}
+          {reviews.length > 0 && (
+            <Link to={`/items/${item.id}/reviews`} className="view-all-reviews">
+              View All Reviews {item.reviewCount}
+            </Link>
+          )}
         </div>
-
       </div>
     </div>
-  )
+  );
 }
 
 export default SingleItem;

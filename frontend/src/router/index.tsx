@@ -1,12 +1,13 @@
-import { createBrowserRouter } from 'react-router-dom';
-import LoginFormPage from '../components/LoginFormPage';
-import SignupFormPage from '../components/SignupFormPage';
-import Layout from './Layout';
-import SingleItem from '../components/SingleItem/singleItem';
-import LandingPage from '../components/Landing/Landing';
-import Home from '../components/Home/home'
-import CategoryPage from '../components/Categories/Categories';
-import SubcategoryItems from '../components/SubCategories/Subcategories';
+import { createBrowserRouter } from "react-router-dom";
+import LoginFormPage from "../components/LoginFormPage";
+import SignupFormPage from "../components/SignupFormPage";
+import Layout from "./Layout";
+import SingleItem from "../components/SingleItem/singleItem";
+import LandingPage from "../components/Landing/Landing";
+import Home from "../components/Home/home";
+import CategoryPage from "../components/Categories/Categories";
+import SubcategoryItems from "../components/SubCategories/Subcategories";
+import GetAllReviews from "../components/Reviews/getAllReviews";
 
 export const router = createBrowserRouter([
   {
@@ -26,20 +27,24 @@ export const router = createBrowserRouter([
       },
       {
         path: "/home",
-        element: <Home/>
+        element: <Home />,
       },
       {
-        path: '/category/:categoryId/:subCategoryId/items/:itemId',
-        element: <SingleItem/>
+        path: "/category/:categoryId/:subCategoryId/items/:itemId",
+        element: <SingleItem />,
       },
       {
-        path: '/category/:categoryId',
-        element: <CategoryPage/>
+        path: "/category/:categoryId",
+        element: <CategoryPage />,
       },
       {
-        path: '/category/:categoryId/:subCategoryId/items',
-        element: <SubcategoryItems/>
-      }
+        path: "/category/:categoryId/:subCategoryId/items",
+        element: <SubcategoryItems />,
+      },
+      {
+        path: "/items/:itemId/reviews",
+        element: <GetAllReviews />,
+      },
     ],
   },
 ]);
