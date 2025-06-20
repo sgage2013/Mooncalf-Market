@@ -20,72 +20,20 @@ function validateReview(body: any) {
   return null;
 }
 
-router.get(
-  "/items/:itemId/reviews",
-  validateUser,
-  async (req: ValidUser, res: Response) => {
-    try {
-      const { itemId } = req.params;
-      const reviews = await Review.findAll({
-        where: { itemId },
-        include: [
-          {
-            model: User,
-            as: "user",
-            attributes: ["username"],
-          },
-        ],
-        attributes: ["id", "stars", "reviewBody", "createdAt"],
-        order: [["createdAt", "DESC"]],
-      });
-      return res.status(200).json({ reviews });
-    } catch (error) {
-      return res.status(500).json({ message: "Failed to load reviews" });
-    }
-  }
-);
 
-router.post(
-  "/items/:itemId/reviews",
-  validateUser,
-  async (req: ValidUser, res: Response) => {
-    try {
-      const { itemId } = req.params;
-      const { reviewBody, stars } = req.body;
-
-      const validationError = validateReview({ reviewBody, stars });
-      if (validationError) {
-        return res.status(400).json({ message: validationError });
-      }
-      const existingReview = await Review.findOne({
-        where: { userId: req.user.id, itemId },
-      });
-      if (existingReview) {
-        return res.status(400).json({
-          message: "You cannot leave more than one review for an item.",
-        });
-      }
-
-      const newReview = await Review.create({
-        userId: req.user.id,
-        itemId,
-        reviewBody,
-        stars,
-      });
-      return res.json({ newReview });
-    } catch (error) {
-      return res.status(500).json({ message: "Unable to create review" });
-    }
-  }
-);
 
 router.put(
-  "/items/:itemId/reviews/:reviewId",
+  "/:reviewId",
   validateUser,
   async (req: ValidUser, res: Response) => {
     try {
       const { reviewId } = req.params;
       const { reviewBody, stars } = req.body;
+
+       const reviewIdNum = parseInt(reviewId, 10);
+      if (isNaN(reviewIdNum)) {
+          return res.status(400).json({ message: "Invalid review ID" });
+      }
 
       const validationError = validateReview({ reviewBody, stars });
       if (validationError) {
@@ -104,15 +52,16 @@ router.put(
 
       await review.save();
 
-      return res.json({ review });
-    } catch {
+      return res.json(review);
+    } catch(error) {
+      console.error("Error updating review:", error);
       return res.status(500).json({ message: "Failed to update review" });
     }
   }
 );
 
 router.delete(
-  "/items/:itemId/reviews/:reviewId",
+  "/:reviewId",
   validateUser,
   async (req: ValidUser, res: Response) => {
     try {

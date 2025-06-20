@@ -34,7 +34,7 @@ router.use("/home", home_1.default);
 router.use("/category", category_1.default);
 router.use('/subCategoryItems', subcategoryItems_1.default);
 router.use('/', items_1.default);
-router.use('/review', review_1.default);
+router.use('/reviews', review_1.default);
 router.use('/list', list_1.default);
 router.use('/cart', cart_1.default);
 router.use('/order', orders_1.default);
