@@ -24,7 +24,6 @@ export const getSubcategoryItemsThunk =
   (categoryId: number, subCategoryId: number): any =>
   async (dispatch: any) => {
     try {
-      console.log('fetching with:', categoryId, subCategoryId)
       const res = await csrfFetch(
         `/api/subcategoryItems/category/${categoryId}/${subCategoryId}/items`
       );
@@ -40,11 +39,11 @@ export const getSubcategoryItemsThunk =
   };
 
 export const getOneItemThunk =
-  (categoryId: number, subCategoryId: number, itemId: number): any =>
+  (itemId: number): any =>
   async (dispatch: any) => {
     try {
       const res = await csrfFetch(
-        `/api/category/${categoryId}/${subCategoryId}/items/${itemId}`
+        `/api/items/${itemId}`
       );
       if (res.ok) {
       const data = await res.json();

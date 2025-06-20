@@ -2,13 +2,13 @@ import { csrfFetch } from "./csrf";
 import { IActionCreator } from "./types/redux";
 import { IReview, IReviewState } from "./types/review";
 
-const GET_ALL_REVIEWS = "/reviews/getAllReviews";
+const GET_REVIEW_BY_ITEM = "/reviews/getReviewByItem";
 const CREATE_REVIEW = "/reviews/createReview";
 const UPDATE_REVIEW = "/reviews/updateReview";
 const DELETE_REVIEW = "/reviews/deleteReview";
 
-export const getAllReviews = (itemId: number, reviews: IReview[]) => ({
-  type: GET_ALL_REVIEWS,
+export const getReviewByItem = (itemId: number, reviews: IReview[]) => ({
+  type: GET_REVIEW_BY_ITEM,
   payload: { itemId, reviews },
 });
 
@@ -21,19 +21,19 @@ export const updateReview = (review: IReview) => ({
   type: UPDATE_REVIEW,
   payload: review,
 });
-export const deleteReview = (reviewId: number, itemId: number) => ({
+export const deleteReview = (reviewId: number) => ({
   type: DELETE_REVIEW,
-  payload: { reviewId, itemId }
+  payload: { reviewId },
 });
 
-export const getAllReviewsThunk =
+export const getReviewByItemThunk =
   (itemId: number): any =>
   async (dispatch: any) => {
     try {
       const res = await csrfFetch(`/api/items/${itemId}/reviews`);
       if (res.ok) {
         const data = await res.json();
-        dispatch(getAllReviews(itemId, data.review));
+        dispatch(getReviewByItem(itemId, data));
       }
     } catch (e) {
       const error = e as Response;
@@ -52,7 +52,8 @@ export const createReviewThunk =
       });
       if (res.ok) {
         const data = await res.json();
-        dispatch(createReview(data));
+        dispatch(createReview(data.newReview));
+        return data;
       }
     } catch (e) {
       const error = e as Response;
@@ -61,12 +62,12 @@ export const createReviewThunk =
   };
 
 export const updateReviewThunk =
-  (reviewId: number, reviewData: IReview): any =>
+  (reviewId: number, reviewData: {reviewBody: string, stars: number}): any =>
   async (dispatch: any) => {
     try {
       const res = await csrfFetch(`/api/reviews/${reviewId}`, {
         method: "PUT",
-        headers: { "Content-Type": "appliction/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(reviewData),
       });
       if (res.ok) {
@@ -80,15 +81,15 @@ export const updateReviewThunk =
   };
 
 export const deleteReviewThunk =
-  (reviewId: number, itemId: number): any =>
+  (reviewId: number): any =>
   async (dispatch: any) => {
     try {
       const res = await csrfFetch(`/api/reviews/${reviewId}`, {
         method: "DELETE",
-        headers: "Content-Type: application/json",
+        headers: { "Content-Type": "application/json" },
       });
       if (res.ok) {
-        dispatch(deleteReview(reviewId, itemId));
+        dispatch(deleteReview(reviewId));
       }
     } catch (e) {
       const error = e as Response;
@@ -106,9 +107,11 @@ function reviewsReducer(
   action: IActionCreator
 ): IReviewState {
   switch (action.type) {
-    
-    case GET_ALL_REVIEWS: {
-      const { itemId, reviews } = action.payload as {itemId: number, reviews: IReview[]};
+    case GET_REVIEW_BY_ITEM: {
+      const { itemId, reviews } = action.payload as {
+        itemId: number;
+        reviews: IReview[];
+      };
       return {
         ...state,
         reviewsByItem: {
@@ -134,33 +137,38 @@ function reviewsReducer(
       const updatedReview = action.payload as IReview;
       const itemId = updatedReview.itemId;
 
-      const updatedReviews = state.reviewsByItem[itemId]?.map((review) => review.id === updatedReview.id ? updatedReview : review )
+      const updatedReviews = state.reviewsByItem[itemId]?.map((review) =>
+        review.id === updatedReview.id ? updatedReview : review
+      );
       return {
         ...state,
         reviewsByItem: {
-            ...state.reviewsByItem,
-            [itemId]: updatedReviews,
+          ...state.reviewsByItem,
+          [itemId]: updatedReviews,
         },
-        errors: null
+        errors: null,
       };
     }
     case DELETE_REVIEW: {
-    const deletedReview = action.payload as IReview
-    const itemId = deletedReview.itemId;
+      const deletedReview = action.payload as IReview;
+      const itemId = deletedReview.itemId;
 
-    const updatedReviews = state.reviewsByItem[itemId]?.filter((review) => review.id !== deletedReview.id) || [];
+      const updatedReviews =
+        state.reviewsByItem[itemId]?.filter(
+          (review) => review.id !== deletedReview.id
+        ) || [];
 
-    return {
-        ...state, 
+      return {
+        ...state,
         reviewsByItem: {
-            ...state.reviewsByItem,
-            [itemId]: updatedReviews,
+          ...state.reviewsByItem,
+          [itemId]: updatedReviews,
         },
         errors: null,
+      };
     }
-    }
-    default: 
-    return state
+    default:
+      return state;
   }
 }
 

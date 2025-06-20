@@ -1,12 +1,18 @@
 export interface IReview {
-    id: number;
+    id?: number;
     userId: number;
     itemId: number;
     stars: number;
     reviewBody: string;
     createdAt: string;
+    user?: {
+        username: string;
+    };
+}
+
+export interface IExistingReview extends IReview{
+    id: number;
     user: {
-        id: number;
         username: string;
     };
 }

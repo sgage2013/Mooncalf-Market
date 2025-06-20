@@ -1232,7 +1232,7 @@ module.exports = {
   updatedAt: new Date(),
 },
 {
-  name: "Standard Book of SPells (Year 1)",
+  name: "Standard Book of Spells (Year 1)",
   description: "he essential first textbook for every young witch and wizard, covering foundational charms and basic spellcasting theory.",
   price: 20.00,
   mainImageUrl: "https://t3.ftcdn.net/jpg/02/16/67/50/360_F_216675048_39petQYPtJ9cv5ycUg1LOmCtcNCoqtdk.jpg",
@@ -1304,7 +1304,7 @@ module.exports = {
 {
   name: "Astrology: Celestial Influences on Magic",
   description: "Chart the magical cosmos to understand how celestial alignments influence magical abilities and destinies",
-  price:26.00,
+  price: 26.00,
   mainImageUrl: "https://media.istockphoto.com/id/1279528867/photo/book-with-cover-blue-color-isolated-on-white-background-top-view-close-up.jpg?s=612x612&w=0&k=20&c=k0My9rA2f4QtlDLDDIy_5LA3bJ2eyagdNGmKJQ8fgOU=",
   image2Url: "https://media.istockphoto.com/id/616249650/photo/astrology-magic-book.jpg?s=612x612&w=0&k=20&c=55y_U-x6EaGYMzpcocEIF9dGbWqcfkWeSscTTG3-LOE=",
   image3Url: "https://media.istockphoto.com/id/488250648/vector/old-book-astrology-icon.jpg?s=612x612&w=is&k=20&c=B5QWfMNN5I1Tg9Gxz0WOjezAcU6JHAzgUubHwzuP0TQ=",
