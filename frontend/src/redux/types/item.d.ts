@@ -38,6 +38,6 @@ export interface IItem {
 
 export interface IItemWithReviews extends IFullItem {
     reviews: IReview[];
-    averageRating: number;
+    stars: number;
     reviewCount: number;
 }

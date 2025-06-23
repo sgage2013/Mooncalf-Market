@@ -90,6 +90,9 @@ return (
       <button type="submit" disabled={isSubmitting}>
         {isSubmitting ? 'Submitting...' : 'Submit Review'}
       </button>
+      <button type="button" onClick={closeModal} disabled={isSubmitting}>
+        Cancel
+      </button>
     </form>
   </div>
 )

@@ -5,6 +5,7 @@ import { IReview, IExistingReview } from "../../redux/types/review";
 import { useAppDispatch, useAppSelector, RootState } from "../../redux/store";
 import { getOneItemThunk } from "../../redux/items";
 import { getReviewByItemThunk } from "../../redux/reviews";
+import { addToCartThunk } from "../../redux/cart";
 import { Rating } from "@mui/material";
 import OpenModalButton from "../OpenModalButton";
 import CreateReviewModal from "../Reviews/CreateReviewModal";
@@ -52,6 +53,16 @@ function SingleItem() {
     refreshReviews();
   }, [refreshReviews]);
 
+  const handleAddToCart = async () => {
+    if (item?.id === undefined) return;
+    const quantity = 1;
+    const res = await dispatch(
+      addToCartThunk(item.id, quantity)
+    );
+    if (res){
+      alert(`${item?.name} has been added to your knapsack!`);
+    }
+  }
   useEffect(() => {
     let currentItem: string;
 
@@ -106,12 +117,13 @@ function SingleItem() {
         <p>{item.name}</p>
       </div>
       <div className="item-details">
+        <div className="image-gallery-container">
         <div className="image-gallery">
           <img
             src={images[currentImage]}
             alt={item.name}
             className="main-image"
-          />
+            />
           {images.length > 1 && (
             <>
               {" "}
@@ -128,13 +140,13 @@ function SingleItem() {
           <div className="image-previews">
             {images.map((imgUrl, index) => (
               <img
-                key={index}
-                src={imgUrl}
-                alt={`${item.name} preview ${index + 1}`}
-                className={`preview-thumbnail ${
-                  index === currentImage ? "active" : ""
-                }`}
-                onClick={() => setCurrentImage(index)}
+              key={index}
+              src={imgUrl}
+              alt={`${item.name} preview ${index + 1}`}
+              className={`preview-thumbnail ${
+                index === currentImage ? "active" : ""
+              }`}
+              onClick={() => setCurrentImage(index)}
               />
             ))}
           </div>
@@ -142,23 +154,24 @@ function SingleItem() {
       </div>
       <div className="item-info">
         <p className="price">${item.price.toFixed(2)}</p>
-        {item.averageRating ? (
+        {item.stars ? (
           <div className="rating">
             <Rating
               name="read-only-avg-rating"
-              value={item.averageRating}
+              value={item.stars}
               precision={0.1}
               readOnly
               size="medium"
-            />
-            <span>({item.averageRating.toFixed(1)})</span>
+              />
+            <span>({item.stars.toFixed(1)})</span>
           </div>
         ) : (
-          <p>No Reviews Yet</p>
+          <p>No Ratings Yet</p>
         )}
         <p className="description">{item.description}</p>
         <div className="item-actions">
-          <button className="add-to-cart">Add to Cart</button>
+          <button className="add-to-cart" onClick={handleAddToCart}>Add to Cart</button>
+        </div>
         </div>
       </div>
       <div className="reviews-container">
@@ -188,22 +201,20 @@ function SingleItem() {
                         <UpdateReviewModal
                           itemId={item.id}
                           review={review as IExistingReview}
-                        />
-                      }
-                      onModalClose={handleReviewClose}
+                          />
+                        }
+                        onModalClose={handleReviewClose}
                     />
                   </div>
                 )}
                 {user && user.id === review.userId && (
-                  <div className="review-actions">
-                    <OpenModalButton
-                      buttonText="Delete Review"
-                      modalComponent={
-                        <DeleteReviewModal review={review as IExistingReview} />
-                      }
-                      onModalClose={handleReviewClose}
-                    />
-                  </div>
+                  <OpenModalButton
+                    buttonText="Delete Review"
+                    modalComponent={
+                      <DeleteReviewModal review={review as IExistingReview} />
+                    }
+                    onModalClose={handleReviewClose}
+                  />
                 )}
               </div>
             ))}

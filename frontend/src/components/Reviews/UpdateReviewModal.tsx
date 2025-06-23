@@ -33,12 +33,6 @@ useEffect(() => {
     setReviewBody(review.reviewBody);
 }, [review]);
 
-useEffect(() => {
-    if(user && review && user.id !== review.userId) {
-        closeModal();
-    }
-}, [user, review, review.userId, closeModal]);
-
 const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   setErrors([]);

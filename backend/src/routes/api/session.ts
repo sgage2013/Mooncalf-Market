@@ -31,7 +31,7 @@ const validateLogin = [
 
 // Log in
 router.post(
-    '/login',
+    '/',
     validateLogin,
     async (req:Request, res:Response, next:NextFunction) => {
         const { credential, password } = req.body;
@@ -96,7 +96,7 @@ router.post(
 );
 
 //get the current user
-router.get('/login', restoreUser, async(req:any, res:Response) => {
+router.get('/', restoreUser, async(req:any, res:Response) => {
     if(req.user){
         const user = await req.user.getSafeUser();
         res.json({user})
@@ -107,7 +107,7 @@ router.get('/login', restoreUser, async(req:any, res:Response) => {
 
 
 // Log out
-router.delete('/logout', (_req:Request, res:Response) => {
+router.delete('/', (_req:Request, res:Response) => {
     res.clearCookie('token');
     return res.json({ message: 'success' });
 });

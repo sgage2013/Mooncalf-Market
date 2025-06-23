@@ -13,6 +13,7 @@ import itemsReducer from "./items";
 import categoriesReducer from "./categories";
 import reviewsReducer from "./reviews";
 import checkoutReducer from "./checkout";
+import cartReducer from "./cart";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
   items: itemsReducer,
   categories: categoriesReducer,
   reviews: reviewsReducer,
-  checkout: checkoutReducer
+  checkout: checkoutReducer,
+  cart: cartReducer,
 });
 
 

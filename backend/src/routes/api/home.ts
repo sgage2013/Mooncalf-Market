@@ -17,8 +17,28 @@ router.get("/", validateUser, async (req: ValidUser, res: Response) => {
         }],
     })
     const newArrivals = await Item.findAll({
+        attributes: [
+        'id',
+        'name',
+        'mainImageUrl',
+        'price',
+        'categoryId',
+        'subCategoryId',
+         [db.sequelize.fn("AVG", db.sequelize.col("reviews.stars")),
+            "avgRating"],
+    ],
+      include: [
+        {
+          model: Review,
+          as: "reviews",
+          attributes: [],
+          required: false,
+        },
+      ],
+      group: ["Item.id"],
       order: [["createdAt", "DESC"]],
       limit: 10,
+      subQuery: false,
     });
 
     const highestRated = await Item.findAll({
@@ -53,6 +73,7 @@ router.get("/", validateUser, async (req: ValidUser, res: Response) => {
       highestRated,
     });
   } catch (error: any) {
+    console.error("Error loading home content:", error);
     return res.status(500).json("Failed to load home content");
 
 

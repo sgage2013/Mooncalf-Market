@@ -26,8 +26,28 @@ router.get("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, voi
                 }],
         });
         const newArrivals = yield Item.findAll({
+            attributes: [
+                'id',
+                'name',
+                'mainImageUrl',
+                'price',
+                'categoryId',
+                'subCategoryId',
+                [models_1.default.sequelize.fn("AVG", models_1.default.sequelize.col("reviews.stars")),
+                    "avgRating"],
+            ],
+            include: [
+                {
+                    model: Review,
+                    as: "reviews",
+                    attributes: [],
+                    required: false,
+                },
+            ],
+            group: ["Item.id"],
             order: [["createdAt", "DESC"]],
             limit: 10,
+            subQuery: false,
         });
         const highestRated = yield Item.findAll({
             attributes: [
@@ -60,6 +80,7 @@ router.get("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, voi
         });
     }
     catch (error) {
+        console.error("Error loading home content:", error);
         return res.status(500).json("Failed to load home content");
     }
 }));

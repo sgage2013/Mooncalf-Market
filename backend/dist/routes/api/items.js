@@ -172,6 +172,7 @@ router.post("/items/:itemId/reviews", auth_1.validateUser, (req, res) => __await
     try {
         const { itemId } = req.params;
         const { reviewBody, stars } = req.body;
+        const userId = req.user.id;
         const validationError = validateReview({ reviewBody, stars });
         if (validationError) {
             return res.status(400).json({ message: validationError });
@@ -190,9 +191,20 @@ router.post("/items/:itemId/reviews", auth_1.validateUser, (req, res) => __await
             reviewBody,
             stars,
         });
-        return res.json({ newReview });
+        const createdReview = yield Review.findByPk(newReview.id, {
+            include: [
+                {
+                    model: User,
+                    as: "user",
+                    attributes: ["username", "id"],
+                },
+            ],
+            attributes: ["id", "stars", "reviewBody", "createdAt", "itemId", "userId"],
+        });
+        return res.json({ createdReview });
     }
     catch (error) {
+        console.error("Error creating review:", error);
         return res.status(500).json({ message: "Unable to create review" });
     }
 }));
@@ -205,10 +217,10 @@ router.get("/items/:itemId/reviews", auth_1.validateUser, (req, res) => __awaite
                 {
                     model: User,
                     as: "user",
-                    attributes: ["username"],
+                    attributes: ["username", "id"],
                 },
             ],
-            attributes: ["id", "stars", "reviewBody", "createdAt"],
+            attributes: ["id", "stars", "reviewBody", "createdAt", "itemId", "userId"],
             order: [["createdAt", "DESC"]],
         });
         return res.status(200).json(reviews);

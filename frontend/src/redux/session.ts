@@ -17,7 +17,7 @@ export const removeUser = () => ({
 
 export const thunkAuthenticate = (): any => async (dispatch: any) => {
   try {
-    const response = await csrfFetch("/api/session/login");
+    const response = await csrfFetch("/api/session");
     if (response.ok) {
       const data = await response.json();
       if (data.errors) {
@@ -51,14 +51,13 @@ export const thunkLogin = (credentials: ICredentials): any => async (dispatch: a
       credential
     }
 
-    const response = await csrfFetch("/api/session/login", {
+    const response = await csrfFetch("/api/session", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(credentialRequest)
     });
     if (response.ok) {
       const data = await response.json();
-      console.log(data, "in thunk")
       dispatch(setUser(data));
       return response;
     } else {
@@ -73,7 +72,7 @@ export const thunkLogin = (credentials: ICredentials): any => async (dispatch: a
 };
 
 export const restoreUser = () => async (dispatch: any) => {
-  const response = await csrfFetch('/api/session/login');
+  const response = await csrfFetch('/api/session');
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data));
@@ -108,7 +107,7 @@ export const thunkSignup = (user: ISignUpUser): any => async (dispatch: any) => 
 };
 
 export const thunkLogout = (): any => async (dispatch: any) => {
-  const response = await csrfFetch('/api/session/logout', {
+  const response = await csrfFetch('/api/session', {
     method: 'DELETE',
     headers: { "Content-Type": "application/json" }
   });
@@ -126,7 +125,7 @@ function sessionReducer(state = initialState, action: IActionCreator): SessionIn
   switch (action.type) {
     case SET_USER:
       console.log(action.payload, "payload")
-      return { ...state, user: action.payload };
+      return { ...state, user: action.payload.user };
     case REMOVE_USER:
       return { ...state, user: null };
     default:

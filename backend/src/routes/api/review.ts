@@ -29,6 +29,7 @@ router.put(
     try {
       const { reviewId } = req.params;
       const { reviewBody, stars } = req.body;
+      const userId = req.user.id;
 
        const reviewIdNum = parseInt(reviewId, 10);
       if (isNaN(reviewIdNum)) {
@@ -39,7 +40,16 @@ router.put(
       if (validationError) {
         return res.status(400).json({ message: validationError });
       }
-      const review = await Review.findByPk(reviewId);
+      const review = await Review.findByPk(reviewId, {
+        include: [
+          {
+            model: User,
+            as: "user",
+            attributes: ["username", "id"],
+          }
+        ],
+        attributes: ["id", "userId", "itemId", "reviewBody", "stars", "createdAt"],
+      })
       if (!review) {
         return res.status(404).json({ message: "Review not found" });
       }

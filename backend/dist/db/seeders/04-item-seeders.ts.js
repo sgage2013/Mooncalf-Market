@@ -1236,7 +1236,7 @@ module.exports = {
                 updatedAt: new Date(),
             },
             {
-                name: "Standard Book of SPells (Year 1)",
+                name: "Standard Book of Spells (Year 1)",
                 description: "he essential first textbook for every young witch and wizard, covering foundational charms and basic spellcasting theory.",
                 price: 20.00,
                 mainImageUrl: "https://t3.ftcdn.net/jpg/02/16/67/50/360_F_216675048_39petQYPtJ9cv5ycUg1LOmCtcNCoqtdk.jpg",

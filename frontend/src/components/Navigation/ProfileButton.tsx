@@ -6,6 +6,7 @@ import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useAppSelector } from "../../redux/store";
+import './Navigation.css';
 
 function ProfileButton():JSX.Element {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ function ProfileButton():JSX.Element {
   };
 
   return (
-    <>
+    <div className="profile-button-container">
       <button onClick={(e) => toggleMenu(e)}>
         <FaUserCircle />
       </button>
@@ -71,7 +72,7 @@ function ProfileButton():JSX.Element {
           )}
         </ul>
       )}
-    </>
+    </div>
   );
 }
 

@@ -58,7 +58,7 @@ module.exports = {
     }),
     down: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
         options.tableName = "Orders";
-        return queryInterface.dropTable(options);
+        return queryInterface.dropTable("Orders", options);
     }),
 };
 //# sourceMappingURL=10-orders.js.map

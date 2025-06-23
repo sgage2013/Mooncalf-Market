@@ -30,6 +30,7 @@ router.put("/:reviewId", auth_1.validateUser, (req, res) => __awaiter(void 0, vo
     try {
         const { reviewId } = req.params;
         const { reviewBody, stars } = req.body;
+        const userId = req.user.id;
         const reviewIdNum = parseInt(reviewId, 10);
         if (isNaN(reviewIdNum)) {
             return res.status(400).json({ message: "Invalid review ID" });
@@ -38,7 +39,16 @@ router.put("/:reviewId", auth_1.validateUser, (req, res) => __awaiter(void 0, vo
         if (validationError) {
             return res.status(400).json({ message: validationError });
         }
-        const review = yield Review.findByPk(reviewId);
+        const review = yield Review.findByPk(reviewId, {
+            include: [
+                {
+                    model: User,
+                    as: "user",
+                    attributes: ["username", "id"],
+                }
+            ],
+            attributes: ["id", "userId", "itemId", "reviewBody", "stars", "createdAt"],
+        });
         if (!review) {
             return res.status(404).json({ message: "Review not found" });
         }
