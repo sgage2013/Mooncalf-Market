@@ -13,7 +13,6 @@ export interface IFullItem {
     image5Url?: string;
     categoryId: number;
     subcategoryId: number;
-    listId: number;
 }
 
 export interface IItemState {

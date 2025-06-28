@@ -14,7 +14,6 @@ import subCategoryItemRouter from './subcategoryItems'
 import itemrouter from './items'
 import reviewRouter from './review'
 import cartRouter from './cart'
-import listRouter from './list'
 import orderRouter from './orders'
 import checkoutRouter from './checkout'
 
@@ -49,7 +48,6 @@ router.use("/category", categoryRouter);
 router.use('/subCategoryItems', subCategoryItemRouter);
 router.use('/', itemrouter);
 router.use('/reviews', reviewRouter);
-router.use('/list', listRouter);
 router.use('/cart', cartRouter);
 router.use('/order', orderRouter);
 router.use('/checkout', checkoutRouter)

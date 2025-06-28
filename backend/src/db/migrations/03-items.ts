@@ -66,15 +66,6 @@ module.exports = {
         },
         onDelete: "CASCADE"
       },
-        // listId: {
-        // type: Sequelize.INTEGER,
-        // allowNull: true,
-        // references: {
-        //   model: "Lists",
-        //   key: "id"
-        // },
-        // onDelete: "CASCADE"
-      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

@@ -21,14 +21,6 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             primaryKey: true,
         },
-        listId: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-            references: {
-                model: "Lists",
-                key: "id",
-            },
-        },
         name: {
             type: DataTypes.STRING,
             allowNull: false,
