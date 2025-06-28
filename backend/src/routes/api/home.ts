@@ -73,7 +73,6 @@ router.get("/", validateUser, async (req: ValidUser, res: Response) => {
       highestRated,
     });
   } catch (error: any) {
-    console.error("Error loading home content:", error);
     return res.status(500).json("Failed to load home content");
 
 

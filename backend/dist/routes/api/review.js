@@ -61,7 +61,6 @@ router.put("/:reviewId", auth_1.validateUser, (req, res) => __awaiter(void 0, vo
         return res.json(review);
     }
     catch (error) {
-        console.error("Error updating review:", error);
         return res.status(500).json({ message: "Failed to update review" });
     }
 }));

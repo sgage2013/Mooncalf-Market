@@ -23,12 +23,28 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
         orderNumber: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             unique: true,
         },
+        subTotal: {
+            type: DataTypes.DECIMAL,
+            allowNull: false,
+        },
+        tax: {
+            type: DataTypes.DECIMAL,
+            allowNull: false,
+        },
+        shipping: {
+            type: DataTypes.DECIMAL,
+            allowNull: false,
+        },
         orderTotal: {
             type: DataTypes.DECIMAL,
+            allowNull: false,
+        },
+        stripePaymentIntentId: {
+            type: DataTypes.STRING,
             allowNull: false,
         },
         address: {

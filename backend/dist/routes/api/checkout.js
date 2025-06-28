@@ -14,48 +14,65 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 const stripe_1 = __importDefault(require("stripe"));
 const auth_1 = require("../../utils/auth");
 const models_1 = __importDefault(require("../../db/models"));
+const uuid_1 = require("uuid");
 const router = require("express").Router();
 const { Item, Cart, CartItem, Order, OrderItem } = models_1.default;
 const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY);
-router.post("/checkout", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const generateOrderNumber = () => __awaiter(void 0, void 0, void 0, function* () {
+    return (0, uuid_1.v4)().slice(0, 8).toUpperCase();
+});
+const createOrderNumber = () => __awaiter(void 0, void 0, void 0, function* () {
+    let orderNumber = "";
+    let isUnique = false;
+    while (!isUnique) {
+        orderNumber = yield generateOrderNumber();
+        const existingOrder = yield Order.findOne({ where: { orderNumber } });
+        if (!existingOrder) {
+            isUnique = true;
+        }
+    }
+    return orderNumber;
+});
+const cartTotals = (cartItems) => {
+    const subTotal = cartItems.reduce((sum, item) => sum + item.quantity * item.item.price, 0);
+    const tax = parseFloat((subTotal * 0.07).toFixed(2));
+    const shipping = 5.0;
+    const orderTotal = subTotal + tax + shipping;
+    return { subTotal, tax, shipping, orderTotal };
+};
+router.post("/create-payment-intent", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const cart = yield Cart.findOne({
             where: { userId: req.user.id },
-            include: [{ model: CartItem, include: [Item] }],
+            include: [
+                {
+                    model: CartItem,
+                    as: "cartItem",
+                    include: [
+                        {
+                            model: Item,
+                            as: "item",
+                        },
+                    ],
+                },
+            ],
         });
-        if (!cart || cart.cartItems.length === 0) {
+        if (!cart || cart.cartItem.length === 0) {
             return res.status(400).json({ message: "Cart is empty" });
         }
-        const subTotal = cart.cartItems.reduce((sum, item) => sum + item.quantity * item.item.price, 0);
-        const tax = parseFloat((subTotal * 0.07).toFixed(2));
-        const shipping = 5.0;
-        const orderTotal = subTotal + tax + shipping;
-        const lineItems = cart.cartItems.map((cartItem) => ({
-            price_data: {
-                currency: "usd",
-                product_data: {
-                    name: cartItem.item.name,
-                },
-                unit_amount: Math.round(cartItem.item.price * 100),
-            },
-            quantity: cartItem.quantity,
-        }));
-        const session = yield stripe.checkout.sessions.create({
-            payment_method_types: ["card"],
-            mode: "payment",
-            line_items: lineItems,
-            shipping_address_collection: {
-                allowed_countries: ["US"],
-            },
-            billing_address_collection: "required",
-            success_url: `${process.env.CLIENT_URL}/orders/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${process.env.CLIENT_URL}/cart`,
+        const { orderTotal } = cartTotals(cart.cartItem);
+        const paymentIntent = yield stripe.paymentIntents.create({
+            amount: Math.round(orderTotal * 100),
+            currency: "usd",
             metadata: {
                 userId: req.user.id.toString(),
-                orderTotal,
+                orderTotal: orderTotal.toString(),
+                cartId: cart.id.toString(),
             },
         });
-        return res.status(200).json({ url: session.url });
+        return res.status(200).json({
+            clientSecret: paymentIntent.client_secret,
+        });
     }
     catch (error) {
         return res
@@ -63,7 +80,91 @@ router.post("/checkout", auth_1.validateUser, (req, res) => __awaiter(void 0, vo
             .json({ message: "Unable to create checkout session" });
     }
 }));
-router.get('/checkout/success/:orderId', auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post("/confirm-order", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { paymentIntentId } = req.body;
+        const paymentIntent = yield stripe.paymentIntents.retrieve(paymentIntentId);
+        if (!paymentIntent) {
+            return res.status(400).json({ message: "Payment not completed" });
+        }
+        const cart = yield Cart.findOne({
+            where: { userId: req.user.id },
+            include: [
+                {
+                    model: CartItem,
+                    as: "cartItem",
+                    include: [{ model: Item, as: "item" }],
+                },
+            ],
+        });
+        if (!cart || cart.cartItem.length === 0) {
+            return res.status(400).json({ message: "Cart is empty" });
+        }
+        const { subTotal, tax, shipping, orderTotal } = cartTotals(cart.cartItem);
+        let newOrder = null;
+        if (paymentIntent.status === "succeeded") {
+            const orderNumber = yield createOrderNumber();
+            newOrder = yield Order.create({
+                userId: req.user.id,
+                orderTotal: orderTotal,
+                subTotal: subTotal,
+                tax: tax,
+                shipping: shipping,
+                orderNumber: orderNumber,
+                stripePaymentIntentId: paymentIntent.id,
+                status: "completed",
+            });
+        }
+        if (newOrder) {
+            for (const cartItem of cart.cartItem) {
+                yield OrderItem.create({
+                    orderId: newOrder.id,
+                    itemId: cartItem.item.id,
+                    quantity: cartItem.quantity,
+                    price: cartItem.item.price,
+                });
+            }
+        }
+        yield CartItem.destroy({ where: { cartId: cart.id } });
+        const order = yield Order.findOne({
+            where: { id: newOrder.id },
+            attributes: [
+                "id",
+                "orderNumber",
+                "orderTotal",
+                "status",
+                "address",
+                "city",
+                "state",
+                "zip",
+            ],
+            include: [
+                {
+                    model: OrderItem,
+                    as: "orderItems",
+                    attributes: ["itemId", "quantity", "price"],
+                    include: [
+                        {
+                            model: Item,
+                            as: "item",
+                            attributes: ["id", "name", "mainImageUrl", "price"],
+                        },
+                    ],
+                },
+            ],
+        });
+        return res.status(200).json({
+            message: "Order confirmed",
+            success: true,
+            order: order,
+            orderNumber: newOrder ? newOrder.orderNumber : null,
+        });
+    }
+    catch (error) {
+        return res.status(500).json({ message: "Unable to confirm order" });
+    }
+}));
+router.get("/success/:orderId", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { orderId } = req.params;
         const order = yield Order.findOne({
@@ -71,24 +172,24 @@ router.get('/checkout/success/:orderId', auth_1.validateUser, (req, res) => __aw
             include: [
                 {
                     model: OrderItem,
-                    as: 'orderItems',
+                    as: "orderItems",
                     include: [
                         {
                             model: Item,
-                            as: 'item',
-                            attributes: ['id', 'name', 'mainImageUrl', 'price']
-                        }
-                    ]
-                }
-            ]
+                            as: "item",
+                            attributes: ["id", "name", "mainImageUrl", "price"],
+                        },
+                    ],
+                },
+            ],
         });
         if (!order) {
-            return res.status(404).json({ message: 'Order not found' });
+            return res.status(404).json({ message: "Order not found" });
         }
         return res.json({ order });
     }
     catch (error) {
-        return res.status(500).json({ message: 'Unable to load order' });
+        return res.status(500).json({ message: "Unable to load order" });
     }
 }));
 module.exports = router;

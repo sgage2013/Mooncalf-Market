@@ -18,6 +18,7 @@ function Cart() {
   const cartState: ICartState = useAppSelector((state) => state.cart);
   const cartItems: ICartItem[] = cartState.cart?.cartItems || [];
   const [loading, setLoading] = useState(true);
+  const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   useEffect(() => {
     if (!user) {
@@ -62,6 +63,7 @@ function Cart() {
         </div>
       ) : (
         <div className="cart-contents">
+          <div className="cart-header">
           <div className="cart-summary">
             {cartItems.map((item: ICartItem) => (
               <CartItem 
@@ -72,8 +74,12 @@ function Cart() {
             />
             ))}
           </div>
+          <div className='cart-summary-details'>
+            <p>Total Items: {totalItems}</p>
+            </div>
+          </div>
           <div className="cart-totals">
-            <h2>Cart Totals</h2>
+            <h2>Order Summary</h2>
             <p>Subtotal: ${cartState.subTotal.toFixed(2)}</p>
             <p>Tax: ${cartState.tax.toFixed(2)}</p>
             <p>Shipping: ${cartState.shipping.toFixed(2)}</p>

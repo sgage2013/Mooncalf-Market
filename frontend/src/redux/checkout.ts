@@ -10,9 +10,9 @@ export const checkoutStart = () => ({
     type: CHECKOUT_START,
 });
 
-export const checkoutSuccess = (url: string) => ({
+export const checkoutSuccess = (clientSecret: string) => ({
     type: CHECKOUT_SUCCESS,
-    payload: { url },
+    payload: { clientSecret },
 });
 
 export const checkoutFail = (error: string) => ({
@@ -23,13 +23,13 @@ export const checkoutFail = (error: string) => ({
 export const checkoutStartThunk = () => async (dispatch: any) => {
     dispatch(checkoutStart());
     try{
-        const res = await csrfFetch('/api/checkout', {
+        const res = await csrfFetch('/api/checkout/create-payment-intent', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
         });
         if(res.ok){
             const data = await res.json();
-            dispatch(checkoutSuccess(data.url));
+            dispatch(checkoutSuccess(data.clientSecret));
 }    else{
     const error = await res.json();
     dispatch(checkoutFail(error))
@@ -41,7 +41,7 @@ export const checkoutStartThunk = () => async (dispatch: any) => {
 };
 
 const initialState: ICheckoutState = {
-    checkoutUrl: null,
+    clientSecret: null,
     errors: null,
 
 };
@@ -52,11 +52,12 @@ function checkoutReducer(state = initialState, action: IActionCreator) {
             return {
                 ...state,
                 errors: null,
+                clientSecret: null,
             };
         case CHECKOUT_SUCCESS:
             return {
                 ...state,
-                checkoutUrl: action.payload.url,
+                clientSecret: action.payload.clientSecret,
                 errors: null,
             };
         case CHECKOUT_FAIL:

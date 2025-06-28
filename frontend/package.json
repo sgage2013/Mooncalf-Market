@@ -14,6 +14,8 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^7.1.1",
     "@mui/material": "^7.1.1",
+    "@stripe/react-stripe-js": "latest",
+    "@stripe/stripe-js": "latest",
     "js-cookie": "^3.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -21,7 +23,8 @@
     "react-redux": "^8.1.1",
     "react-router-dom": "^6.15.0",
     "redux": "^4.2.1",
-    "redux-thunk": "^2.4.2"
+    "redux-thunk": "^2.4.2",
+    "stripe-cli": "^0.1.0"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^2.7.0",

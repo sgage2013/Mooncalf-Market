@@ -52,7 +52,9 @@ router.post('/', validateLogin, (req, res, next) => __awaiter(void 0, void 0, vo
             yield setTokenCookie(res, user);
             let loginUser = yield user.getSafeUser();
             console.log(loginUser, "user!");
-            return res.json(Object.assign({}, loginUser));
+            return res.json({
+                user: loginUser
+            });
         }
         catch (e) {
             return next(e);

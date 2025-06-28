@@ -22,17 +22,12 @@ router.get("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, voi
             include: [
                 {
                     model: CartItem,
-                    as: 'cartItem',
+                    as: "cartItem",
                     include: [
                         {
                             model: Item,
-                            as: 'cartItem',
-                            attributes: [
-                                "id",
-                                'mainImageUrl',
-                                "name",
-                                "price",
-                            ],
+                            as: "item",
+                            attributes: ["id", "mainImageUrl", "name", "price"],
                         },
                     ],
                 },
@@ -49,28 +44,26 @@ router.get("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, voi
                 orderTotal: 0,
             });
         }
-        console.log("Cart found:", cart);
-        console.log("Cart items:", cart.cartItems);
         const formattedCartItems = yield Promise.all(cart.cartItem.map((cartItem) => __awaiter(void 0, void 0, void 0, function* () {
-            console.log("Processing cart item:", cartItem);
-            console.log("Item details:", cartItem.item);
             const itemPrice = cartItem.item.price;
             const itemQuantity = cartItem.quantity;
             const itemReviews = yield Review.findAll({
-                where: { itemId: cartItem.cartItem.id },
+                where: { itemId: cartItem.item.id },
                 attributes: [
-                    [models_1.default.sequelize.fn("AVG", models_1.default.sequelize.col("stars")), 'avgRating'],
+                    [models_1.default.sequelize.fn("AVG", models_1.default.sequelize.col("stars")), "avgRating"],
                 ],
             });
-            const avgRating = itemReviews.length > 0 && itemReviews[0].avgRating !== null ? parseFloat(itemReviews[0].avgRating) : 0;
+            const avgRating = itemReviews.length > 0 && itemReviews[0].avgRating !== null
+                ? parseFloat(itemReviews[0].avgRating)
+                : 0;
             return {
                 id: cartItem.id,
                 itemId: cartItem.itemId,
                 quantity: itemQuantity,
                 item: {
-                    id: cartItem.cartItem.id,
-                    name: cartItem.cartItem.name,
-                    mainImageUrl: cartItem.cartItem.mainImageUrl,
+                    id: cartItem.item.id,
+                    name: cartItem.item.name,
+                    mainImageUrl: cartItem.item.mainImageUrl,
                     price: itemPrice,
                     avgRating: avgRating,
                 },
@@ -92,7 +85,6 @@ router.get("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, voi
         });
     }
     catch (error) {
-        console.error("Error loading cart:", error);
         return res.status(500).json({ message: "Could not load cart" });
     }
 }));

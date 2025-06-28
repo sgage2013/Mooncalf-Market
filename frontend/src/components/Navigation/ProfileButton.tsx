@@ -15,7 +15,7 @@ function ProfileButton():JSX.Element {
   const ulRef = useRef<any>();
 
   const toggleMenu = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
+    e.stopPropagation();
     setShowMenu(!showMenu);
   };
 

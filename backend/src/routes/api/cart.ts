@@ -86,7 +86,6 @@ router.get("/", validateUser, async (req: ValidUser, res: Response) => {
       orderTotal,
     });
   } catch (error) {
-    console.error("Error loading cart:", error);
     return res.status(500).json({ message: "Could not load cart" });
   }
 });

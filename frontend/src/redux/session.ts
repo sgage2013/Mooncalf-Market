@@ -58,7 +58,7 @@ export const thunkLogin = (credentials: ICredentials): any => async (dispatch: a
     });
     if (response.ok) {
       const data = await response.json();
-      dispatch(setUser(data));
+      dispatch(setUser(data.user));
       return response;
     } else {
       throw response;
@@ -75,7 +75,7 @@ export const restoreUser = () => async (dispatch: any) => {
   const response = await csrfFetch('/api/session');
   if (response.ok) {
     const data = await response.json();
-    dispatch(setUser(data));
+    dispatch(setUser(data.user));
     return response;
   } else {
     throw new Error("Unable to restore user");
@@ -124,8 +124,7 @@ function sessionReducer(state = initialState, action: IActionCreator): SessionIn
 
   switch (action.type) {
     case SET_USER:
-      console.log(action.payload, "payload")
-      return { ...state, user: action.payload.user };
+      return { ...state, user: action.payload };
     case REMOVE_USER:
       return { ...state, user: null };
     default:

@@ -59,7 +59,7 @@ router.post(
                 let loginUser = await user.getSafeUser()
                 console.log(loginUser, "user!")
                 return res.json({
-                    ...loginUser
+                    user: loginUser
                 });
 
             } catch (e){

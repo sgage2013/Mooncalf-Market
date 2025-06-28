@@ -1,4 +1,5 @@
-import { ICartItem, ICartItemData } from "../../redux/types/cart";
+import { ICartItemData } from "../../redux/types/cart";
+import './CartItem.css';
 
 function CartItem({
   cartItem,
@@ -43,13 +44,13 @@ function CartItem({
           <p>Item Total: ${itemTotal}</p>
         </div>
         <p className="cart-item-total">Total: ${itemTotal}</p>
+      </div>
         <button
           onClick={handleRemoveFromCart}
           className="remove-from-cart-button"
         >
           Remove
         </button>
-      </div>
     </div>
   );
 }

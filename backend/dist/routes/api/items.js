@@ -204,7 +204,6 @@ router.post("/items/:itemId/reviews", auth_1.validateUser, (req, res) => __await
         return res.json({ createdReview });
     }
     catch (error) {
-        console.error("Error creating review:", error);
         return res.status(500).json({ message: "Unable to create review" });
     }
 }));
