@@ -43,7 +43,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     declare updatedAt: CreationOptional<Date>;
 
     static associate(models: any) {
-      Item.belongsTo(models.List, { foreignKey: "listId", as: "list" });
+      // Item.belongsTo(models.List, { foreignKey: "listId", as: "list" });
       Item.belongsTo(models.Category, {
         foreignKey: "categoryId",
         as: "category",
