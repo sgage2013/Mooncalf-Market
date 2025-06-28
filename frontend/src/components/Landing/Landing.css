@@ -1,5 +1,5 @@
 .main-container {
-    background-color: rgb(41, 0, 72);
+    background-color: rgb(204, 204, 204);
     position: relative;
     margin: 0;
     padding: 0;
@@ -9,6 +9,7 @@
     align-items: center;
     min-height: 100vh;
     overflow: hidden;
+    width: 100%;
 }
 
 .sigil{

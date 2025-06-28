@@ -1,0 +1,96 @@
+.cart-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.cart-container h1 {
+    text-align: left;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: normal;
+}
+.empty-cart {
+    text-align: center;
+    padding: 50px 20px;
+    border: 1px dashed rgb(206, 203, 203);
+    border-radius: 5px;
+    margin-top: 30px;
+    box-shadow: 0 1px 6px black;
+}
+.empty-cart p {
+    font-size: 1.2rem;
+    color: #666;
+}
+.empty-cart .nav-link {
+    color: #a648c8;
+    text-decoration: none;
+    font-weight: bold;
+}
+.empty-cart .nav-link:hover {
+    text-decoration: underline;
+}
+.cart-main-column{
+    display: flex;
+    flex: 3;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+.cart-summary {
+    padding: 20px;
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.cart-summary-details {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: large;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.cart-totals {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    font-size: medium;
+    color: #333;
+}
+.cart-totals h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #a648c8;
+}
+.cart-totals p {
+    font-size: medium;
+    margin-bottom: 5px;
+    color: #555;
+}
+.checkout-button, .empty-knapsack-button{
+    width: 100px;
+    height: 40px;
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4d4c4d;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+}
+.checkout-button:hover, .empty-knapsack-button:hover {
+    background-color: #a648c8;
+    cursor: pointer;
+}
+.empty-knapsack-button {
+    background-color: #5c5c5c;
+    width: 150px
+}

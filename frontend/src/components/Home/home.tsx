@@ -96,12 +96,7 @@ function Home() {
                   />
                   <h3 className="item-title">{item.name}</h3>
                   <p className="item-price">
-                    $
-                    {item.price !== null &&
-                    typeof item.price === "string" &&
-                    !isNaN(parseFloat(item.price))
-                      ? parseFloat(item.price).toFixed(2)
-                      : "N/A"}
+                    ${item.price.toFixed(2)}
                   </p>
                   {item.avgRating && (
                     <div className="item-rating">

@@ -15,35 +15,23 @@ const auth_1 = require("../../utils/auth");
 const models_1 = __importDefault(require("../../db/models"));
 const router = require("express").Router();
 const { Cart, CartItem, Item, Review } = models_1.default;
-router.get("/cart", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const cart = yield Cart.findOne({
             where: { userId: req.user.id },
             include: [
                 {
                     model: CartItem,
+                    as: "cartItem",
                     include: [
                         {
                             model: Item,
-                            attributes: [
-                                "id",
-                                'mainImageUrl',
-                                "name",
-                                "price",
-                                [models_1.default.sequelize.fn("AVG", models_1.default.sequelize.col("reviews.rating")), 'avgRating'],
-                            ],
-                            include: [
-                                {
-                                    model: Review,
-                                    as: 'reviews',
-                                    attributes: []
-                                }
-                            ]
+                            as: "item",
+                            attributes: ["id", "mainImageUrl", "name", "price"],
                         },
                     ],
                 },
             ],
-            group: ['Cart.id', 'cartItems.id', 'cartItems.item.id'],
         });
         if (!cart) {
             const newCart = yield Cart.create({ userId: req.user.id });
@@ -56,17 +44,43 @@ router.get("/cart", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0,
                 orderTotal: 0,
             });
         }
-        const subTotal = cart.cartItems.reduce((sum, cartItem) => {
+        const formattedCartItems = yield Promise.all(cart.cartItem.map((cartItem) => __awaiter(void 0, void 0, void 0, function* () {
+            const itemPrice = cartItem.item.price;
+            const itemQuantity = cartItem.quantity;
+            const itemReviews = yield Review.findAll({
+                where: { itemId: cartItem.item.id },
+                attributes: [
+                    [models_1.default.sequelize.fn("AVG", models_1.default.sequelize.col("stars")), "avgRating"],
+                ],
+            });
+            const avgRating = itemReviews.length > 0 && itemReviews[0].avgRating !== null
+                ? parseFloat(itemReviews[0].avgRating)
+                : 0;
+            return {
+                id: cartItem.id,
+                itemId: cartItem.itemId,
+                quantity: itemQuantity,
+                item: {
+                    id: cartItem.item.id,
+                    name: cartItem.item.name,
+                    mainImageUrl: cartItem.item.mainImageUrl,
+                    price: itemPrice,
+                    avgRating: avgRating,
+                },
+            };
+        })));
+        const subTotal = formattedCartItems.reduce((sum, cartItem) => {
             return sum + cartItem.quantity * cartItem.item.price;
         }, 0);
         const tax = parseFloat((subTotal * 0.07).toFixed(2));
         const shipping = 5.0;
-        const orderTotal = parseFloat(subTotal + tax + shipping).toFixed(2);
+        const orderTotal = parseFloat((subTotal + tax + shipping).toFixed(2));
         return res.json({
-            cart,
+            cart: cart,
+            items: formattedCartItems,
             subTotal,
-            tax,
             shipping,
+            tax,
             orderTotal,
         });
     }
@@ -74,7 +88,7 @@ router.get("/cart", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0,
         return res.status(500).json({ message: "Could not load cart" });
     }
 }));
-router.post("/cart", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { itemId, quantity = 1 } = req.body;
         if (!itemId || quantity <= 0) {
@@ -106,7 +120,7 @@ router.post("/cart", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0
         return res.status(500).json({ message: "Unable to add item to cart" });
     }
 }));
-router.put("/cart", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.put("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { itemId, quantity } = req.body;
         if (!itemId || !quantity || quantity <= 0) {
@@ -130,7 +144,7 @@ router.put("/cart", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0,
         return res.status(500).json({ message: "Unable to update cart" });
     }
 }));
-router.delete("/cart/:itemId", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.delete("/:itemId", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { itemId } = req.params;
         const cart = yield Cart.findOne({ where: { userId: req.user.id } });
@@ -152,7 +166,7 @@ router.delete("/cart/:itemId", auth_1.validateUser, (req, res) => __awaiter(void
         return res.status(500).json({ message: "Unable to remove item(s)" });
     }
 }));
-router.delete("/cart", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.delete("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const cart = yield Cart.findOne({ where: { userId: req.user.id } });
         if (!cart) {

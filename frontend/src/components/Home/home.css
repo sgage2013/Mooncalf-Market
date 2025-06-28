@@ -1,7 +1,7 @@
 .main-container {
     padding: 20px;
-    background-color: silver;
     min-height: 100vh;
+    width: 100%;
 }
 .header {
     background-color: silver;
@@ -21,7 +21,7 @@
 }
 
 .home-container {
-    max-width: 1200px;
+    width: auto;
     margin: 0 auto;
     padding: 20px;
     background-color: silver;

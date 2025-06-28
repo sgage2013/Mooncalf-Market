@@ -2,6 +2,7 @@ import { useAppDispatch } from "../../redux/store";
 import { deleteReviewThunk } from "../../redux/reviews";
 import { useModal } from "../../context/Modal";
 import { IExistingReview } from "../../redux/types/review";
+import './DeleteReviewModal.css'; 
 
 interface DeleteReviewModalProps {
   review: IExistingReview; 
@@ -13,7 +14,7 @@ const dispatch = useAppDispatch();
 const { closeModal } = useModal();
 
 const handleDelete = async () => {
-    await dispatch(deleteReviewThunk(review.id));
+    await dispatch(deleteReviewThunk(review.id, review.itemId));
     closeModal();
   };
   
