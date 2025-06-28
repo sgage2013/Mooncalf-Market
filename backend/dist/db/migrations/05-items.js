@@ -10,46 +10,37 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 let options = {};
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === 'production') {
     options.schema = process.env.SCHEMA;
 }
 module.exports = {
     up: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
-        return queryInterface.createTable("SubCategories", {
+        return queryInterface.createTable("Categories", {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
-                type: Sequelize.INTEGER,
+                type: Sequelize.INTEGER
             },
             name: {
                 allowNull: false,
                 type: Sequelize.STRING,
             },
-            categoryId: {
-                allowNull: false,
-                type: Sequelize.INTEGER,
-                references: {
-                    model: "Categories",
-                    key: "id",
-                },
-                onDelete: "CASCADE",
-            },
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE,
-                defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+                defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
             },
             updatedAt: {
                 allowNull: false,
                 type: Sequelize.DATE,
-                defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
-            },
+                defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+            }
         }, options);
     }),
     down: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
-        options.tableName = "SubCategories";
-        return queryInterface.dropTable("SubCategories", options);
-    }),
+        options.tableName = "Categories";
+        return queryInterface.dropTable("Categories", options);
+    })
 };
-//# sourceMappingURL=03-subcategories.js.map
+//# sourceMappingURL=05-items.js.map

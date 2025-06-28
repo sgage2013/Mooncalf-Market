@@ -15,25 +15,38 @@ if (process.env.NODE_ENV === "production") {
 }
 module.exports = {
     up: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
-        return queryInterface.createTable("SubCategories", {
+        return queryInterface.createTable("Reviews", {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER,
             },
-            name: {
-                allowNull: false,
-                type: Sequelize.STRING,
-            },
-            categoryId: {
-                allowNull: false,
+            itemId: {
                 type: Sequelize.INTEGER,
+                allowNull: false,
                 references: {
-                    model: "Categories",
+                    model: "Items",
                     key: "id",
                 },
                 onDelete: "CASCADE",
+            },
+            userId: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                references: {
+                    model: "Users",
+                    key: "id",
+                },
+                onDelete: "CASCADE",
+            },
+            stars: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+            },
+            reviewBody: {
+                type: Sequelize.STRING(250),
+                allowNull: false,
             },
             createdAt: {
                 allowNull: false,
@@ -48,8 +61,8 @@ module.exports = {
         }, options);
     }),
     down: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
-        options.tableName = "SubCategories";
-        return queryInterface.dropTable("SubCategories", options);
+        options.tableName = "Reviews";
+        return queryInterface.dropTable("Reviews", options);
     }),
 };
-//# sourceMappingURL=03-subcategories.js.map
+//# sourceMappingURL=06-reviews.js.map

@@ -15,12 +15,21 @@ if (process.env.NODE_ENV === 'production') {
 }
 module.exports = {
     up: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
-        return queryInterface.createTable("Items", {
+        return queryInterface.createTable("Lists", {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER
+            },
+            userId: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                references: {
+                    model: "Users",
+                    key: "id"
+                },
+                onDelete: "CASCADE"
             },
             name: {
                 type: Sequelize.STRING(50),
@@ -29,57 +38,6 @@ module.exports = {
             description: {
                 type: Sequelize.STRING(250),
                 allowNull: true
-            },
-            price: {
-                type: Sequelize.DECIMAL(10, 2),
-                allowNull: false
-            },
-            mainImageUrl: {
-                type: Sequelize.STRING,
-                allowNull: false,
-            },
-            image2Url: {
-                type: Sequelize.STRING,
-                allowNull: true
-            },
-            image3Url: {
-                type: Sequelize.STRING,
-                allowNull: true
-            },
-            image4Url: {
-                type: Sequelize.STRING,
-                allowNull: true
-            },
-            image5Url: {
-                type: Sequelize.STRING,
-                allowNull: true
-            },
-            categoryId: {
-                type: Sequelize.INTEGER,
-                allowNull: false,
-                references: {
-                    model: "Categories",
-                    key: "id"
-                },
-                onDelete: "CASCADE"
-            },
-            subCategoryId: {
-                type: Sequelize.INTEGER,
-                allowNull: false,
-                references: {
-                    model: "SubCategories",
-                    key: "id"
-                },
-                onDelete: "CASCADE"
-            },
-            listId: {
-                type: Sequelize.INTEGER,
-                allowNull: true,
-                references: {
-                    model: "Lists",
-                    key: "id"
-                },
-                onDelete: "CASCADE"
             },
             createdAt: {
                 allowNull: false,
@@ -94,8 +52,8 @@ module.exports = {
         }, options);
     }),
     down: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
-        options.tableName = "Items";
-        return queryInterface.dropTable("Items", options);
+        options.tableName = "Lists";
+        return queryInterface.dropTable("Lists", options);
     })
 };
-//# sourceMappingURL=02-categories.js.map
+//# sourceMappingURL=04-list.js.map
