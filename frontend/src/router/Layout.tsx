@@ -5,6 +5,10 @@ import { ModalProvider, Modal } from "../context/Modal";
 import { thunkAuthenticate } from "../redux/session";
 import { getCategoriesThunk } from "../redux/categories";
 import Navigation from "../components/Navigation/Navigation";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
+const stripePromise = loadStripe("pk_test_51RYiLeGsLIzRMXOp1GxJZKLeIGfSQjGJshMyTXhZcQD6FF8cPOAPKvXHMUJCornjSmBFn9wvcTgBCsvvRnpwbmEU00SeJChFll");
 
 export default function Layout():JSX.Element {
   const dispatch = useDispatch();
@@ -23,7 +27,9 @@ export default function Layout():JSX.Element {
     <>
       <ModalProvider>
         {!hasNav && <Navigation />}
+        <Elements stripe={stripePromise}>
         {isLoaded && <Outlet />}
+        </Elements>
         <Modal />
       </ModalProvider>
     </>

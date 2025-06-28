@@ -3,8 +3,12 @@ import {DataTypes, Model, Optional, CreationOptional} from 'sequelize';
 type OrderAttributes = {
     id: number;
     userId: number;
-    orderNumber: number;
+    orderNumber: string;
+    subTotal: number;
+    tax: number;
+    shipping: number;
     orderTotal: number;
+    stripePaymentIntentId: string;
     address: string;
     city: string;
     state: string;
@@ -21,8 +25,12 @@ module.exports = (sequelize: any, DataTypes: any) => {
     class Order extends Model<OrderAttributes, OrderCreationAttributes> {
         declare id: CreationOptional<number>;
         declare userId: number;
-        declare orderNumber: number;
+        declare orderNumber: string;
+        declare subTotal: number;
+        declare tax: number;
+        declare shipping: number;
         declare orderTotal: number;
+        declare stripePaymentIntentId: string;
         declare address: string;
         declare city: string;
         declare state: string;
@@ -53,12 +61,28 @@ module.exports = (sequelize: any, DataTypes: any) => {
                 },
             },
             orderNumber: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.STRING,
                 allowNull: false,
                 unique: true,
             },
+            subTotal: {
+                type: DataTypes.DECIMAL,
+                allowNull: false,
+            },
+            tax: {
+                type: DataTypes.DECIMAL,
+                allowNull: false,
+            },
+            shipping: {
+                type: DataTypes.DECIMAL,
+                allowNull: false,
+            },
             orderTotal: {
                 type: DataTypes.DECIMAL,
+                allowNull: false,
+            },
+            stripePaymentIntentId: {
+                type: DataTypes.STRING,
                 allowNull: false,
             },
             address: {

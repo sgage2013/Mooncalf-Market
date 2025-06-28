@@ -36,8 +36,40 @@ module.exports = {
                 allowNull: false,
                 unique: true,
             },
+            subTotal: {
+                type: Sequelize.DECIMAL(10, 2),
+                allowNull: false,
+            },
+            tax: {
+                type: Sequelize.DECIMAL(10, 2),
+                allowNull: false,
+            },
+            shipping: {
+                type: Sequelize.DECIMAL(10, 2),
+                allowNull: false,
+            },
             orderTotal: {
                 type: Sequelize.DECIMAL(10, 2),
+                allowNull: false,
+            },
+            stripePaymentIntentId: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            address: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            city: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            state: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            zip: {
+                type: Sequelize.STRING,
                 allowNull: false,
             },
             status: {
@@ -58,7 +90,7 @@ module.exports = {
     }),
     down: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
         options.tableName = "Orders";
-        return queryInterface.dropTable(options);
+        return queryInterface.dropTable("Orders", options);
     }),
 };
 //# sourceMappingURL=10-orders.js.map

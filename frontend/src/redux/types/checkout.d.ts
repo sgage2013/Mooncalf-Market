@@ -1,4 +1,4 @@
 export interface ICheckoutState {
-    checkoutUrl: string | null;
+    clientSecret: string | null;
     errors: string | null
 }

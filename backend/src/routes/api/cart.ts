@@ -5,40 +5,28 @@ import { validateUser } from "../../utils/auth";
 import db from "../../db/models";
 const router = require("express").Router();
 
-const { Cart, CartItem, Item , Review} = db;
+const { Cart, CartItem, Item, Review } = db;
 
 //get current user cart
-router.get("/cart", validateUser, async (req: ValidUser, res: Response) => {
+router.get("/", validateUser, async (req: ValidUser, res: Response) => {
   try {
     const cart = await Cart.findOne({
       where: { userId: req.user.id },
       include: [
         {
           model: CartItem,
+          as: "cartItem",
           include: [
             {
               model: Item,
-              attributes: [
-                "id",
-                'mainImageUrl',
-                "name",
-                "price",
-                [db.sequelize.fn("AVG", db.sequelize.col("reviews.rating")), 'avgRating'],
-              ],
-              include: [
-                {
-                    model: Review,
-                    as: 'reviews',
-                    attributes: []
-          
-                }
-              ]
+              as: "item",
+              attributes: ["id", "mainImageUrl", "name", "price"],
             },
-        ],
-    },
+          ],
+        },
       ],
-      group: ['Cart.id', 'cartItems.id', 'cartItems.item.id'],
     });
+
     if (!cart) {
       const newCart = await Cart.create({ userId: req.user.id });
       return res.json({
@@ -50,17 +38,51 @@ router.get("/cart", validateUser, async (req: ValidUser, res: Response) => {
         orderTotal: 0,
       });
     }
-    const subTotal = cart.cartItems.reduce((sum: number, cartItem: any) => {
+
+    const formattedCartItems = await Promise.all(
+      cart.cartItem.map(async (cartItem: any) => {
+        const itemPrice = cartItem.item.price;
+        const itemQuantity = cartItem.quantity;
+
+        const itemReviews = await Review.findAll({
+          where: { itemId: cartItem.item.id },
+          attributes: [
+            [db.sequelize.fn("AVG", db.sequelize.col("stars")), "avgRating"],
+          ],
+        });
+        const avgRating =
+          itemReviews.length > 0 && itemReviews[0].avgRating !== null
+            ? parseFloat(itemReviews[0].avgRating)
+            : 0;
+
+        return {
+          id: cartItem.id,
+          itemId: cartItem.itemId,
+          quantity: itemQuantity,
+          item: {
+            id: cartItem.item.id,
+            name: cartItem.item.name,
+            mainImageUrl: cartItem.item.mainImageUrl,
+            price: itemPrice,
+            avgRating: avgRating,
+          },
+        };
+      })
+    );
+
+    const subTotal = formattedCartItems.reduce((sum: number, cartItem: any) => {
       return sum + cartItem.quantity * cartItem.item.price;
     }, 0);
     const tax = parseFloat((subTotal * 0.07).toFixed(2));
     const shipping = 5.0;
-    const orderTotal = parseFloat(subTotal + tax + shipping).toFixed(2);
+    const orderTotal = parseFloat((subTotal + tax + shipping).toFixed(2));
+
     return res.json({
-      cart,
+      cart: cart,
+      items: formattedCartItems,
       subTotal,
-      tax,
       shipping,
+      tax,
       orderTotal,
     });
   } catch (error) {
@@ -69,7 +91,7 @@ router.get("/cart", validateUser, async (req: ValidUser, res: Response) => {
 });
 
 //add items or increase quantity
-router.post("/cart", validateUser, async (req: ValidUser, res: Response) => {
+router.post("/", validateUser, async (req: ValidUser, res: Response) => {
   try {
     const { itemId, quantity = 1 } = req.body;
     if (!itemId || quantity <= 0) {
@@ -102,7 +124,7 @@ router.post("/cart", validateUser, async (req: ValidUser, res: Response) => {
 });
 
 //update quantity of an item
-router.put("/cart", validateUser, async (req: ValidUser, res: Response) => {
+router.put("/", validateUser, async (req: ValidUser, res: Response) => {
   try {
     const { itemId, quantity } = req.body;
     if (!itemId || !quantity || quantity <= 0) {
@@ -130,7 +152,7 @@ router.put("/cart", validateUser, async (req: ValidUser, res: Response) => {
 
 // remove a cart item
 router.delete(
-  "/cart/:itemId",
+  "/:itemId",
   validateUser,
   async (req: ValidUser, res: Response) => {
     try {
@@ -158,7 +180,7 @@ router.delete(
 );
 
 //clear cart after checkout
-router.delete("/cart", validateUser, async (req: ValidUser, res: Response) => {
+router.delete("/", validateUser, async (req: ValidUser, res: Response) => {
   try {
     const cart = await Cart.findOne({ where: { userId: req.user.id } });
     if (!cart) {

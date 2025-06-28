@@ -3,11 +3,13 @@ import { useState } from "react";
 import ProfileButton from "./ProfileButton";
 import { useAppSelector } from "../../redux/store";
 import { ISubCategory, ICategory } from "../../redux/types/category";
+import {ICartItem} from "../../redux/types/cart";
 import "./Navigation.css";
 
 function Navigation(): JSX.Element {
   const categories = useAppSelector((state) => state.categories.categories);
   const [hoverCategory, setHoverCategory] = useState<ICategory | null>(null);
+  const cartItems = useAppSelector((state) => state.cart.cart?.cartItems || []);
 
   const handleCategoryHover = (category: ICategory) => {
     setHoverCategory(category);
@@ -15,6 +17,11 @@ function Navigation(): JSX.Element {
   const handleCategoryLeave = () => {
     setHoverCategory(null);
   };
+  const totalItems = cartItems.reduce(
+    (acc: number, item: ICartItem) => acc + item.quantity,
+    0
+  );
+
 
   return (
     <>
@@ -33,19 +40,24 @@ function Navigation(): JSX.Element {
               Search
             </button>
           </div>
+          <div className="cart-profile-group">
           <div>
             <NavLink to="/cart" className="cart-link">
               <img
-                src="find later"
-                alt="Shopping Cart"
+                src="/knapsack.svg"
+                alt="knapsack"
                 className="shopping-cart"
-              />
+                />
+                { totalItems > 0 && (
+                <span className="cart-item-count">{totalItems}</span>
+                )}
             </NavLink>
           </div>
           <div className="profile-cart">
                  <ProfileButton />
           </div>
         </div>
+                </div>
       </header>
       <nav className="categories-nav">
         

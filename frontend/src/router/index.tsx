@@ -8,6 +8,9 @@ import Home from "../components/Home/home";
 import CategoryPage from "../components/Categories/Categories";
 import SubcategoryItems from "../components/SubCategories/Subcategories";
 import GetAllReviews from "../components/Reviews/getAllReviews";
+import Cart from "../components/Cart/Cart";
+import Checkout from "../components/Checkout/Checkout";
+import CheckoutForm from "../components/Checkout/CheckoutForm";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +47,18 @@ export const router = createBrowserRouter([
       {
         path: "/items/:itemId/reviews",
         element: <GetAllReviews />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: '/checkout',
+        element: <Checkout />
+      },
+      { 
+        path: "/checkout/create-payment-intent",
+        element: <CheckoutForm />
       },
     ],
   },
