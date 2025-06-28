@@ -18,5 +18,8 @@
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.2",
     "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.6"
   }
 }
