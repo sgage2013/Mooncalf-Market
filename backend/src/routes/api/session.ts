@@ -8,7 +8,8 @@ const bcrypt = require('bcryptjs');
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
 
 
-import db from '../../db/models';
+// import db from '../../db/models';
+const db = require('../../db/models');
 import { LoginUser } from "../../typings/data";
 const {User} = db
 
