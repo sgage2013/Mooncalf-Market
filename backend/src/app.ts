@@ -6,6 +6,7 @@ import cors from 'cors';
 import csurf from 'csurf';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
+
 import { NoResourceError } from './errors/customErrors';
 import routes from './routes'
 import dotenv from 'dotenv'
@@ -20,6 +21,7 @@ const app = express();
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
+app.use(csurf());
 
 // Security Middleware
 if (!isProduction) {
