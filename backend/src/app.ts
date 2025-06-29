@@ -37,8 +37,8 @@ app.use(
 );
 
 //apply middleware to allow for usage of static react-vite from build
-app.use(express.static(path.join(__dirname, "react-vite")));
-app.use(express.static(path.join(__dirname, 'react-vite/assets/favicon.ico')));
+app.use(express.static(path.join(__dirname)));
+// app.use(express.static(path.join(__dirname, 'react-vite/assets/favicon.ico')));
 
 //api routes
 app.use(routes);
