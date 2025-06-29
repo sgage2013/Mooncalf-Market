@@ -35,7 +35,7 @@ router.get(
         include: [
           {
             model: SubCategory,
-            as: "subCategory",
+            as: "subcategory",
             where: { categoryId },
             include: [
               {
@@ -98,7 +98,7 @@ router.get('/category/:categoryId/items', validateUser, async (req: ValidUser, r
     const items = await Item.findAll({
       include: [
         { model: SubCategory,
-          as: 'subCategory',
+          as: 'subcategory',
           where: {categoryId: paramCategoryId},
           attributes: ['id'],
           required: true
@@ -127,7 +127,7 @@ router.get(
         include: [
           {
             model: SubCategory,
-            as: "subCategory",
+            as: "subcategory",
             include: [
               {
                 model: Category,

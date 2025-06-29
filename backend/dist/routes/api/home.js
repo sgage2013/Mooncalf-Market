@@ -21,7 +21,7 @@ router.get("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, voi
             attributes: ['id', 'name'],
             include: [{
                     model: SubCategory,
-                    as: 'subCategories',
+                    as: 'subcategories',
                     attributes: ['id', 'name'],
                 }],
         });
@@ -32,7 +32,7 @@ router.get("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, voi
                 'mainImageUrl',
                 'price',
                 'categoryId',
-                'subCategoryId',
+                'subcategoryId',
                 [models_1.default.sequelize.fn("AVG", models_1.default.sequelize.col("reviews.stars")),
                     "avgRating"],
             ],
@@ -56,7 +56,7 @@ router.get("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, voi
                 'mainImageUrl',
                 'price',
                 'categoryId',
-                'subCategoryId',
+                'subcategoryId',
                 [models_1.default.sequelize.fn("AVG", models_1.default.sequelize.col("reviews.stars")),
                     "avgRating"],
             ],

@@ -37,7 +37,7 @@ router.get("/category/:categoryId/:subCategoryId/items/:itemId", (req, res) => _
             include: [
                 {
                     model: SubCategory,
-                    as: "subCategory",
+                    as: "subcategory",
                     where: { categoryId },
                     include: [
                         {
@@ -94,7 +94,7 @@ router.get('/category/:categoryId/items', auth_1.validateUser, (req, res) => __a
         const items = yield Item.findAll({
             include: [
                 { model: SubCategory,
-                    as: 'subCategory',
+                    as: 'subcategory',
                     where: { categoryId: paramCategoryId },
                     attributes: ['id'],
                     required: true
@@ -119,7 +119,7 @@ router.get("/items/:itemId", auth_1.validateUser, (req, res) => __awaiter(void 0
             include: [
                 {
                     model: SubCategory,
-                    as: "subCategory",
+                    as: "subcategory",
                     include: [
                         {
                             model: Category,

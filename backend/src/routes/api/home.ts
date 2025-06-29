@@ -12,7 +12,7 @@ router.get("/", validateUser, async (req: ValidUser, res: Response) => {
       attributes: ['id', 'name'],
         include: [{
           model: SubCategory,
-          as: 'subCategories',
+          as: 'subcategories',
           attributes: ['id', 'name'],
         }],
     })
@@ -23,7 +23,7 @@ router.get("/", validateUser, async (req: ValidUser, res: Response) => {
         'mainImageUrl',
         'price',
         'categoryId',
-        'subCategoryId',
+        'subcategoryId',
          [db.sequelize.fn("AVG", db.sequelize.col("reviews.stars")),
             "avgRating"],
     ],
@@ -48,7 +48,7 @@ router.get("/", validateUser, async (req: ValidUser, res: Response) => {
         'mainImageUrl',
         'price',
         'categoryId',
-        'subCategoryId',
+        'subcategoryId',
          [db.sequelize.fn("AVG", db.sequelize.col("reviews.stars")),
             "avgRating"],
     ],

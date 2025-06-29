@@ -51,7 +51,7 @@ router.get(
         include: [
           {
             model: SubCategory,
-            as: "subCategories",
+            as: "subcategories",
             attributes: ["id", "name", "categoryId"],
           },
         ],

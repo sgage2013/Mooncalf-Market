@@ -51,7 +51,7 @@ router.get("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, voi
             include: [
                 {
                     model: SubCategory,
-                    as: "subCategories",
+                    as: "subcategories",
                     attributes: ["id", "name", "categoryId"],
                 },
             ],

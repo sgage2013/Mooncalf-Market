@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
             });
             Item.belongsTo(models.SubCategory, {
                 foreignKey: "subCategoryId",
-                as: "subCategory",
+                as: "subcategory",
             });
             Item.hasMany(models.Review, { foreignKey: "itemId", as: "reviews" });
         }
@@ -86,7 +86,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: "Subcategories",
+                model: "SubCategories",
                 key: "id",
             },
         },
