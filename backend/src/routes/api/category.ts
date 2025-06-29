@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import { ValidUser } from "../../typings/express";
 import { validateUser } from "../../utils/auth";
-import db from "../../db/models";
+// import db from "../../db/models";
 const router = require("express").Router();
-
+const db = require("../../db/models");
 const { SubCategory, Category, Item } = db;
 
 //get one category and all subcategories
