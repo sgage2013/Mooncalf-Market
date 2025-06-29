@@ -434,7 +434,7 @@ module.exports = {
     updatedAt: new Date(),
   },
   {
-    name: "Expendable Bag (Charmed)",
+    name: "Extendable Bag (Charmed)",
     description: "A standard messenger bag that has been charmed with the undetectable extension charm so it can hold a surprising amount of items.",
     price: 19.50,
     mainImageUrl: "https://images.pexels.com/photos/29464416/pexels-photo-29464416/free-photo-of-leather-messenger-bag-on-park-bench-in-autumn.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -477,7 +477,7 @@ module.exports = {
   },
   {
     name: "Grindylow Tentacle Fiber",
-    description: "A remarkably rare and unusual core, this fiber produces wands known for their tenacious grip on spells and an unpredictable affinity for water-based magic. Wands with this core are often fiercely loyal, though their wild nature makes them less suited for delicate or subtle enchantments.",
+    description: "A remarkably rare and unusual core, this fiber produces wands known for their tenacious grip on spells and an affinity for water-based magic. Wands with this core are fiercely loyal, but their wild nature makes them less suited for delicate enchantments.",
     price: 129.99,
     mainImageUrl: "https://images.stockcake.com/public/4/7/3/473707ca-4862-4ffb-b5e0-4fa6ab80ddfc_medium/plant-root-close-up-stockcake.jpg",
     image2Url: "",
@@ -575,7 +575,7 @@ module.exports = {
 },
 {
   name: "Yew",
-  description: "A rare and notoriously powerful wand wood, the yew wand is said to bestow its owner with the power over life and death, making it particularly formidable in dueling and protective magic. Wands with this wood often seek out unusual or even notorious individuals, and are loyal to the last, known for their exceptionally long lives.",
+  description: "A rare and powerful wand wood, the yew wand is said to bestow its owner with the power over life and death, making it formidable in dueling and protective magic. Wands with this wood often seek out unusual individuals, and are loyal to the last, known for their exceptionally long lives.",
   price: 149.00,
   mainImageUrl: "https://thumbs.dreamstime.com/b/natural-yew-bark-abstract-background-taxus-baccata-close-up-reddish-true-bark-natural-texture-yew-tree-natural-yew-bark-267095435.jpg",
   image2Url: "",
@@ -1233,7 +1233,7 @@ module.exports = {
 },
 {
   name: "Standard Book of Spells (Year 1)",
-  description: "he essential first textbook for every young witch and wizard, covering foundational charms and basic spellcasting theory.",
+  description: "The essential first textbook for every young witch and wizard, covering foundational charms and basic spellcasting theory.",
   price: 20.00,
   mainImageUrl: "https://t3.ftcdn.net/jpg/02/16/67/50/360_F_216675048_39petQYPtJ9cv5ycUg1LOmCtcNCoqtdk.jpg",
   image2Url: "https://thumbs.dreamstime.com/b/book-open-flipping-pages-aged-worn-hardcover-white-background-cataloging-historical-information-textbook-dictionary-educational-369896853.jpg",
