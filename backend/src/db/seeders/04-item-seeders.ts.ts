@@ -505,7 +505,7 @@ module.exports = {
     },
     {
         name: "Phoenix Feather",
-        description: "This is the rarest core type. Phoenix feathers are capable of a great range of magic, though it may take longer to reveal. These wands show the most initiative, sometimes acting on their own. They are the pickiest when it comes to potential owners and are hard to tame.",
+        description: "This is the rarest core type. Phoenix feathers are capable of a range of magic, though it may take longer to reveal. These wands show the most drive, sometimes acting on their own. They are the pickiest when it comes to owners and are hard to tame.",
         price: 239.00,
     mainImageUrl: "https://media.istockphoto.com/id/500941489/photo/red-yellow-feathers.jpg?s=612x612&w=0&k=20&c=-bk5x4fj9Bn3AnhaEkv4xT2VZzMJRsY_us6YGbhSC58=",
     image2Url: "",
@@ -519,7 +519,7 @@ module.exports = {
 },
 {
     name: "Dragon heartstring",
-    description: "Dragon heartstring cores produce wands with the most power and are capable of the most flamboyant spells. These wands learn quickly and bond strongly with their owners. They can be easy to turn to the Dark Arts and are prone to accidents due to their nature.",
+    description: "Dragon heartstring wands are immensely powerful, capable of flashy spells. They learn quickly, bond strongly, but can be drawn to the Dark Arts and are prone to accidents due to their intense nature",
     price: 59.99,
     mainImageUrl: "https://media.istockphoto.com/id/1279020142/photo/close-up-texture-of-a-lot-of-threads-in-a-weaving-machine-called-a-loom.jpg?s=612x612&w=0&k=20&c=eOJ9xMxR8D2vYorXFYAFIEz19doUEHOGRHdRX41SdoI=",
     image2Url: "",
@@ -1330,7 +1330,7 @@ module.exports = {
   updatedAt: new Date(),
 },
 {
-  name: "Underwater Wonders: A Guide to Aquatic Magical Life",
+  name: "Underwater Wonders: A Guide to Aquatic Life",
   description: "An invaluable, waterproof guide to the mysterious merpeople, grindylows, and other enchanting (and perilous) magical creatures of the world's waterways.",
   price: 34.00,
   mainImageUrl: "https://t4.ftcdn.net/jpg/14/49/40/55/360_F_1449405522_Un8gQrLXVh8c5juj6x0Q1fTAcuJqgvkp.jpg",

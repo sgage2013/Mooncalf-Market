@@ -509,7 +509,7 @@ module.exports = {
             },
             {
                 name: "Phoenix Feather",
-                description: "This is the rarest core type. Phoenix feathers are capable of a great range of magic, though it may take longer to reveal. These wands show the most initiative, sometimes acting on their own. They are the pickiest when it comes to potential owners and are hard to tame.",
+                description: "This is the rarest core type. Phoenix feathers are capable of a range of magic, though it may take longer to reveal. These wands show the most drive, sometimes acting on their own. They are the pickiest when it comes to owners and are hard to tame.",
                 price: 239.00,
                 mainImageUrl: "https://media.istockphoto.com/id/500941489/photo/red-yellow-feathers.jpg?s=612x612&w=0&k=20&c=-bk5x4fj9Bn3AnhaEkv4xT2VZzMJRsY_us6YGbhSC58=",
                 image2Url: "",
@@ -523,7 +523,7 @@ module.exports = {
             },
             {
                 name: "Dragon heartstring",
-                description: "Dragon heartstring cores produce wands with the most power and are capable of the most flamboyant spells. These wands learn quickly and bond strongly with their owners. They can be easy to turn to the Dark Arts and are prone to accidents due to their nature.",
+                description: "Dragon heartstring wands are immensely powerful, capable of flashy spells. They learn quickly, bond strongly, but can be drawn to the Dark Arts and are prone to accidents due to their intense nature",
                 price: 59.99,
                 mainImageUrl: "https://media.istockphoto.com/id/1279020142/photo/close-up-texture-of-a-lot-of-threads-in-a-weaving-machine-called-a-loom.jpg?s=612x612&w=0&k=20&c=eOJ9xMxR8D2vYorXFYAFIEz19doUEHOGRHdRX41SdoI=",
                 image2Url: "",
@@ -735,7 +735,7 @@ module.exports = {
                 name: "Two-Seater Instructor's Broom",
                 description: " A unique tandem broom allowing an instructor to guide a student through flight lessons from behind.",
                 price: 350.00,
-                mainImageUrl: "",
+                mainImageUrl: "https://lh3.googleusercontent.com/gg-dl/AJfQ9KQXteoBTL0qfDhCzvhecwTFkWzbDNNofPhiWPWqj3q3H7kwOgYAe4R_tyqs-xtsn_JOSKVt6Yog1pK82UW7Imir_NFpJGp3PCfw8QBMhFIW9gdCqGPzE3gCnHz6ylNJoFUgyyBtWPfpRWmqjBHnxmbynlb_EMg0_EbcoKDzngWRBN4DpQ=s1024",
                 image2Url: "",
                 image3Url: "",
                 image4Url: "",
@@ -803,7 +803,7 @@ module.exports = {
             },
             {
                 name: "Starlight Voyager",
-                description: "This broom is designed for those who appreciate the beauty of the night sky. Crafted from dark wood inlaid with shimmering crystals, it features a built-in telescope and light charms to enhance nighttime journeys.",
+                description: "This broom is designed for those who appreciate the beauty of the night sky. Crafted from dark, polished wood inlaid with shimmering, star-like crystals, it features a built-in telescope and subtle light charms to enhance nighttime journeys.",
                 price: 800.00,
                 mainImageUrl: "https://i.mmo.cm/is/image/mmoimg/se-product-max/harry-potter-firebolt-life-size-broom--mw-116236-1.jpg",
                 image2Url: "",
