@@ -19,9 +19,9 @@ const app = express();
 
 
 app.use(morgan('dev'));
-app.use(cookieParser());
+app.use(cookieParser(process.env.JWT_SECRET as string));
 app.use(express.json());
-app.use(csurf());
+app.use(csurf({ cookie: true }));
 
 // Security Middleware
 if (!isProduction) {
