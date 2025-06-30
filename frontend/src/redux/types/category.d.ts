@@ -8,7 +8,7 @@ export interface ISubCategory {
 export interface ICategory {
     id: number;
     name: string;
-    subCategories?: ISubCategory[];
+    subcategories?: ISubCategory[];
 }
 
 export interface ICategoryState {
