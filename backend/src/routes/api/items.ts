@@ -86,7 +86,8 @@ router.get(
             subCategory: item.subCategory.name,
             reviews
     });
- } catch (error) {
+ } catch (error: any) {
+  console.log(error)
       return res.status(500).json({ message: "Internal Server Error" });
     }
   }
@@ -112,6 +113,7 @@ router.get('/category/:categoryId/items', validateUser, async (req: ValidUser, r
     }
     return res.json({ items})
   } catch(error){
+    console.log(error)
     return res.status(500).json({ message: 'Internal Server Error'})
   }
 })
@@ -175,6 +177,7 @@ router.get(
         reviews,
       });
     } catch (error) {
+      console.log(error);
       return res.status(500).json({ message: "Internal Server Error" });
     }
   }
