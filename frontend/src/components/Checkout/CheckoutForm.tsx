@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../redux/store";
@@ -24,7 +24,7 @@ function CheckoutForm() {
     }
 }, [user, navigate]);
 
-      const fetchClientSecret = async () => {
+      const fetchClientSecret = useCallback(async () => {
         try {
           const res = await csrfFetch(`${backendUrl}/api/checkout/create-payment-intent`, {
             method: "POST",
@@ -41,8 +41,14 @@ function CheckoutForm() {
           console.log(error)
           setErrors("Failed to connect to payment server");
         }
-      };
-        fetchClientSecret(); 
+      }, [backendUrl, csrfFetch]);
+
+
+  useEffect(() => {
+    if (user && stripe && !clientSecret) {
+      fetchClientSecret();
+    }
+  }, [user, stripe, clientSecret, fetchClientSecret]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
