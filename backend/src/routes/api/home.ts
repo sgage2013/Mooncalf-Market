@@ -61,7 +61,7 @@ router.get("/", validateUser, async (req: ValidUser, res: Response) => {
         },
       ],
       group: ["Item.id"],
-      order: [[db.sequelize.literal('"avgRating'), "DESC"]],
+      order: [[db.sequelize.literal('"avgRating"'), "DESC"]],
       limit: 10,
       subQuery: false,
     });
