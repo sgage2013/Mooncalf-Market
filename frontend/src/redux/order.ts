@@ -13,6 +13,7 @@ export const createOrderThunk =
   (paymentIntentId: string, shippingInfo: { address: string; city: string; state: string; zip: string }) =>
   async (dispatch: any) => {
     try {
+      console.log('shippingInfo', shippingInfo);
       const res = await csrfFetch("/api/checkout/confirm-order", {
         method: "POST",
         headers: {
