@@ -35,7 +35,7 @@ router.get(
         include: [
           {
             model: SubCategory,
-            as: "subcategory",
+            as: "subCategory",
             where: { categoryId },
             include: [
               {
@@ -99,7 +99,7 @@ router.get('/category/:categoryId/items', validateUser, async (req: ValidUser, r
     const items = await Item.findAll({
       include: [
         { model: SubCategory,
-          as: 'subcategory',
+          as: 'subCategory',
           where: {categoryId: paramCategoryId},
           attributes: ['id'],
           required: true
@@ -129,7 +129,7 @@ router.get(
         include: [
           {
             model: SubCategory,
-            as: "subcategory",
+            as: "subCategory",
             include: [
               {
                 model: Category,
@@ -207,7 +207,7 @@ router.post(
       }
 
       const newReview = await Review.create({
-        userId: req.user.id,
+        userId,
         itemId,
         reviewBody,
         stars,
