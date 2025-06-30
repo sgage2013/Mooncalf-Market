@@ -93,11 +93,13 @@ router.post(
   validateUser,
   async (req: ValidUser, res: Response) => {
     try {
-      const { paymentIntentId } = req.body;
+      const { paymentIntentId, address, city, state, zip } = req.body;
       const paymentIntent = await stripe.paymentIntents.retrieve(
         paymentIntentId
       );
-
+      if (!address || !city || !state || !zip || zip.length < 5) {
+        return res.status(400).json({ message: "Invalid address info" });
+      }
       if (!paymentIntent) {
         return res.status(400).json({ message: "Payment not completed" });
       }
@@ -126,7 +128,7 @@ router.post(
           shipping: shipping,
           orderNumber: orderNumber,
           stripePaymentIntentId: paymentIntent.id,
-          status: "completed",
+          status: "Pending",
         });
       }
 
@@ -141,6 +143,23 @@ router.post(
         }
       }
       await CartItem.destroy({ where: { cartId: cart.id } });
+      const updateStatus = [
+        "Pending",
+        "Processing",
+        "Confirmed",
+        "Shipped",
+        "Out for Delivery",
+        "Delivered",
+      ];
+      updateStatus.forEach((status, index) => {
+      setTimeout(async () => {
+        const currentOrder = await Order.findByPk(order.id);
+        if (currentOrder && currentOrder.status !== "Cancelled") {
+          currentOrder.status = status;
+          await currentOrder.save();
+        }
+      }, (index + 1) * 2 * 60 * 1000);
+    });
 
       const order = await Order.findOne({
         where: { id: newOrder.id },

@@ -10,7 +10,7 @@ export const createOrder = (order: IOrderPreview) => ({
 });
 
 export const createOrderThunk =
-  (paymentIntentId: string): any =>
+  (paymentIntentId: string, shippingInfo: { address: string; city: string; state: string; zip: string }) =>
   async (dispatch: any) => {
     try {
       const res = await csrfFetch("/api/checkout/confirm-order", {
@@ -18,12 +18,12 @@ export const createOrderThunk =
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ paymentIntentId }),
+        body: JSON.stringify({ paymentIntentId, ...shippingInfo }),
       });
 
       if (res.ok) {
         const data = await res.json();
-        if(data.prder && data.success) {
+        if(data.order && data.success) {
         dispatch(createOrder(data.order));
         return data.order;
       } 
