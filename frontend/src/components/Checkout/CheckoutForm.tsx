@@ -3,6 +3,7 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../redux/store";
 import { createOrderThunk } from "../../redux/order";
+import { csrfFetch } from "../../redux/csrf";
 
 
 function CheckoutForm() {
@@ -25,7 +26,7 @@ function CheckoutForm() {
 
       const fetchClientSecret = async () => {
         try {
-          const res = await fetch(`${backendUrl}/api/checkout/create-payment-intent`, {
+          const res = await csrfFetch(`${backendUrl}/api/checkout/create-payment-intent`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
