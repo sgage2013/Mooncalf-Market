@@ -25,7 +25,7 @@ function CheckoutForm() {
 
       const fetchClientSecret = async () => {
         try {
-          const res = await fetch(`${backendUrl}/api/checkout/create-payment-intent`, {
+          const res = await csrfFetch(`${backendUrl}/api/checkout/create-payment-intent`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
