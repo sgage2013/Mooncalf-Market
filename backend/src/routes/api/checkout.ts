@@ -180,7 +180,7 @@ router.post(
         include: [
           {
             model: OrderItem,
-            as: "orderItems",
+            as: "items",
             attributes: ["itemId", "quantity", "price"],
             include: [
               {
