@@ -122,11 +122,15 @@ router.post(
         const orderNumber = await createOrderNumber();
         newOrder = await Order.create({
           userId: req.user.id,
-          orderTotal: orderTotal,
-          subTotal: subTotal,
-          tax: tax,
-          shipping: shipping,
-          orderNumber: orderNumber,
+          orderTotal,
+          subTotal,
+          tax,
+          shipping,
+          orderNumber,
+          address,
+          city,
+          state,
+          zip,
           stripePaymentIntentId: paymentIntent.id,
           status: "Pending",
         });
