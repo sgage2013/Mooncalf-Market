@@ -53,8 +53,8 @@ function ProfileButton():JSX.Element {
             <>
               {console.log("username:", user.username)}
               {console.log("email:", user.email)}
-              <li>{user.user.username}</li>
-              <li>{user.user.email}</li>
+              <li>{user.username}</li>
+              <li>{user.email}</li>
               <li>
                 <button onClick={(e) => logout(e)}>Log Out</button>
               </li>
