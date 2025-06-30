@@ -176,6 +176,7 @@ router.post(
         orderNumber: newOrder ? newOrder.orderNumber : null,
       });
     } catch (error) {
+      console.log(error);
       return res.status(500).json({ message: "Unable to confirm order" });
     }
   }
