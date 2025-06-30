@@ -4,6 +4,7 @@ type OrderItemAttributes = {
   id: number;
   orderId: number;
   itemId: number;
+  price: number;
   quantity: number;
   createdAt: Date;
   updatedAt: Date;
@@ -20,6 +21,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     declare id: CreationOptional<number>;
     declare orderId: number;
     declare itemId: number;
+    declare price: number;
     declare quantity: number;
     declare createdAt: CreationOptional<Date>;
     declare updatedAt: CreationOptional<Date>;
@@ -51,6 +53,13 @@ module.exports = (sequelize: any, DataTypes: any) => {
         references: {
           model: "Items",
           key: "id",
+        },
+      },
+      price: {
+        type: DataTypes.DECIMAL(10, 2),
+        allowNull: false,
+        validate: {
+          min: 0.01,
         },
       },
       quantity: {
