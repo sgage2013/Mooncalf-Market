@@ -29,7 +29,7 @@ module.exports = {
           onDelete: "CASCADE",
         },
         orderNumber: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.STRING(8),
           allowNull: false,
           unique: true,
         },
