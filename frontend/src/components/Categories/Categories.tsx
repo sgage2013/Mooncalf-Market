@@ -16,7 +16,7 @@ function CategoryPage() {
     const categoryItems = useAppSelector(state => state.items.categoryItems);
     const allCategories = useAppSelector(state => state.categories.categories);
     const currentCategory: ICategory | undefined = allCategories.find((category: ICategory) => category.id === parseInt(categoryId || '', 10) )
-    const subcategories: ISubCategory[] = currentCategory?.subCategories || [];
+    const subcategories: ISubCategory[] = currentCategory?.subcategories || [];
     const [loading, setLoading] = useState(true)
     const [errors, seterrors] = useState< string | null>(null)
 
