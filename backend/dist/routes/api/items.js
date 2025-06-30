@@ -37,7 +37,7 @@ router.get("/category/:categoryId/:subCategoryId/items/:itemId", (req, res) => _
             include: [
                 {
                     model: SubCategory,
-                    as: "subcategory",
+                    as: "subCategory",
                     where: { categoryId },
                     include: [
                         {
@@ -85,6 +85,7 @@ router.get("/category/:categoryId/:subCategoryId/items/:itemId", (req, res) => _
         });
     }
     catch (error) {
+        console.log(error);
         return res.status(500).json({ message: "Internal Server Error" });
     }
 }));
@@ -94,7 +95,7 @@ router.get('/category/:categoryId/items', auth_1.validateUser, (req, res) => __a
         const items = yield Item.findAll({
             include: [
                 { model: SubCategory,
-                    as: 'subcategory',
+                    as: 'subCategory',
                     where: { categoryId: paramCategoryId },
                     attributes: ['id'],
                     required: true
@@ -109,6 +110,7 @@ router.get('/category/:categoryId/items', auth_1.validateUser, (req, res) => __a
         return res.json({ items });
     }
     catch (error) {
+        console.log(error);
         return res.status(500).json({ message: 'Internal Server Error' });
     }
 }));
@@ -119,7 +121,7 @@ router.get("/items/:itemId", auth_1.validateUser, (req, res) => __awaiter(void 0
             include: [
                 {
                     model: SubCategory,
-                    as: "subcategory",
+                    as: "subCategory",
                     include: [
                         {
                             model: Category,
@@ -165,6 +167,7 @@ router.get("/items/:itemId", auth_1.validateUser, (req, res) => __awaiter(void 0
         });
     }
     catch (error) {
+        console.log(error);
         return res.status(500).json({ message: "Internal Server Error" });
     }
 }));
@@ -186,7 +189,7 @@ router.post("/items/:itemId/reviews", auth_1.validateUser, (req, res) => __await
             });
         }
         const newReview = yield Review.create({
-            userId: req.user.id,
+            userId,
             itemId,
             reviewBody,
             stars,

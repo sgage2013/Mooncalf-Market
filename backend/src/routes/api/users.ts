@@ -80,6 +80,7 @@ router.post(
           ...safeUser,
         });
       } catch (e) {
+        console.log(e);
         return next(e);
       }
     }
