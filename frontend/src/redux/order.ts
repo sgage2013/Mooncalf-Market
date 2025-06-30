@@ -1,5 +1,6 @@
 import { IOrderPreview, IOrderState} from "./types/order";
 import {IActionCreator} from "./types/redux";
+import { csrfFetch } from "./csrf";
 
 const CREATE_ORDER = "order/createOrder";
 
@@ -12,7 +13,7 @@ export const createOrderThunk =
   (paymentIntentId: string): any =>
   async (dispatch: any) => {
     try {
-      const res = await fetch("/api/checkout/confirm-order", {
+      const res = await csrfFetch("/api/checkout/confirm-order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

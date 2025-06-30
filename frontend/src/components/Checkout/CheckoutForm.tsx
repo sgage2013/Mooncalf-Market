@@ -34,11 +34,9 @@ function CheckoutForm() {
           });
           const data = await res.json();
           if (res.ok && data.clientSecret) {
-            console.log("Client secret:", data.clientSecret);
             setClientSecret(data.clientSecret);
           }
         } catch (error) {
-          console.log(error)
           setErrors("Failed to connect to payment server");
         }
       }, [backendUrl, csrfFetch]);
