@@ -26,7 +26,8 @@ function CartItem({
       />
       <div className="cart-item-details">
         <h3 className="cart-item-name">{item.name}</h3>
-        <p className="cart-item-price">${item.price.toFixed(2)}</p>
+        <p className="cart-item-price">${typeof item.price === "string" ?
+        parseFloat(item.price).toFixed(2) : item.price.toFixed(2)}</p>
         <div className="cart-item-quantity">
           <label htmlFor={`quantity-${item.id}`}>Quantity:</label>
           <select

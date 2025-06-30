@@ -60,7 +60,8 @@ function SubcategoryItems() {
                 className="item-image"
               />
               <h3 className="item-name">{item.name}</h3>
-              <p className="item-price">{item.price}</p>
+              <p className="item-price">${typeof item.price === "string" ?
+              parseFloat(item.price).toFixed(2) : item.price.toFixed(2)}</p>
               <div className="item-rating">
                 <Rating
                   name={`item-rating=${item.id}`}
