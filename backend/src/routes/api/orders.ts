@@ -65,66 +65,6 @@ router.get(
   }
 );
 
-//create an oder from cart
-router.post("/orders", validateUser, async (req: ValidUser, res: Response) => {
-  try {
-    const { address, city, state, zip } = req.body;
-    if (!address || !city || !state || !zip || zip.length < 5) {
-      return res.status(400).json({ message: "Invalid address info" });
-    }
-    const cart = await Cart.findOne({
-      where: { userId: req.user.id },
-      include: [{ model: CartItem, include: [Item] }],
-    });
-    if (!cart || cart.cartItems.length === 0) {
-      return res.status(400).json({ message: "Cart is empty" });
-    }
-    const orderTotal = cart.cartItems.reduce(
-      (sum: number, items: any) => sum + items.quantity * items.item.price,
-      0
-    );
-    const order = await Order.create({
-      userId: req.user.id,
-      status: "Pending",
-      orderTotal,
-      orderNumber: Math.floor(Math.random() * 1000000),
-      address,
-      city,
-      state,
-      zip,
-    });
-    for (const cartItem of cart.cartItems) {
-      await OrderItem.create({
-        orderId: order.id,
-        itemId: cartItem.itemId,
-        quantity: cartItem.quantity,
-      });
-    }
-    await CartItem.destroy({ where: { cartId: cart.id } });
-
-    const statusUpdates = [
-      "Pending",
-      "Processing",
-      "Confirmed",
-      "Shipped",
-      "Out for Delivery",
-      "Delivered",
-    ];
-    statusUpdates.forEach((status, index) => {
-      setTimeout(async () => {
-        const currentOrder = await Order.findByPk(order.id);
-        if (currentOrder && currentOrder.status !== "Cancelled") {
-          currentOrder.status = status;
-          await currentOrder.save();
-        }
-      }, (index + 1) * 2 * 60 * 1000);
-    });
-    return res.status(200).json(order);
-  } catch (error) {
-    return res.status(500).json({ message: "Unable to create order" });
-  }
-});
-
 //update order if status allows
 router.put(
   "/orders/:orderId",
