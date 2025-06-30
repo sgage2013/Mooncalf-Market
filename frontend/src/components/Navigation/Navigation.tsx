@@ -73,10 +73,10 @@ function Navigation(): JSX.Element {
               </NavLink>
               {hoverCategory &&
                 hoverCategory.id === category.id &&
-                hoverCategory.subCategories &&
-                hoverCategory.subCategories.length > 0 && (
+                hoverCategory.subcategories &&
+                hoverCategory.subcategories.length > 0 && (
                   <div className="sub-category-dropdown">
-                    {hoverCategory.subCategories.map(
+                    {hoverCategory.subcategories.map(
                       (subCategory: ISubCategory) => (
                         <NavLink
                           key={subCategory.id}

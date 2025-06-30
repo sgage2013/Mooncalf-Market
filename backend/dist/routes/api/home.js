@@ -32,7 +32,7 @@ router.get("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, voi
                 'mainImageUrl',
                 'price',
                 'categoryId',
-                'subcategoryId',
+                'subCategoryId',
                 [models_1.default.sequelize.fn("AVG", models_1.default.sequelize.col("reviews.stars")),
                     "avgRating"],
             ],
@@ -56,7 +56,7 @@ router.get("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, voi
                 'mainImageUrl',
                 'price',
                 'categoryId',
-                'subcategoryId',
+                'subCategoryId',
                 [models_1.default.sequelize.fn("AVG", models_1.default.sequelize.col("reviews.stars")),
                     "avgRating"],
             ],
@@ -69,7 +69,7 @@ router.get("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, voi
                 },
             ],
             group: ["Item.id"],
-            order: [[models_1.default.sequelize.literal("avgRating"), "DESC"]],
+            order: [[models_1.default.sequelize.literal('"avgRating"'), "DESC"]],
             limit: 10,
             subQuery: false,
         });
@@ -80,6 +80,7 @@ router.get("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, voi
         });
     }
     catch (error) {
+        console.log(error);
         return res.status(500).json("Failed to load home content");
     }
 }));
