@@ -4,7 +4,7 @@ import { IReview } from './review';
 export interface IFullItem {
     id: number;
     name: string;
-    price: number;
+    price: number | string;
     description: string;
     mainImageUrl: string;
     image2Url?: string;
@@ -25,7 +25,7 @@ export interface IItemState {
 export interface IItem {
     id: number;
     name: string;
-    price: number;
+    price: number | string;
     mainImageUrl: string;
     avgRating?: number
     reviewCount?: number;

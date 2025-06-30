@@ -59,7 +59,8 @@ function Home() {
                   className="item-image"
                 />
                 <h3 className="item-title">{item.name}</h3>
-                <p className="item-price">${parseFloat(item.price.toFixed(2))}</p>
+                <p className="item-price">${typeof item.price === "string" ?
+                parseFloat(item.price).toFixed(2) : item.price.toFixed(2)}</p>
                 <div className="item-rating">
                   <Rating
                     name={`item-rating=${item.id}`}
@@ -96,7 +97,8 @@ function Home() {
                   />
                   <h3 className="item-title">{item.name}</h3>
                   <p className="item-price">
-                    ${parseFloat(item.price.toFixed(2))}
+                    ${typeof item.price === "string" ?
+                    parseFloat(item.price).toFixed(2) : item.price.toFixed(2)}
                   </p>
                   {item.avgRating && (
                     <div className="item-rating">
