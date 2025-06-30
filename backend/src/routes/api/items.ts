@@ -86,7 +86,8 @@ router.get(
             subCategory: item.subCategory.name,
             reviews
     });
- } catch (error) {
+ } catch (error: any) {
+  console.log(error)
       return res.status(500).json({ message: "Internal Server Error" });
     }
   }
