@@ -14,7 +14,7 @@ function CheckoutForm() {
   const [errors, setErrors] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
-  const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
+  const backendUrl = import.meta.env.VITE_BACKEND_URL || "https://mooncalf-market.onrender.com";
 
   useEffect(() => {
     if (!user) {
@@ -33,9 +33,11 @@ function CheckoutForm() {
           });
           const data = await res.json();
           if (res.ok && data.clientSecret) {
+            console.log("Client secret:", data.clientSecret);
             setClientSecret(data.clientSecret);
           }
         } catch (error) {
+          console.log(error)
           setErrors("Failed to connect to payment server");
         }
       };

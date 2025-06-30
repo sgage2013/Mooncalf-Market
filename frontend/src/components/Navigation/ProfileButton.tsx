@@ -12,7 +12,6 @@ function ProfileButton():JSX.Element {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const user = useAppSelector((store) => store.session.user);
-  console.log("user:", user);
   const ulRef = useRef<any>();
 
   const toggleMenu = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -51,8 +50,6 @@ function ProfileButton():JSX.Element {
         <ul className={"profile-dropdown"} ref={ulRef}>
           {user ? (
             <>
-              {console.log("username:", user.username)}
-              {console.log("email:", user.email)}
               <li>{user.username}</li>
               <li>{user.email}</li>
               <li>
@@ -61,7 +58,6 @@ function ProfileButton():JSX.Element {
             </>
           ) : (
             <>
-            {console.log("user is not logged in")}
               <OpenModalMenuItem
                 itemText="Log In"
                 onItemClick={closeMenu}
