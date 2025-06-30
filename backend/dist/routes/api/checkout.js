@@ -161,6 +161,7 @@ router.post("/confirm-order", auth_1.validateUser, (req, res) => __awaiter(void 
         });
     }
     catch (error) {
+        console.log(error);
         return res.status(500).json({ message: "Unable to confirm order" });
     }
 }));

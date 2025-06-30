@@ -70,6 +70,7 @@ router.post("/signup", validateSignup, (req, res, next) => __awaiter(void 0, voi
             return res.json(Object.assign({}, safeUser));
         }
         catch (e) {
+            console.log(e);
             return next(e);
         }
     }
