@@ -99,7 +99,7 @@ function SingleItem() {
     item.image3Url,
     item.image4Url,
     item.image5Url,
-  ].filter((url) => url !== null && url !== undefined) as string[];
+  ].filter((url) => Boolean(url)) as string[];
 
   const handleNextImage = () => {
     setCurrentImage((prevIndex) => (prevIndex + 1) % images.length);
