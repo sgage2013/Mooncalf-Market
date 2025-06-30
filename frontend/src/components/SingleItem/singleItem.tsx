@@ -153,7 +153,8 @@ function SingleItem() {
         )}
       </div>
       <div className="item-info">
-        <p className="price">${item.price.toFixed(2)}</p>
+        <p className="price">${typeof item.price === "string" ?
+        parseFloat(item.price).toFixed(2) : item.price.toFixed(2)}</p>
         {item.stars ? (
           <div className="rating">
             <Rating

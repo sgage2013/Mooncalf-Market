@@ -58,7 +58,6 @@ function CheckoutForm() {
       setIsLoading(false);
       return;
     }
-    // const card = cardElement as unknown as StripeCardElement;
     const {error: stripeError, paymentIntent} = await stripe.confirmCardPayment(clientSecret!, {
         payment_method: {
             card: cardElement,
