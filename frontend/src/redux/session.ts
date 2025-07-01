@@ -25,9 +25,11 @@ export const thunkAuthenticate = (): any => async (dispatch: any) => {
       }
       dispatch(setUser(data.user));
     } else {
+      dispatch(removeUser());
       throw response;
     }
   } catch (e) {
+    dispatch(removeUser());
     console.log(e)
   }
 

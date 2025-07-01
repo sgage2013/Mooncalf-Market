@@ -18,10 +18,10 @@ function Home() {
   const [errors, setErrors] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!user) {
+    if (!user && !loading) {
       navigate("/login");
     }
-  }, [user, navigate]);
+  }, [user, loading, navigate]);
 
   useEffect(() => {
     setErrors(null);
