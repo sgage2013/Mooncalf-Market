@@ -217,7 +217,7 @@ router.get(
         include: [
           {
             model: OrderItem,
-            as: "orderItems",
+            as: "items",
             include: [
               {
                 model: Item,
