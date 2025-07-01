@@ -35,7 +35,7 @@ function LoginFormPage() {
     }
   };
   const handleDemoLogin = async () => {
-    const demoEmail = "demo@aa.io";
+    const demoEmail = "ron@weasley.com";
     const demoPassword = "password";
     dispatch(
       thunkLogin({ email: demoEmail, password: demoPassword })
