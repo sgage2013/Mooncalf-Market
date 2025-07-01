@@ -231,7 +231,26 @@ router.get(
       if (!order) {
         return res.status(404).json({ message: "Order not found" });
       }
-      return res.json({ order });
+      const orderPreview = {
+        id: order.id,
+        orderNumber: order.orderNumber,
+        orderTotal: order.orderTotal,
+        status: order.status,
+        shippingAddress: {
+          address: order.address,
+          city: order.city,
+          state: order.state,
+          zip: order.zip,
+        },
+        items: order.orderItems.map((item: any) => ({
+          itemId: item.itemId,
+          name: item.item.name,
+          mainImageUrl: item.item.mainImageUrl,
+          price: item.price,
+          quantity: item.quantity,
+        })),
+      };
+      return res.json({ order: orderPreview });
     } catch (error) {
       return res.status(500).json({ message: "Unable to load order" });
     }
