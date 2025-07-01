@@ -1,7 +1,6 @@
 import { IOrderPreview, IOrderState} from "./types/order";
 import {IActionCreator} from "./types/redux";
 import { csrfFetch } from "./csrf";
-import { error } from "console";
 
 const CREATE_ORDER = "order/createOrder";
 const ORDER_SUCCESS = "order/orderSuccess";
