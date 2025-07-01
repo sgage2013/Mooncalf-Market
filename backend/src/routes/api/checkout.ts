@@ -234,7 +234,7 @@ router.get(
       const orderPreview = {
         id: order.id,
         orderNumber: order.orderNumber,
-        orderTotal: order.orderTotal,
+        orderTotal: parseFloat(order.orderTotal),
         status: order.status,
         shippingAddress: {
           address: order.address,
