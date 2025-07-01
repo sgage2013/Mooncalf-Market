@@ -44,7 +44,7 @@ function LoginFormPage() {
     }
   };
   return (
-    <>
+    <div className="login-form-container">
       <h1>Log In</h1>
       {errors.length > 0 &&
         errors.map((message:string) => <p key={message}>{message}</p>)}
@@ -69,15 +69,20 @@ function LoginFormPage() {
           />
         </label>
         {errors.password && <p>{errors.password}</p>}
+        <div className='button-container'>
+
         <button type="submit">Log In</button>
         <button type="button" onClick={() => navigate("/signup")}>
           Sign Up
         </button>
+        </div>
+        <div className='demo-button'>
         <button type="button" onClick={handleDemoLogin}>
           Demo Login
         </button>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
 
