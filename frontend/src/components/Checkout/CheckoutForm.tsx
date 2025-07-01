@@ -83,20 +83,17 @@ function CheckoutForm() {
         },
       });
     if (stripeError) {
+      if(stripeError.decline_code === 'insufficient_funds') {
+        setErrors("Insufficient funds, please try a different card.");
+      } else if (stripeError.decline_code === 'generic_decline') {
+        setErrors("Payment declined, please try a different card.");
+      } else {
       setErrors("Invalid card details");
       setIsLoading(false);
       return;
     }
-    if ((stripeError as any)?.decline_code === "insufficient_funds") {
-      setErrors("Insufficient funds");
-      setIsLoading(false);
-      return;
     }
-    if ((stripeError as any)?.decline_code === "generic_decline") {
-      setErrors("Payment declined");
-      setIsLoading(false);
-      return;
-    }
+
     if (!paymentIntent || paymentIntent.status !== "succeeded") {
       setErrors("Payment failed");
       setIsLoading(false);
