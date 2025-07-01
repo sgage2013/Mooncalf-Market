@@ -197,7 +197,7 @@ router.get("/success/:orderId", auth_1.validateUser, (req, res) => __awaiter(voi
             include: [
                 {
                     model: OrderItem,
-                    as: "orderItems",
+                    as: "items",
                     include: [
                         {
                             model: Item,
@@ -211,9 +211,29 @@ router.get("/success/:orderId", auth_1.validateUser, (req, res) => __awaiter(voi
         if (!order) {
             return res.status(404).json({ message: "Order not found" });
         }
-        return res.json({ order });
+        const orderPreview = {
+            id: order.id,
+            orderNumber: order.orderNumber,
+            orderTotal: parseFloat(order.orderTotal),
+            status: order.status,
+            shippingAddress: {
+                address: order.address,
+                city: order.city,
+                state: order.state,
+                zip: order.zip,
+            },
+            items: order.items.map((item) => ({
+                itemId: item.itemId,
+                name: item.item.name,
+                mainImageUrl: item.item.mainImageUrl,
+                price: parseFloat(item.price),
+                quantity: item.quantity,
+            })),
+        };
+        return res.json({ order: orderPreview });
     }
     catch (error) {
+        console.log(error);
         return res.status(500).json({ message: "Unable to load order" });
     }
 }));
