@@ -11,6 +11,7 @@ import GetAllReviews from "../components/Reviews/getAllReviews";
 import Cart from "../components/Cart/Cart";
 import Checkout from "../components/CheckoutSuccess.css/Checkout";
 import CheckoutForm from "../components/CheckoutSuccess.css/CheckoutForm";
+import CheckoutSuccess from "../components/CheckoutSuccess.css/CheckoutSuccess";
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
         path: "/checkout/create-payment-intent",
         element: <CheckoutForm />
       },
+      {
+        path: "/checkout/success/:orderId",
+        element: <CheckoutSuccess />
+      }
     ],
   },
 ]);
