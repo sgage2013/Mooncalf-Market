@@ -85,6 +85,7 @@ export const createOrderThunk =
         return {
           ...state,
           order: action.payload,
+          isLoading: false,
           errors: null,
         };
       default:
