@@ -53,11 +53,9 @@ export const createOrderThunk =
 
       if (res.ok) {
         const data = await res.json();
-        if (data.success) {
           dispatch(orderSuccess(data.order));
           return data.order;
         }
-      }
     } catch (e) {
       const error = e as Response;
       return await error.json();
