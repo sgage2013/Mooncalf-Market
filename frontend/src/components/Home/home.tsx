@@ -17,11 +17,11 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (!user && !loading) {
-      navigate("/login");
-    }
-  }, [user, loading, navigate]);
+  // useEffect(() => {
+  //   if (!user && !loading) {
+  //     navigate("/login");
+  //   }
+  // }, [user, loading, navigate]);
 
   useEffect(() => {
     setErrors(null);
