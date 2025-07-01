@@ -252,6 +252,7 @@ router.get(
       };
       return res.json({ order: orderPreview });
     } catch (error) {
+      console.log(error)
       return res.status(500).json({ message: "Unable to load order" });
     }
   }
