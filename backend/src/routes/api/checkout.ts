@@ -246,7 +246,7 @@ router.get(
           itemId: item.itemId,
           name: item.item.name,
           mainImageUrl: item.item.mainImageUrl,
-          price: item.price,
+          price: parseFloat(item.price),
           quantity: item.quantity,
         })),
       };
