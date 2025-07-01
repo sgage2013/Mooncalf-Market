@@ -41,7 +41,7 @@ const CheckoutSuccess = () => {
           <h2>Order Summary</h2>
             <p>Order Number: {order.orderNumber}</p>
             <p>Status: {order.status}</p>
-            <p> Total: ${order.orderTotal.toFixed(2)}</p>
+            <p> Total: ${parseFloat(order.orderTotal.toFixed(2))}</p>
         </div>
       )}
       <div className='shipping-info'>
@@ -63,7 +63,7 @@ const CheckoutSuccess = () => {
               <div>
                 <li key={item.itemId}>
                   <p>{item.name}</p>
-                  <p>${item.price.toFixed(2)} x {item.quantity}</p>
+                  <p>${parseFloat(item.price.toFixed(2))} x {item.quantity}</p>
                 </li>
               </div>
             ))}
