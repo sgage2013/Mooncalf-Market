@@ -9,8 +9,8 @@ import CategoryPage from "../components/Categories/Categories";
 import SubcategoryItems from "../components/SubCategories/Subcategories";
 import GetAllReviews from "../components/Reviews/getAllReviews";
 import Cart from "../components/Cart/Cart";
-import Checkout from "../components/Checkout/Checkout";
-import CheckoutForm from "../components/Checkout/CheckoutForm";
+import Checkout from "../components/CheckoutSuccess.css/Checkout";
+import CheckoutForm from "../components/CheckoutSuccess.css/CheckoutForm";
 
 export const router = createBrowserRouter([
   {
