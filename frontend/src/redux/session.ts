@@ -20,10 +20,12 @@ export const thunkAuthenticate = (): any => async (dispatch: any) => {
     const response = await csrfFetch("/api/session");
     if (response.ok) {
       const data = await response.json();
+      console.log('data', data);
       if (data.errors) {
         throw response;
       }
       dispatch(setUser(data.user));
+      console.log('authenticated:', data.user);
     } else {
       dispatch(removeUser());
       throw response;
