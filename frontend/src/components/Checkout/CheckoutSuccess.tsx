@@ -23,12 +23,13 @@ const CheckoutSuccess = () => {
     return <div className="error">Invalid Order ID</div>;
   }
   useEffect(() => {
-    if(orderId) {
+    if(id) {
         dispatch(orderSuccessThunk(id) as any);
     }
-  }, [orderId, dispatch, id]);
+  }, [id, dispatch]);
 
   if(!order){
+    console.log('order:', order);
     return <div className="loading">Loading Order...</div>;
   }
 
