@@ -69,61 +69,6 @@ router.get("/orders/:orderId", auth_1.validateUser, (req, res) => __awaiter(void
         return res.status(500).json({ message: "Unable to load order" });
     }
 }));
-router.post("/orders", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const { address, city, state, zip } = req.body;
-        if (!address || !city || !state || !zip || zip.length < 5) {
-            return res.status(400).json({ message: "Invalid address info" });
-        }
-        const cart = yield Cart.findOne({
-            where: { userId: req.user.id },
-            include: [{ model: CartItem, include: [Item] }],
-        });
-        if (!cart || cart.cartItems.length === 0) {
-            return res.status(400).json({ message: "Cart is empty" });
-        }
-        const orderTotal = cart.cartItems.reduce((sum, items) => sum + items.quantity * items.item.price, 0);
-        const order = yield Order.create({
-            userId: req.user.id,
-            status: "Pending",
-            orderTotal,
-            orderNumber: Math.floor(Math.random() * 1000000),
-            address,
-            city,
-            state,
-            zip,
-        });
-        for (const cartItem of cart.cartItems) {
-            yield OrderItem.create({
-                orderId: order.id,
-                itemId: cartItem.itemId,
-                quantity: cartItem.quantity,
-            });
-        }
-        yield CartItem.destroy({ where: { cartId: cart.id } });
-        const statusUpdates = [
-            "Pending",
-            "Processing",
-            "Confirmed",
-            "Shipped",
-            "Out for Delivery",
-            "Delivered",
-        ];
-        statusUpdates.forEach((status, index) => {
-            setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
-                const currentOrder = yield Order.findByPk(order.id);
-                if (currentOrder && currentOrder.status !== "Cancelled") {
-                    currentOrder.status = status;
-                    yield currentOrder.save();
-                }
-            }), (index + 1) * 2 * 60 * 1000);
-        });
-        return res.status(200).json(order);
-    }
-    catch (error) {
-        return res.status(500).json({ message: "Unable to create order" });
-    }
-}));
 router.put("/orders/:orderId", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { orderId } = req.params;
     const { address, city, state, zip, items } = req.body;

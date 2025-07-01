@@ -30,6 +30,13 @@ module.exports = (sequelize, DataTypes) => {
                 key: "id",
             },
         },
+        price: {
+            type: DataTypes.DECIMAL(10, 2),
+            allowNull: false,
+            validate: {
+                min: 0.01,
+            },
+        },
         quantity: {
             type: DataTypes.INTEGER,
             allowNull: false,
