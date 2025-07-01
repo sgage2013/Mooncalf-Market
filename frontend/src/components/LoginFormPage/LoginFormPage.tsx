@@ -37,10 +37,12 @@ function LoginFormPage() {
   const handleDemoLogin = async () => {
     const demoEmail = "ron@weasley.com";
     const demoPassword = "password";
-    dispatch(
+    const res = await dispatch(
       thunkLogin({ email: demoEmail, password: demoPassword })
     );
-    navigate("/home");
+    if (!res?.errors) {
+      navigate("/home");
+    }
   };
   return (
     <>
