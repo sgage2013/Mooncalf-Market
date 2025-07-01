@@ -1,6 +1,7 @@
 
 export interface SessionInitialState {
     user: null | IUser;
+    loading: boolean;
 }
 
 export interface IUser {

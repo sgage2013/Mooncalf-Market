@@ -30,9 +30,8 @@ function LoginFormPage() {
       setErrors(serverResponse);
       navigate("/signup");
     }
-    if (sessionUser) {
       navigate("/home");
-    }
+    
   };
   const handleDemoLogin = async () => {
     const demoEmail = "ron@weasley.com";

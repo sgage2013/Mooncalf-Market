@@ -115,7 +115,7 @@ export const thunkLogout = (): any => async (dispatch: any) => {
   return response;
 };
 
-const initialState: SessionInitialState = { user: null };
+const initialState: SessionInitialState = { user: null, loading: true };
 
 function sessionReducer(state = initialState, action: IActionCreator): SessionInitialState {
   let newState = {
@@ -124,9 +124,9 @@ function sessionReducer(state = initialState, action: IActionCreator): SessionIn
 
   switch (action.type) {
     case SET_USER:
-      return { ...state, user: action.payload.user };
+      return { ...state, user: action.payload.user, loading: false };
     case REMOVE_USER:
-      return { ...state, user: null };
+      return { ...state, user: null, loading: false };
     default:
       return state;
   }
