@@ -242,7 +242,7 @@ router.get(
           state: order.state,
           zip: order.zip,
         },
-        items: order.orderItems.map((item: any) => ({
+        items: order.items.map((item: any) => ({
           itemId: item.itemId,
           name: item.item.name,
           mainImageUrl: item.item.mainImageUrl,
