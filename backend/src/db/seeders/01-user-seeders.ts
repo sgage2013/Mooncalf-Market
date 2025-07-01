@@ -34,7 +34,7 @@ module.exports = {
     username: "demo",
     hashedPassword: "$2a$10$RWA3t0FVaTYW1AOKNz5La.3jZDoe0RRqfZ3GFIIrmuNxnjHS0bxu6"
   },
-], {});
+], options);
   },
 
   down: async (queryInterface:any, Sequelize:any) => {
@@ -42,6 +42,6 @@ module.exports = {
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete('Users', {
       username: { [Op.in]: [''] }
-    }, {});
+    }, options);
   }
 };

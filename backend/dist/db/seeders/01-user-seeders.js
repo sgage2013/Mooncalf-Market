@@ -38,14 +38,14 @@ module.exports = {
                 username: "demo",
                 hashedPassword: "$2a$10$RWA3t0FVaTYW1AOKNz5La.3jZDoe0RRqfZ3GFIIrmuNxnjHS0bxu6"
             },
-        ], {});
+        ], options);
     }),
     down: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
         options.tableName = 'Users';
         const Op = Sequelize.Op;
         return queryInterface.bulkDelete('Users', {
             username: { [Op.in]: [''] }
-        }, {});
+        }, options);
     })
 };
 //# sourceMappingURL=01-user-seeders.js.map
