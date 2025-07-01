@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { thunkLogin } from "../../redux/session";
 import { useDispatch } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
-// import "./LoginForm.css";
+import {  useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../redux/store";
+import "./LoginForm.css";
 
 
 
@@ -26,16 +26,22 @@ function LoginFormPage() {
       })
     );
     
-    if (serverResponse && serverResponse.errors) {
+    if (serverResponse?.errors) {
       setErrors(serverResponse);
-    } else {
       navigate("/signup");
     }
-    if (sessionUser) { 
-      navigate("/home")
-    };
+    if (sessionUser) {
+      navigate("/home");
+    }
   };
-
+  const handleDemoLogin = async () => {
+    const demoEmail = "demo@aa.io";
+    const demoPassword = "password";
+    dispatch(
+      thunkLogin({ email: demoEmail, password: demoPassword })
+    );
+    navigate("/home");
+  };
   return (
     <>
       <h1>Log In</h1>
@@ -63,6 +69,12 @@ function LoginFormPage() {
         </label>
         {errors.password && <p>{errors.password}</p>}
         <button type="submit">Log In</button>
+        <button type="button" onClick={() => navigate("/signup")}>
+          Sign Up
+        </button>
+        <button type="button" onClick={handleDemoLogin}>
+          Demo Login
+        </button>
       </form>
     </>
   );
