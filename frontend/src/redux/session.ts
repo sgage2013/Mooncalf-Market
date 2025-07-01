@@ -23,7 +23,7 @@ export const thunkAuthenticate = (): any => async (dispatch: any) => {
       if (data.errors) {
         throw response;
       }
-      dispatch(setUser(data));
+      dispatch(setUser(data.user));
     } else {
       throw response;
     }
@@ -97,7 +97,7 @@ export const thunkSignup = (user: ISignUpUser): any => async (dispatch: any) => 
       }),
     });
     const data = await response.json();
-    dispatch(setUser(data));
+    dispatch(setUser(data.user));
   } catch (res: any) {
     if (!res.ok) {
       let errors = await res.json();
