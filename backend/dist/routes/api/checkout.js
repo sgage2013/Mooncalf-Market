@@ -82,8 +82,11 @@ router.post("/create-payment-intent", auth_1.validateUser, (req, res) => __await
 }));
 router.post("/confirm-order", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { paymentIntentId } = req.body;
+        const { paymentIntentId, address, city, state, zip } = req.body;
         const paymentIntent = yield stripe.paymentIntents.retrieve(paymentIntentId);
+        if (!address || !city || !state || !zip || zip.length < 5) {
+            return res.status(400).json({ message: "Invalid address info" });
+        }
         if (!paymentIntent) {
             return res.status(400).json({ message: "Payment not completed" });
         }
@@ -106,13 +109,17 @@ router.post("/confirm-order", auth_1.validateUser, (req, res) => __awaiter(void 
             const orderNumber = yield createOrderNumber();
             newOrder = yield Order.create({
                 userId: req.user.id,
-                orderTotal: orderTotal,
-                subTotal: subTotal,
-                tax: tax,
-                shipping: shipping,
-                orderNumber: orderNumber,
+                orderTotal,
+                subTotal,
+                tax,
+                shipping,
+                orderNumber,
+                address,
+                city,
+                state,
+                zip,
                 stripePaymentIntentId: paymentIntent.id,
-                status: "completed",
+                status: "Pending",
             });
         }
         if (newOrder) {
@@ -126,6 +133,23 @@ router.post("/confirm-order", auth_1.validateUser, (req, res) => __awaiter(void 
             }
         }
         yield CartItem.destroy({ where: { cartId: cart.id } });
+        const updateStatus = [
+            "Pending",
+            "Processing",
+            "Confirmed",
+            "Shipped",
+            "Out for Delivery",
+            "Delivered",
+        ];
+        updateStatus.forEach((status, index) => {
+            setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
+                const currentOrder = yield Order.findByPk(order.id);
+                if (currentOrder && currentOrder.status !== "Cancelled") {
+                    currentOrder.status = status;
+                    yield currentOrder.save();
+                }
+            }), (index + 1) * 2 * 60 * 1000);
+        });
         const order = yield Order.findOne({
             where: { id: newOrder.id },
             attributes: [
@@ -141,7 +165,7 @@ router.post("/confirm-order", auth_1.validateUser, (req, res) => __awaiter(void 
             include: [
                 {
                     model: OrderItem,
-                    as: "orderItems",
+                    as: "items",
                     attributes: ["itemId", "quantity", "price"],
                     include: [
                         {

@@ -67,7 +67,7 @@ module.exports = {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
-                    model: "Subcategories",
+                    model: "SubCategories",
                     key: "id"
                 },
                 onDelete: "CASCADE"
