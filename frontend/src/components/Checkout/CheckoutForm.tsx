@@ -89,9 +89,9 @@ function CheckoutForm() {
         setErrors("Payment declined, please try a different card.");
       } else {
       setErrors("Invalid card details");
-      setIsLoading(false);
-      return;
     }
+    setIsLoading(false);
+    return;
     }
 
     if (!paymentIntent || paymentIntent.status !== "succeeded") {
