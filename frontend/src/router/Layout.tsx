@@ -11,6 +11,21 @@ import { Elements } from "@stripe/react-stripe-js";
 const stripePromise = loadStripe(
   "pk_test_51RYiLeGsLIzRMXOp1GxJZKLeIGfSQjGJshMyTXhZcQD6FF8cPOAPKvXHMUJCornjSmBFn9wvcTgBCsvvRnpwbmEU00SeJChFll"
 );
+const appearance = {
+  theme: "stripe" as "stripe",
+  variables: {
+    fontFamily: "Arial, sans-serif",
+    borderRadius: "8px",
+    fontSize: "16px",
+    colorPrimary: "#000000",
+    colorBackground: "#ffffff",
+    colorText: "#000000",
+    colorDanger: "#ff0000",
+    colorTextPlaceholder: "#505050",
+    iconColor: "#000000",
+    iconCardErrorColor: "#ff0000",
+  },
+};
 
 export default function Layout(): JSX.Element {
   const dispatch = useDispatch();
@@ -34,7 +49,9 @@ export default function Layout(): JSX.Element {
     <>
       <ModalProvider>
         {!hasNav && <Navigation />}
-        <Elements stripe={stripePromise}>{isLoaded && <Outlet />}</Elements>
+        <Elements stripe={stripePromise} options={{ appearance }}>
+          {isLoaded && <Outlet />}
+        </Elements>
         <Modal />
       </ModalProvider>
     </>
