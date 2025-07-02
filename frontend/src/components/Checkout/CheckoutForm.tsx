@@ -125,6 +125,15 @@ function CheckoutForm() {
     }
   };
 
+  const handleDemo = () => {
+    setAddress("123 Demo St");
+    setCity("Demo City");
+    setState("MS");
+    setZip("12345");
+    setErrors(null);
+    setIsLoading(false);
+  }
+
   return (
     <div className="checkout-form">
       <h2>Checkout</h2>
@@ -208,6 +217,9 @@ function CheckoutForm() {
         </div>
         <button type="submit" disabled={!stripe || isLoading}>
           {isLoading ? "Processing..." : "Pay"}
+        </button>
+        <button type="submit" onClick={handleDemo}>
+          Demo Shipping
         </button>
       </form>
     </div>
