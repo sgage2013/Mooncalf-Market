@@ -65,7 +65,7 @@
 }
 .order-total p {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 5px;
     font-weight: bold;
 }
