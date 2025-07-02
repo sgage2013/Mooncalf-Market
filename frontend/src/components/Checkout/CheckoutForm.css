@@ -36,13 +36,6 @@
     text-align: center;
     margin-bottom: 15px;
 }
-.checkout-form .CardElement {
-    padding: 10px;
-    background-color: white;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px black;
-    margin-bottom: 20px;
-}
 .checkout-form button {
     width: 100%;
     padding: 10px;
