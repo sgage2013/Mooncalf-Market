@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ICartState, ICartItem } from "../../redux/types/cart";
 import { getCartItemsThunk } from "../../redux/cart";
 import CheckoutForm from "./CheckoutForm";
+import "./Checkout.css";
 
 function Checkout() {
   const user = useAppSelector((state) => state.session.user);
