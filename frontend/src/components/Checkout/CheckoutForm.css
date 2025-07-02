@@ -25,6 +25,7 @@
 .demo-cards li {
     margin-bottom: 10px;
     padding: 10px;
+    background-color: rgba(225, 224, 224, 0.641);
     border-radius: 4px;
     box-shadow: 0 2px 4px black;
     font-size: medium;
@@ -68,5 +69,12 @@
     border: 1px solid black;
     border-radius: 4px;
     font-size: medium;
-    background-color: rgba(212, 211, 211, 0.568);
+    background-color: rgba(225, 224, 224, 0.641);
+}
+.card-element-container {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: rgba(225, 224, 224, 0.641);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px black;
 }
