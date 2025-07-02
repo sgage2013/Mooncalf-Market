@@ -131,9 +131,6 @@ function CheckoutForm() {
       <p>Demo card numbers are provided below</p>
       <form onSubmit={handleSubmit}>
         <CardElement />
-        <button type="submit" disabled={!stripe || isLoading}>
-          {isLoading ? "Processing..." : "Pay"}
-        </button>
         {errors && <div>{errors}</div>}
         <div className="demo-cards">
           <h3>Demo Card Numbers</h3>
@@ -206,6 +203,9 @@ function CheckoutForm() {
             />
           </label>
         </div>
+        <button type="submit" disabled={!stripe || isLoading}>
+          {isLoading ? "Processing..." : "Pay"}
+        </button>
       </form>
     </div>
   );
