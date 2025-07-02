@@ -34,9 +34,6 @@
 }
 .order-items p, 
 .shipping-info p {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
     color: black;
     font-size: medium;
     margin: 5px 0;
