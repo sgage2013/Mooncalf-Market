@@ -47,8 +47,8 @@
     gap: 15px;
 }
 .order-item img {
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
     object-fit: cover;
     border-radius: 4px;
     box-shadow: 0 2px 8px black;
@@ -59,4 +59,21 @@
 .item-name {
     font-weight: bold;
     margin-bottom: 5px;
+}
+.order-total {
+    text-align: right;
+}
+.order-total p {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    font-weight: bold;
+}
+.order-total-amount {
+    border-top: 1 px solid black;
+    padding-top: 10px;
+}
+.order-total-amount p {
+    font-size: large;
+    color: black;
 }

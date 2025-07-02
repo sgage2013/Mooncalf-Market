@@ -83,7 +83,8 @@ function Checkout() {
         </div>
         <div className="order-total">
           <p>
-            Items {totalItems}: <span>${cartState.subTotal.toFixed(2)}</span>
+            Items {totalItems}
+            <p>Subtotal: ${cartState.subTotal.toFixed(2)}</p>
           </p>
           <p>
             Shipping: <span>${cartState.shipping.toFixed(2)}</span>
