@@ -1,1 +1,37 @@
-
+.checkout-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: silver;
+}
+.checkout-container h1 {
+    font-size: medium;
+    margin-bottom: 20px;
+    text-align: center;;
+}
+.checkout-details,
+.order-summary {
+    width: 100%;
+    max-width: 600px;
+    background-color: grey;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px black;
+}
+.checkout-details button {
+    background-color: rgb(39, 39, 39);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.checkout-details button:hover {
+    background-color: rgb(59, 59, 59);
+}
+.order-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

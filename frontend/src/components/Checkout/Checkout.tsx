@@ -60,7 +60,6 @@ function Checkout() {
 ) : (
   <form onSubmit={handleSubmit}>
     <p>Click place order to proceed to a secure payment page</p>
-    <button type="submit">Place Order</button>
   </form>
 )}
         <form onSubmit={handleSubmit}>
