@@ -56,13 +56,13 @@ function Checkout() {
       <div className="checkout-details">
         <h2> Payment Information</h2>
         {errors && <p className="error">{errors}</p>}
-       {showForm ? (
-  <CheckoutForm />
-) : (
-  <form onSubmit={handleSubmit}>
-    <p>Click place order to proceed to a secure payment page</p>
-  </form>
-)}
+        {showForm ? (
+          <CheckoutForm />
+        ) : (
+          <form onSubmit={handleSubmit}>
+            <p>Click place order to proceed to a secure payment page</p>
+          </form>
+        )}
         <form onSubmit={handleSubmit}>
           <button type="submit">Place Order</button>
         </form>
@@ -83,8 +83,11 @@ function Checkout() {
         </div>
         <div className="order-total">
           <p>
-            Items {totalItems}
-            <p>Subtotal: ${cartState.subTotal.toFixed(2)}</p>
+            Items: {totalItems}
+            <p>
+              Subtotal:
+              <span>${cartState.subTotal.toFixed(2)}</span>
+            </p>
           </p>
           <p>
             Shipping: <span>${cartState.shipping.toFixed(2)}</span>

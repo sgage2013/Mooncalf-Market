@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../redux/store";
 import { createOrderThunk } from "../../redux/order";
 import { csrfFetch } from "../../redux/csrf";
+import "./CheckoutForm.css";
 
 function CheckoutForm() {
   const stripe = useStripe();

@@ -1,0 +1,19 @@
+.checkout-form {
+    padding: 20px;
+    background-color: rgb(165, 163, 163);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px black;
+    width: 100%
+}
+.checkout-form h2 {
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+}
+.checkout-form h3 {
+    color: black;
+    font-size: small;
+    font-weight: 400;
+    text-align: left;
+    margin-bottom: 10px;
+}
