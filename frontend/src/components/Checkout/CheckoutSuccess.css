@@ -38,7 +38,7 @@
     font-size: medium;
     margin: 5px 0;
 }
-.order-items-image img {
+.order-item-image img {
     width: 75px;
     height: 75px;
     object-fit: cover;
