@@ -1,1 +1,12 @@
-
+.checkout-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: silver;
+}
+.checkout-container h1 {
+    font-size: medium;
+    margin-bottom: 20px;
+    text-align: center;;
+}
