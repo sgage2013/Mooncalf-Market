@@ -143,7 +143,7 @@ function CheckoutForm() {
         <div className="card-element-container">
         <CardElement />
         </div>
-        {errors && <div>{errors}</div>}
+        {errors && <div className="errors">{errors}</div>}
         <div className="demo-cards">
           <h3>Demo Card Numbers</h3>
           <ul>
@@ -218,7 +218,7 @@ function CheckoutForm() {
         <button type="submit" disabled={!stripe || isLoading}>
           {isLoading ? "Processing..." : "Pay"}
         </button>
-        <button type="submit" onClick={handleDemo}>
+        <button type="button" onClick={handleDemo}>
           Demo Shipping
         </button>
       </form>

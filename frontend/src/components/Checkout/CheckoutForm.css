@@ -37,7 +37,7 @@
     margin-bottom: 15px;
 }
 .checkout-form button {
-    width: 75px;
+    width: 95px;
     padding: 10px;
     background-color: rgb(39, 39, 39);
     color: rgb(255, 255, 255);
@@ -77,4 +77,10 @@
     background-color: rgba(225, 224, 224, 0.641);
     border-radius: 8px;
     box-shadow: 0 2px 4px black;
+}
+.errors {
+    color: red;
+    font-size: medium;
+    margin-top: 10px;
+    text-align: center;
 }
