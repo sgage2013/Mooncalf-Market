@@ -1,0 +1,46 @@
+.checkout-success-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: silver;
+    border-radius: 8px;
+    text-align: center;
+}
+.checkout-success-container h1 {
+    color: #3f034b;
+    font-size: x-large;
+    margin-bottom: 10px;
+}
+.order-summary h2 {
+    color: black;
+    font-size: large;
+    margin-bottom: 20px;
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+}
+.order-summary p {
+    color: black;
+    font-size: medium;
+    margin: 5px 0;
+}
+.order-items h2{
+    color: black;
+    font-size: large;
+    margin-bottom: 10px;
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+}
+.order-items p, 
+.shipping-info p {
+    color: black;
+    font-size: medium;
+    margin: 5px 0;
+}
+.order-items-image {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 4px;
+}

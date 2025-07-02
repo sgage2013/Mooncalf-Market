@@ -131,7 +131,9 @@ function CheckoutForm() {
       <p>Please enter your payment details.</p>
       <p>Demo card numbers are provided below</p>
       <form onSubmit={handleSubmit}>
+        <div className="card-element-container">
         <CardElement />
+        </div>
         {errors && <div>{errors}</div>}
         <div className="demo-cards">
           <h3>Demo Card Numbers</h3>
