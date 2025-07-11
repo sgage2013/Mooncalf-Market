@@ -4,8 +4,8 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_USERS = "users/loadUser";
 const GET_CURRENT_USER = "users/getOneUser";
-const UPDATE_USER = "users/updateUser";
-const DELETE_USER = "users/deleteUser";
+const UPDATE_PROFILE = "users/updateProfile";
+const DELETE_PROFILE = "users/deleteProfile";
 
 export const getAllUsers = (user: IPublicUser[]) => ({
   type: LOAD_USERS,
@@ -17,12 +17,12 @@ export const getCurrentUser = (user: IFullUser) => ({
   payload: user,
 });
 
-export const updateUser = (user: IFullUser) => ({
-  type: UPDATE_USER,
+export const updateProfile = (user: IFullUser) => ({
+  type: UPDATE_PROFILE,
   payload: user,
 });
-export const deleteUser = (user: IFullUser) => ({
-  type: DELETE_USER,
+export const deleteProfile = (user: IFullUser) => ({
+  type: DELETE_PROFILE,
   payload: user,
 });
 
@@ -67,7 +67,8 @@ export const updateProfileThunk =
       });
       const data = await res.json();
       if (res.ok) {
-        dispatch(updateUser(data.user));
+        dispatch(updateProfile(data.user));
+        console.log("Updated user in thunk:", data.user || data);
         return data.user;
       } else {
         return data;
@@ -86,7 +87,7 @@ export const DeleteProfilethunk = (): any => async (dispatch: any) => {
     });
     const data = await res.json();
     if (res.ok) {
-      dispatch(deleteUser(data.user));
+      dispatch(deleteProfile(data.user));
       return data.user;
     }
   } catch (e) {
@@ -97,7 +98,7 @@ export const DeleteProfilethunk = (): any => async (dispatch: any) => {
 
 const initialState: IUserState = {
   allUsers: {},
-  currentUser: null,
+  user: null,
   errors: null,
 };
 
@@ -118,23 +119,26 @@ function usersReducer(state = initialState, action: IActionCreator) {
       return newState;
 
     case GET_CURRENT_USER:
-      newState.currentUser = action.payload as IFullUser;
+      newState.user = action.payload as IFullUser;
       return newState;
 
-    case UPDATE_USER:
+    case UPDATE_PROFILE:
       const updatedUser = action.payload as IFullUser;
-      newState.allUsers[updatedUser.id] = updatedUser;
-
-      if (newState.currentUser && newState.currentUser.id === updatedUser.id) {
-        newState.currentUser = updatedUser;
+    console.log('reducer updated:', updatedUser)
+      return {
+        ...state,
+        allUsers: {
+          ...state.allUsers,
+          [updatedUser.id]: updatedUser,
+        },
+        user: state.user && state.user.id === updatedUser.id ? updatedUser : state.user
       }
-      return newState;
 
-    case DELETE_USER:
+    case DELETE_PROFILE:
       const deletedUser = action.payload as IFullUser;
       delete newState.allUsers[deletedUser.id];
-      if (newState.currentUser?.id === deletedUser.id) {
-        newState.currentUser = null;
+      if (newState.user?.id === deletedUser.id) {
+        newState.user = null;
       }
       return newState;
 

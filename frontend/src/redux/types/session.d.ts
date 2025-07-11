@@ -23,7 +23,7 @@ export interface IPublicUser {
 }
 
 export interface IUserState {
-    currentUser: IFullUser | null;
+    user: IFullUser | null;
     allUsers: { [id: number]: IPublicUser}
     errors: string | null
 }

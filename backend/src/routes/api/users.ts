@@ -16,7 +16,7 @@ import db from "../../db/models";
 import { errors } from "../../typings/errors";
 import { NoResourceError } from "../../errors/customErrors";
 
-const { User, UserImage } = db;
+const { User } = db;
 
 const router = require("express").Router();
 
@@ -39,6 +39,7 @@ router.post(
   async (req: Request, res: Response, next: NextFunction) => {
     const { firstName, lastName, email, password, username, isHost } = req.body;
     const hashedPassword = bcrypt.hashSync(password);
+console.log('Loaded user: ', db.User);
 
     let existingUser = await User.findOne({
       where: {
@@ -48,6 +49,7 @@ router.post(
         },
       },
     });
+    console.log(existingUser);
 
     if (existingUser) {
       if (existingUser) existingUser = existingUser.toJSON();
@@ -89,11 +91,7 @@ router.post(
 
 //get all users
 router.get("/all", async (req: Request, res: Response) => {
-  const users = await User.findAll({
-    include: {
-      model: UserImage,
-    },
-  });
+  const users = await User.findAll();
   res.json(users);
 });
 
@@ -110,12 +108,15 @@ router.delete(
             "No user found with those credentials",
             404
           );
+          if(req.user.username !== "roonilwazlib") {
+            return res.status(403).json({
+              message: "You can not delete the demo account.",
+            });
+          }
         user.destroy();
         res.status(202);
         res.json({ user: null });
-      } else {
-        throw new Error("You can not delete the Demo User account.");
-      }
+      } 
     } catch (error) {
       next(error);
     }
@@ -154,7 +155,7 @@ router.put(
         return res.status(403).json({ message: "Unauthorized" });
       }
 
-      const { email, username, password } = req.body;
+      const { email, username, password, firstName, lastName } = req.body;
       const user = await User.findByPk(req.user.id);
 
       if (!user) {
@@ -178,7 +179,7 @@ router.put(
         (user.hashedPassword = bcrypt.hashSync(password));
       }
       await user.save();
-
+      console.log('updated user: ', user);
       const safeUser = await user.getSafeUser();
 
       return res.json({ user: safeUser });

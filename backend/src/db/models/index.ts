@@ -25,7 +25,7 @@ if(process.env.NODE_ENV === 'development'){
       return (
         file.indexOf('.') !== 0 &&
         file !== basename &&
-        file.slice(-3) === '.js'
+        file.slice(-3) === '.ts'
       );
     })
     .forEach((file: any) => {

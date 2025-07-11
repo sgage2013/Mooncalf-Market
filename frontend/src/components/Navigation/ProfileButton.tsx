@@ -6,6 +6,7 @@ import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useAppSelector } from "../../redux/store";
+import {useNavigate} from "react-router-dom";
 import './Navigation.css';
 
 function ProfileButton():JSX.Element {
@@ -13,6 +14,7 @@ function ProfileButton():JSX.Element {
   const [showMenu, setShowMenu] = useState(false);
   const user = useAppSelector((store) => store.session.user);
   const ulRef = useRef<any>();
+  const navigate = useNavigate();
 
   const toggleMenu = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation();
@@ -54,6 +56,12 @@ function ProfileButton():JSX.Element {
               <li>{user.email}</li>
               <li>
                 <button onClick={(e) => logout(e)}>Log Out</button>
+              </li>
+              <li>
+                <button onClick={() => navigate('/profile')}>
+                  Edit Profile
+
+                </button>
               </li>
             </>
           ) : (
