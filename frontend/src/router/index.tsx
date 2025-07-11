@@ -12,6 +12,7 @@ import Cart from "../components/Cart/Cart";
 import Checkout from "../components/Checkout/Checkout";
 import CheckoutForm from "../components/Checkout/CheckoutForm";
 import CheckoutSuccess from "../components/Checkout/CheckoutSuccess";
+import UpdateUser from "../components/User/UpdateUser";
 
 export const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ export const router = createBrowserRouter([
       {
         path: "/checkout/success/:orderId",
         element: <CheckoutSuccess />
+      },
+      {
+        path: "/profile",
+        element: <UpdateUser />,
       }
     ],
   },
