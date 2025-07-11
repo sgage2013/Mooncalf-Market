@@ -5,6 +5,7 @@ type ItemAttributes = {
   name: string;
   description: string;
   price: number;
+  stars: number;
   mainImageUrl: string;
   image2Url: string;
   image3Url: string
@@ -29,6 +30,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     declare name: string;
     declare description: string;
     declare price: number;
+    declare stars: number;
     declare mainImageUrl: string;
     declare image2Url: string;
     declare image3Url: string
@@ -69,6 +71,14 @@ module.exports = (sequelize: any, DataTypes: any) => {
       price: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
+      },
+      stars: {
+        type: DataTypes.DECIMAL(2, 1),
+        allowNull: false,
+        validate: {
+          min: 0,
+          max: 5,
+        },
       },
       description: {
         type: DataTypes.STRING,

@@ -18,10 +18,10 @@ module.exports = {
         options.tableName = 'Users';
         return queryInterface.bulkInsert(options, [
             {
-                firstName: "SpongeBob",
-                lastName: "Squarepants",
-                email: "spongebob@aa.io",
-                username: "Spongebob",
+                firstName: "Ron",
+                lastName: "Weasley",
+                email: "ron@weasley.com",
+                username: "roonilwazlib",
                 hashedPassword: "$2a$10$RWA3t0FVaTYW1AOKNz5La.3jZDoe0RRqfZ3GFIIrmuNxnjHS0bxu6"
             },
             {

@@ -46,7 +46,7 @@ function Home() {
       <div className="home-container">
         <div className="highest-rated">
           <h2>Highest Rated Items</h2>
-        </div>
+        
         <div className="items-grid">
           {highestRated.map((item: IItem) => (
             <div key={item.id} className="item-card">
@@ -81,9 +81,10 @@ function Home() {
             </div>
           ))}
         </div>
+        </div>
 
-        <div className="newArrivals">
-          <h2>NewArrivals</h2>
+        <div className="new-arrivals">
+          <h2>New Arrivals</h2>
           <div className="items-grid">
             {newArrivals.map((item: IItem) => (
               <div key={item.id} className="item-card">

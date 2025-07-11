@@ -28,9 +28,13 @@ module.exports = {
         type: Sequelize.DECIMAL(10, 2),
         allowNull: false
       },
+      stars: {
+        type: Sequelize.DECIMAL(2, 1),
+        allowNull: false,
+      },
       mainImageUrl: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: false
       },
       image2Url: {
         type: Sequelize.STRING,

@@ -32,6 +32,14 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DECIMAL(10, 2),
             allowNull: false,
         },
+        stars: {
+            type: DataTypes.DECIMAL(2, 1),
+            allowNull: false,
+            validate: {
+                min: 0,
+                max: 5,
+            },
+        },
         description: {
             type: DataTypes.STRING,
             allowNull: true,

@@ -6,9 +6,10 @@ import './DeleteReviewModal.css';
 
 interface DeleteReviewModalProps {
   review: IExistingReview; 
+  onSuccess: () => void; 
 }
 
-function DeleteReviewModal({ review }: DeleteReviewModalProps) {
+function DeleteReviewModal({ review, onSuccess }: DeleteReviewModalProps) {
 
 const dispatch = useAppDispatch();
 const { closeModal } = useModal();
@@ -16,6 +17,7 @@ const { closeModal } = useModal();
 const handleDelete = async () => {
     await dispatch(deleteReviewThunk(review.id, review.itemId));
     closeModal();
+    onSuccess(); 
   };
   
 

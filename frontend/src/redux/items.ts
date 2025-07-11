@@ -83,6 +83,7 @@ export const getOneItemThunk =
         return {...state, subCategoryItems:action.payload, errors: null };
     
         case GET_ONE_ITEM:
+          console.log("GET_ONE_ITEM action payload:", action.payload);
             return {...state, currentItem: action.payload, errors: null};
 
         case GET_CATEGORY_ITEMS: 

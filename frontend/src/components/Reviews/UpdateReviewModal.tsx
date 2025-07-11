@@ -10,9 +10,10 @@ import './UpdateReviewModal.css'
 interface IUpdateReviewModalProps {
   itemId: number;
   review: IExistingReview
+  onSuccess: () => void;
 }
 
-function UpdateReviewModal({ review }: IUpdateReviewModalProps) {
+function UpdateReviewModal({ review, onSuccess  }: IUpdateReviewModalProps) {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const user = useAppSelector(state => state.session.user)
@@ -58,6 +59,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
   if (updatedReview && !updatedReview.errors) {
     closeModal();
+    onSuccess();
   } else if (updatedReview && updatedReview.errors) {
     setErrors(updatedReview.errors);
   }

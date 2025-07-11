@@ -6,7 +6,12 @@ import { createReviewThunk } from '../../redux/reviews'
 import { useNavigate } from 'react-router-dom'
 import './CreateReviewModal.css'
 
-function CreateReviewModal({ itemId }: { itemId: number }) {
+interface CreateReviewModalProps {
+  itemId: number
+  onSuccess: () => void;
+}
+
+function CreateReviewModal({ itemId, onSuccess }: CreateReviewModalProps) {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const user = useAppSelector(state => state.session.user)
@@ -50,6 +55,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
   if (createdReview && !createdReview.errors) {
     closeModal();
+    onSuccess();
   } else if (createdReview && createdReview.errors) {
     setErrors(createdReview.errors);
   }

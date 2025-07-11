@@ -18,7 +18,7 @@ const bcrypt = require("bcryptjs");
 const { Op } = require("sequelize");
 const models_1 = __importDefault(require("../../db/models"));
 const customErrors_1 = require("../../errors/customErrors");
-const { User, UserImage } = models_1.default;
+const { User } = models_1.default;
 const router = require("express").Router();
 const validateSignup = [
     check("email").isEmail().withMessage("Please provide a valid email."),
@@ -34,6 +34,7 @@ const validateSignup = [
 router.post("/signup", validateSignup, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { firstName, lastName, email, password, username, isHost } = req.body;
     const hashedPassword = bcrypt.hashSync(password);
+    console.log('Loaded user: ', models_1.default.User);
     let existingUser = yield User.findOne({
         where: {
             [Op.or]: {
@@ -42,6 +43,7 @@ router.post("/signup", validateSignup, (req, res, next) => __awaiter(void 0, voi
             },
         },
     });
+    console.log(existingUser);
     if (existingUser) {
         if (existingUser)
             existingUser = existingUser.toJSON();
@@ -76,11 +78,7 @@ router.post("/signup", validateSignup, (req, res, next) => __awaiter(void 0, voi
     }
 }));
 router.get("/all", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const users = yield User.findAll({
-        include: {
-            model: UserImage,
-        },
-    });
+    const users = yield User.findAll();
     res.json(users);
 }));
 router.delete("/profile", auth_1.validateUser, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
@@ -90,12 +88,14 @@ router.delete("/profile", auth_1.validateUser, (req, res, next) => __awaiter(voi
             const user = yield User.findByPk(userId);
             if (!user)
                 throw new customErrors_1.NoResourceError("No user found with those credentials", 404);
+            if (req.user.username !== "roonilwazlib") {
+                return res.status(403).json({
+                    message: "You can not delete the demo account.",
+                });
+            }
             user.destroy();
             res.status(202);
             res.json({ user: null });
-        }
-        else {
-            throw new Error("You can not delete the Demo User account.");
         }
     }
     catch (error) {
@@ -124,7 +124,7 @@ router.put("/profile", auth_1.validateUser, (req, res, next) => __awaiter(void 0
         if (!req.user) {
             return res.status(403).json({ message: "Unauthorized" });
         }
-        const { email, username, password } = req.body;
+        const { email, username, password, firstName, lastName } = req.body;
         const user = yield User.findByPk(req.user.id);
         if (!user) {
             return res.status(404).json({ message: "User not found" });
@@ -147,6 +147,7 @@ router.put("/profile", auth_1.validateUser, (req, res, next) => __awaiter(void 0
             (user.hashedPassword = bcrypt.hashSync(password));
         }
         yield user.save();
+        console.log('updated user: ', user);
         const safeUser = yield user.getSafeUser();
         return res.json({ user: safeUser });
     }

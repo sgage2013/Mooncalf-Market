@@ -45,24 +45,33 @@ function SingleItem() {
     }
   }, [dispatch, itemId]);
 
-  const handleReviewClose = useCallback(() => {
-    refreshReviews();
-  }, [refreshReviews]);
+  const getItemDetails = useCallback(() => {
+    if (itemId) {
+      const itemNumber = parseInt(itemId, 10);
+      dispatch(getOneItemThunk(itemNumber));
+    }
+  }, [dispatch, itemId]);
+
+  const handleReviewClose = useCallback(async () => {
+    console.log("handle review close started");
+    await refreshReviews();
+    await getItemDetails();
+    console.log("handle review close finished");
+  }, [refreshReviews, getItemDetails]);
 
   useEffect(() => {
     refreshReviews();
-  }, [refreshReviews]);
+    getItemDetails();
+  }, [refreshReviews, getItemDetails]);
 
   const handleAddToCart = async () => {
     if (item?.id === undefined) return;
     const quantity = 1;
-    const res = await dispatch(
-      addToCartThunk(item.id, quantity)
-    );
-    if (res){
+    const res = await dispatch(addToCartThunk(item.id, quantity));
+    if (res) {
       alert(`${item?.name} has been added to your knapsack!`);
     }
-  }
+  };
   useEffect(() => {
     let currentItem: string;
 
@@ -77,12 +86,15 @@ function SingleItem() {
     setLoading(false);
     setErrors(null);
 
-    const itemNumber = parseInt(currentItem);
+    // const itemNumber = parseInt(currentItem);
 
-    if (!item || item.id !== itemNumber) {
-      dispatch(getOneItemThunk(itemNumber));
-    }
-  }, [dispatch, itemId, item]);
+    getItemDetails();
+    refreshReviews();
+
+    // if (!item || item.id !== itemNumber) {
+    //   dispatch(getOneItemThunk(itemNumber));
+    // }
+  }, [itemId, refreshReviews, getItemDetails]);
 
   if (loading) {
     return <div className="loading">Loading Item</div>;
@@ -118,61 +130,67 @@ function SingleItem() {
       </div>
       <div className="item-details">
         <div className="image-gallery-container">
-        <div className="image-gallery">
-          <img
-            src={images[currentImage]}
-            alt={item.name}
-            className="main-image"
+          <div className="image-gallery">
+            <img
+              src={images[currentImage]}
+              alt={item.name}
+              className="main-image"
             />
+            {images.length > 1 && (
+              <>
+                {" "}
+                <button onClick={handlePrevImage} className="image-prev-button">
+                  &lt;{" "}
+                </button>
+                <button onClick={handleNextImage} className="image-next-button">
+                  &gt;
+                </button>
+              </>
+            )}
+          </div>
           {images.length > 1 && (
-            <>
-              {" "}
-              <button onClick={handlePrevImage} className="image-prev-button">
-                &lt;{" "}
-              </button>
-              <button onClick={handleNextImage} className="image-next-button">
-                &gt;
-              </button>
-            </>
+            <div className="image-previews">
+              {images.map((imgUrl, index) => (
+                <img
+                  key={index}
+                  src={imgUrl}
+                  alt={`${item.name} preview ${index + 1}`}
+                  className={`preview-thumbnail ${
+                    index === currentImage ? "active" : ""
+                  }`}
+                  onClick={() => setCurrentImage(index)}
+                />
+              ))}
+            </div>
           )}
         </div>
-        {images.length > 1 && (
-          <div className="image-previews">
-            {images.map((imgUrl, index) => (
-              <img
-              key={index}
-              src={imgUrl}
-              alt={`${item.name} preview ${index + 1}`}
-              className={`preview-thumbnail ${
-                index === currentImage ? "active" : ""
-              }`}
-              onClick={() => setCurrentImage(index)}
+        <div className="item-info">
+          <p className="price">
+            $
+            {typeof item.price === "string"
+              ? parseFloat(item.price).toFixed(2)
+              : item.price.toFixed(2)}
+          </p>
+          {item.stars ? (
+            <div className="rating">
+              <Rating
+                name="read-only-avg-rating"
+                value={item.stars}
+                precision={0.1}
+                readOnly
+                size="medium"
               />
-            ))}
+              <span>({item.stars.toFixed(1)})</span>
+            </div>
+          ) : (
+            <p>No Ratings Yet</p>
+          )}
+          <p className="description">{item.description}</p>
+          <div className="item-actions">
+            <button className="add-to-cart" onClick={handleAddToCart}>
+              Add to Cart
+            </button>
           </div>
-        )}
-      </div>
-      <div className="item-info">
-        <p className="price">${typeof item.price === "string" ?
-        parseFloat(item.price).toFixed(2) : item.price.toFixed(2)}</p>
-        {item.stars ? (
-          <div className="rating">
-            <Rating
-              name="read-only-avg-rating"
-              value={item.stars}
-              precision={0.1}
-              readOnly
-              size="medium"
-              />
-            <span>({item.stars.toFixed(1)})</span>
-          </div>
-        ) : (
-          <p>No Ratings Yet</p>
-        )}
-        <p className="description">{item.description}</p>
-        <div className="item-actions">
-          <button className="add-to-cart" onClick={handleAddToCart}>Add to Cart</button>
-        </div>
         </div>
       </div>
       <div className="reviews-container">
@@ -194,27 +212,37 @@ function SingleItem() {
                 <span className="review-date">
                   {new Date(review.createdAt).toLocaleDateString()}
                 </span>
-                
-                {user && user.id === review.userId && (
-                  (console.log("user.id:", user.id, "review.userId:", review.userId)),
-                  <div className="review-actions">
-                    <OpenModalButton
-                      buttonText="Update Review"
-                      modalComponent={
-                        <UpdateReviewModal
-                          itemId={item.id}
-                          review={review as IExistingReview}
+
+                {user &&
+                  user.id === review.userId &&
+                  (console.log(
+                    "user.id:",
+                    user.id,
+                    "review.userId:",
+                    review.userId
+                  ),
+                  (
+                    <div className="review-actions">
+                      <OpenModalButton
+                        buttonText="Update Review"
+                        modalComponent={
+                          <UpdateReviewModal
+                            itemId={item.id}
+                            review={review as IExistingReview}
+                            onSuccess={handleReviewClose}
                           />
                         }
                         onModalClose={handleReviewClose}
-                    />
-                  </div>
-                )}
+                      />
+                    </div>
+                  ))}
                 {user && user.id === review.userId && (
                   <OpenModalButton
                     buttonText="Delete Review"
                     modalComponent={
-                      <DeleteReviewModal review={review as IExistingReview} />
+                      <DeleteReviewModal review={review as IExistingReview}
+                        onSuccess={handleReviewClose}
+                      />
                     }
                     onModalClose={handleReviewClose}
                   />
@@ -228,7 +256,12 @@ function SingleItem() {
         <div className="review-action">
           {item.id !== undefined && (
             <OpenModalButton
-              modalComponent={<CreateReviewModal itemId={item.id} />}
+              modalComponent={
+                <CreateReviewModal
+                  itemId={item.id}
+                  onSuccess={handleReviewClose}
+                />
+              }
               buttonText="Write a Review"
               onModalClose={handleReviewClose}
             />

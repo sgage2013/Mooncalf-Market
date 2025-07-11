@@ -27,16 +27,17 @@
     background-color: silver;
     box-shadow: 0 0 10px black;
     border-radius: 8px;
+    margin-bottom: 40px;;
 }
 .new-arrivals {
     margin-bottom: 40px;
 }
-.highest-rated h2,
+/* .highest-rated h2,
 .new-arrivals h2 {
     text-align: center;
     margin-bottom: 20px;
     color: black;
-}
+} */
 .items-grid{
     display: flex;
     flex-wrap: nowrap;
