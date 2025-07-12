@@ -110,9 +110,9 @@ function Home() {
                         readOnly
                         size="small"
                       />
-                      <span className="item-avg-rating">
+                      {/* <span className="item-avg-rating">
                         {(item.avgRating || 0).toFixed(1)}
-                      </span>
+                      </span> */}
                     </div>
                   )}
                 </Link>
