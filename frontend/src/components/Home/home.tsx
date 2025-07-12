@@ -69,13 +69,13 @@ function Home() {
                     readOnly
                     size="small"
                   />
-                  <span className="item-avg-rating">
+                  {/* <span className="item-avg-rating">
                     {item.avgRating !== null &&
                     typeof item.avgRating === "number"
                       ? (item.avgRating || 0).toFixed(1)
                       : "No ratings yet"}{" "}
                     {item.reviewCount}
-                  </span>
+                  </span> */}
                 </div>
               </Link>
             </div>
