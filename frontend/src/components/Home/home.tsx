@@ -72,7 +72,7 @@ function Home() {
                   <span className="item-avg-rating">
                     {item.avgRating !== null &&
                     typeof item.avgRating === "number"
-                      ? item.avgRating.toFixed(1)
+                      ? (item.avgRating || 0).toFixed(1)
                       : "No ratings yet"}{" "}
                     {item.reviewCount}
                   </span>
