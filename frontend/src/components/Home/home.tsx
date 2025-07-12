@@ -111,7 +111,7 @@ function Home() {
                         size="small"
                       />
                       <span className="item-avg-rating">
-                        {item.avgRating.toFixed(1)}
+                        {(item.avgRating || 0).toFixed(1)}
                       </span>
                     </div>
                   )}
