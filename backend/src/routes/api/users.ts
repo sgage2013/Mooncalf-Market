@@ -39,7 +39,6 @@ router.post(
   async (req: Request, res: Response, next: NextFunction) => {
     const { firstName, lastName, email, password, username, isHost } = req.body;
     const hashedPassword = bcrypt.hashSync(password);
-console.log('Loaded user: ', db.User);
 
     let existingUser = await User.findOne({
       where: {
@@ -89,7 +88,7 @@ console.log('Loaded user: ', db.User);
   }
 );
 
-//get all users
+
 router.get("/all", async (req: Request, res: Response) => {
   const users = await User.findAll();
   res.json(users);
@@ -156,7 +155,16 @@ router.put(
       }
 
       const { email, username, password, firstName, lastName } = req.body;
-      const user = await User.findByPk(req.user.id);
+      const user = await User.findByPk(req.user.id,
+        {
+  attributes: [
+    'id',
+    'firstName',
+    'lastName',
+    'username',
+    'email',
+  ]
+});
 
       if (!user) {
         return res.status(404).json({ message: "User not found" });
@@ -175,11 +183,16 @@ router.put(
         }
         user.email = email;
       }
+      if (firstName && firstName !== user.firstName) {
+        user.firstName = firstName;
+      }
+      if (lastName && lastName !== user.lastName) {
+        user.lastName = lastName;
+      }
       if (password) {
         (user.hashedPassword = bcrypt.hashSync(password));
       }
       await user.save();
-      console.log('updated user: ', user);
       const safeUser = await user.getSafeUser();
 
       return res.json({ user: safeUser });

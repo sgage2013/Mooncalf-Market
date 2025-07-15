@@ -31,7 +31,6 @@ const CheckoutSuccess = () => {
   }, [id, dispatch]);
 
   if (!order) {
-    console.log("order:", order);
     return <div className="loading">Loading Order...</div>;
   }
 

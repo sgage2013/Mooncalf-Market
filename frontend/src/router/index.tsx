@@ -67,7 +67,7 @@ export const router = createBrowserRouter([
         element: <CheckoutSuccess />
       },
       {
-        path: "/profile",
+        path: "/users/profile",
         element: <UpdateUser />,
       }
     ],

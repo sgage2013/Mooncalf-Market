@@ -2,10 +2,10 @@ import { IPublicUser, IFullUser, IUserState } from "./types/session";
 import { IActionCreator } from "./types/redux";
 import { csrfFetch } from "./csrf";
 
-const LOAD_USERS = "users/loadUser";
-const GET_CURRENT_USER = "users/getOneUser";
-const UPDATE_PROFILE = "users/updateProfile";
-const DELETE_PROFILE = "users/deleteProfile";
+export const LOAD_USERS = "users/loadUser";
+export const GET_CURRENT_USER = "users/getOneUser";
+export const UPDATE_PROFILE = "users/updateProfile";
+export const DELETE_PROFILE = "users/deleteProfile";
 
 export const getAllUsers = (user: IPublicUser[]) => ({
   type: LOAD_USERS,
@@ -44,7 +44,7 @@ export const getUserProfileThunk =
   (userId: number): any =>
   async (dispatch: any) => {
     try {
-      const res = await csrfFetch(`/api/users/${userId}`);
+      const res = await csrfFetch(`/api/users/profile`);
 
       if (res.ok) {
         const user = await res.json();
@@ -68,7 +68,6 @@ export const updateProfileThunk =
       const data = await res.json();
       if (res.ok) {
         dispatch(updateProfile(data.user));
-        console.log("Updated user in thunk:", data.user || data);
         return data.user;
       } else {
         return data;
@@ -79,7 +78,7 @@ export const updateProfileThunk =
     }
   };
 
-export const DeleteProfilethunk = (): any => async (dispatch: any) => {
+export const deleteProfilethunk = (): any => async (dispatch: any) => {
   try {
     const res = await csrfFetch("/api/users/profile", {
       method: "DELETE",
@@ -124,7 +123,6 @@ function usersReducer(state = initialState, action: IActionCreator) {
 
     case UPDATE_PROFILE:
       const updatedUser = action.payload as IFullUser;
-    console.log('reducer updated:', updatedUser)
       return {
         ...state,
         allUsers: {

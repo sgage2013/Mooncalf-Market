@@ -2,13 +2,13 @@ import './UpdateUser.css';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../redux/store';
-import {updateProfileThunk, DeleteProfilethunk} from '../../redux/users';
-import {ISignUpUser} from '../../redux/types/session'
+import {updateProfileThunk, deleteProfilethunk, getUserProfileThunk} from '../../redux/users';
+import {IFullUser} from '../../redux/types/session'
 
 const UpdateUser = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const user = useAppSelector((state) => state.session.user) as ISignUpUser | null;
+    const user = useAppSelector((state) => state.session.user) as IFullUser | null;
     const [fieldToEdit, setFieldToEdit] = useState<string | null>(null);
     const [input, setInput] = useState<string>('');
     const [errors, setErrors] = useState<string| null>(null);
@@ -50,17 +50,27 @@ const UpdateUser = () => {
            setErrors(res.errors);
        } else {
            setIsSuccessful(true);
+           setErrors(null);
+           if (user && user.id) {
+               await dispatch(getUserProfileThunk(user.id));
+           }
+           setFieldToEdit(null);
+           setInput('');
        }
    };
 
    const handleDelete = async () => {
-       const res = await dispatch(DeleteProfilethunk());
+       const res = await dispatch(deleteProfilethunk());
        if (res.errors) {
            setErrors(res.errors);
        } else {
            navigate('/');
        }
    };
+
+   if(!user) {
+       return <div>Loading...</div>;
+   }
 
    return (
        <div className='update-container'>
