@@ -53,10 +53,8 @@ function SingleItem() {
   }, [dispatch, itemId]);
 
   const handleReviewClose = useCallback(async () => {
-    console.log("handle review close started");
     await refreshReviews();
     await getItemDetails();
-    console.log("handle review close finished");
   }, [refreshReviews, getItemDetails]);
 
   useEffect(() => {
@@ -86,14 +84,9 @@ function SingleItem() {
     setLoading(false);
     setErrors(null);
 
-    // const itemNumber = parseInt(currentItem);
-
     getItemDetails();
     refreshReviews();
 
-    // if (!item || item.id !== itemNumber) {
-    //   dispatch(getOneItemThunk(itemNumber));
-    // }
   }, [itemId, refreshReviews, getItemDetails]);
 
   if (loading) {

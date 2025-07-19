@@ -72,3 +72,9 @@ h2 {
 .item-name {
     margin: 15px 10px 5px;
 }
+.item-avg-rating {
+    margin-left: 3px;
+    color: rgb(6, 6, 6);
+    font-weight: thin;
+    font-size: 13px;
+}

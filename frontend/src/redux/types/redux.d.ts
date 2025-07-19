@@ -9,6 +9,6 @@ export interface CSRFHttpOptions {
 
 export interface IActionCreator {
     type: string;
-    payload: IUser
+    payload?: any
 }
 

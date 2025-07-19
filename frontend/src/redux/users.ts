@@ -1,5 +1,6 @@
 import { IPublicUser, IFullUser, IUserState } from "./types/session";
 import { IActionCreator } from "./types/redux";
+// import { AnyAction } from "redux";
 import { csrfFetch } from "./csrf";
 
 export const LOAD_USERS = "users/loadUser";
@@ -21,9 +22,8 @@ export const updateProfile = (user: IFullUser) => ({
   type: UPDATE_PROFILE,
   payload: user,
 });
-export const deleteProfile = (user: IFullUser) => ({
-  type: DELETE_PROFILE,
-  payload: user,
+export const deleteProfile = () => ({
+  type: DELETE_PROFILE
 });
 
 export const getAllUsersThunk = (): any => async (dispatch: any) => {
@@ -41,7 +41,7 @@ export const getAllUsersThunk = (): any => async (dispatch: any) => {
 };
 
 export const getUserProfileThunk =
-  (userId: number): any =>
+  (): any =>
   async (dispatch: any) => {
     try {
       const res = await csrfFetch(`/api/users/profile`);
@@ -78,7 +78,7 @@ export const updateProfileThunk =
     }
   };
 
-export const deleteProfilethunk = (): any => async (dispatch: any) => {
+export const deleteProfileThunk = (): any => async (dispatch: any) => {
   try {
     const res = await csrfFetch("/api/users/profile", {
       method: "DELETE",
@@ -86,7 +86,7 @@ export const deleteProfilethunk = (): any => async (dispatch: any) => {
     });
     const data = await res.json();
     if (res.ok) {
-      dispatch(deleteProfile(data.user));
+      dispatch(deleteProfile());
       return data.user;
     }
   } catch (e) {
@@ -101,7 +101,8 @@ const initialState: IUserState = {
   errors: null,
 };
 
-function usersReducer(state = initialState, action: IActionCreator) {
+function usersReducer(state: IUserState = initialState, action?: IActionCreator): IUserState {
+  if (!action) return state;
   let newState = {
     ...state,
     allUsers: { ...state.allUsers },
@@ -133,12 +134,10 @@ function usersReducer(state = initialState, action: IActionCreator) {
       }
 
     case DELETE_PROFILE:
-      const deletedUser = action.payload as IFullUser;
-      delete newState.allUsers[deletedUser.id];
-      if (newState.user?.id === deletedUser.id) {
-        newState.user = null;
-      }
-      return newState;
+      return {
+        ...state,
+        user: null,
+      };
 
     default:
       return state;

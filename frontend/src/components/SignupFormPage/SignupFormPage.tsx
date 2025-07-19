@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { thunkSignup } from "../../redux/session";
 import { useAppSelector } from "../../redux/store";
 import "./SignupForm.css";
+
 
 
 interface ISignUpErrors {
@@ -25,6 +26,7 @@ function SignupFormPage() {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [isSuccessful, setIsSuccessful] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState<ISignUpErrors>({
     server: "",
@@ -35,8 +37,6 @@ function SignupFormPage() {
     password: "",
     confirmPassword: ""
   });
-
-  if (sessionUser) return <Navigate to="/home" replace={true} />;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -61,11 +61,15 @@ function SignupFormPage() {
     if (serverResponse) {
       setErrors(serverResponse);
     } else {
-      navigate("/home");
+      setIsSuccessful(true);
     }
   };
 
-
+  useEffect(() => {
+    if (isSuccessful && sessionUser) {
+      navigate("/home");
+    }
+  }, [isSuccessful, navigate]);
 
   return (
     <div className='signup-form-page'>

@@ -58,7 +58,10 @@ function ProfileButton():JSX.Element {
                 <button onClick={(e) => logout(e)}>Log Out</button>
               </li>
               <li>
-                <button onClick={() => navigate('/users/profile')}>
+                <button onClick={() => {
+                   closeMenu();
+                   navigate('/users/profile');
+                }}>
                   Edit Profile
 
                 </button>
