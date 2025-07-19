@@ -17,10 +17,10 @@ function DeleteUserModal ({onSuccess }: DeleteUserModalProps) {
   const handleDelete = async () => {
     const result = await dispatch(deleteProfileThunk());
     if (result) {
-        closeModal();
+      closeModal();
       onSuccess();
+      // navigate('/');
     }
-    navigate('/');
   };
 
   return (

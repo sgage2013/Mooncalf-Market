@@ -1,10 +1,10 @@
-.update-container {
+/* .update-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   background-color: gray;
-  border-radius: 8px;
+  border-radius: 12px;
   width: 100%;
   box-shadow: 0 4px 8px black;
 }
@@ -15,16 +15,17 @@
 }
 .field-container {
   display: flex;
-  text-align: center;
+  /* text-align: center; */
+  /* justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: 400px;
   margin-bottom: 10px;
   padding: 5px 0;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .field-container label {
-    min-width: 90px;
+  min-width: 90px;
   color: black;
   font-weight: bold;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -37,7 +38,22 @@
     border-radius: 4px;
     font-size: 16px;
 }
-.edit-button button {
+.edit-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+.edit-input {
+  width: 250px;
+  margin-right: 1px;
+}
+.edit button {
+  display: flex;
+  align-items: center;
+}
+.edit-button button,
+.MuiButton-root.edit-button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,7 +72,7 @@
     margin-top: 10px;
     margin-bottom: 15px;
 }
-.delete-button {
+.delete-profile {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,4 +84,104 @@
     cursor: pointer;
     margin-left: 25px;
     height: 27px;
+} */ 
+
+/* Container Styling */
+.update-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.update-container h2 {
+  margin-bottom: 24px;
+  color: #333;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Field Group Styling */
+.field-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 18px;
+  gap: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.field-container label {
+  flex-shrink: 0;
+  min-width: 100px;
+  color: #555;
+  font-weight: 600;
+}
+
+/* View Mode */
+.user-field {
+  background-color: #fff;
+  color: #333;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+/* Edit Mode Inputs */
+.edit-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.edit-input {
+  flex-grow: 1;
+}
+
+/* Buttons (Edit, Save, Cancel) */
+.edit-button {
+  display: flex;
+  align-items: center;
+}
+
+.edit-button button,
+.MuiButton-root.edit-button {
+  font-size: 0.8rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.edit-button.cancel {
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #555;
+}
+
+.success {
+  color: rgb(138, 52, 195);
+  font-weight: 500;
+  margin-top: 16px;
+}
+
+.error {
+  color: red;
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+/* Delete Profile Button (wrapper styling) */
+.delete-profile {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
