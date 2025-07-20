@@ -34,7 +34,6 @@ const validateSignup = [
 router.post("/signup", validateSignup, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { firstName, lastName, email, password, username, isHost } = req.body;
     const hashedPassword = bcrypt.hashSync(password);
-    console.log('Loaded user: ', models_1.default.User);
     let existingUser = yield User.findOne({
         where: {
             [Op.or]: {
@@ -43,7 +42,6 @@ router.post("/signup", validateSignup, (req, res, next) => __awaiter(void 0, voi
             },
         },
     });
-    console.log(existingUser);
     if (existingUser) {
         if (existingUser)
             existingUser = existingUser.toJSON();
@@ -88,7 +86,7 @@ router.delete("/profile", auth_1.validateUser, (req, res, next) => __awaiter(voi
             const user = yield User.findByPk(userId);
             if (!user)
                 throw new customErrors_1.NoResourceError("No user found with those credentials", 404);
-            if (req.user.username !== "roonilwazlib") {
+            if (req.user.username === "roonilwazlib") {
                 return res.status(403).json({
                     message: "You can not delete the demo account.",
                 });
@@ -125,7 +123,15 @@ router.put("/profile", auth_1.validateUser, (req, res, next) => __awaiter(void 0
             return res.status(403).json({ message: "Unauthorized" });
         }
         const { email, username, password, firstName, lastName } = req.body;
-        const user = yield User.findByPk(req.user.id);
+        const user = yield User.findByPk(req.user.id, {
+            attributes: [
+                'id',
+                'firstName',
+                'lastName',
+                'username',
+                'email',
+            ]
+        });
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
@@ -143,11 +149,16 @@ router.put("/profile", auth_1.validateUser, (req, res, next) => __awaiter(void 0
             }
             user.email = email;
         }
+        if (firstName && firstName !== user.firstName) {
+            user.firstName = firstName;
+        }
+        if (lastName && lastName !== user.lastName) {
+            user.lastName = lastName;
+        }
         if (password) {
             (user.hashedPassword = bcrypt.hashSync(password));
         }
         yield user.save();
-        console.log('updated user: ', user);
         const safeUser = yield user.getSafeUser();
         return res.json({ user: safeUser });
     }

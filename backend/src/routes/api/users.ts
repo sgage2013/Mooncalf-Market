@@ -48,7 +48,6 @@ router.post(
         },
       },
     });
-    console.log(existingUser);
 
     if (existingUser) {
       if (existingUser) existingUser = existingUser.toJSON();
@@ -107,7 +106,7 @@ router.delete(
             "No user found with those credentials",
             404
           );
-          if(req.user.username !== "roonilwazlib") {
+          if(req.user.username === "roonilwazlib") {
             return res.status(403).json({
               message: "You can not delete the demo account.",
             });

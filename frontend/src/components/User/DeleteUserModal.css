@@ -1,0 +1,13 @@
+.delete-user-modal {
+    width: 100%;
+    max-width: 500px;
+    height: 75px;;
+    background-color: rgba(0, 0, 0, 0.251);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.delete-user-modal p {
+    font-size: 1.2rem;
+    color: #333;
+}

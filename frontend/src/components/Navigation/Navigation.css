@@ -24,6 +24,15 @@
 .profile-dropdown li {
   margin: 0;
   padding: 5px 10px;
+  list-style: none;
+}
+.profile-dropdown button {
+  background: none;
+  border: none;
+  color: rgb(142, 45, 234);
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
 }
 .main-header {
   background-color: silver;

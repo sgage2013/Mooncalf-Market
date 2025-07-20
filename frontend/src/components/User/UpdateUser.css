@@ -1,0 +1,96 @@
+.update-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.update-container h2 {
+  margin-bottom: 24px;
+  color: #333;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+
+.field-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 18px;
+  gap: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.field-container label {
+  flex-shrink: 0;
+  min-width: 100px;
+  color: #555;
+  font-weight: 600;
+}
+
+
+.user-field {
+  background-color: #fff;
+  color: #333;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.edit-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.edit-input {
+  flex-grow: 1;
+}
+
+.edit-button {
+  display: flex;
+  align-items: center;
+}
+
+.edit-button button,
+.MuiButton-root.edit-button {
+  font-size: 0.8rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.edit-button.cancel {
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #555;
+}
+
+.success {
+  color: rgb(138, 52, 195);
+  font-weight: 500;
+  margin-top: 16px;
+}
+
+.error {
+  color: red;
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+
+.delete-profile {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
