@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Almendra+Display&display=swap');
 
 body {
     margin: 0;
@@ -6,4 +13,60 @@ body {
     min-height: 100vh;
     width: 100%;
     background-color: silver;
+}
+@font-face {
+    font-family: 'Fairy Dust';
+    src: url(../public/FairyDustB.ttf);
+}
+@font-face {
+    font-family: 'Dumbledor';
+    src: url(../public/dum3.ttf);
+}
+@font-face {
+    font-family: 'Harry P';
+    src: url(../public/HARRYP__.TTF);
+}
+@font-face {
+    font-family: "Knights Quest";
+    src: url(../public/Knights\ Quest.ttf);
+}
+@font-face {
+    font-family: "Fairies";
+    src: url(../public/Fairies-LWRZ.ttf);
+}
+@font-face {
+    font-family: "Irish";
+    src: url(../public/IrishuncialfabetaBold-2OEBd.ttf);
+}
+@font-face {
+    font-family: "Kings and Pirates";
+    src: url(../public/KingsAndPirates-p7EAK.ttf);
+}
+@font-face {
+    font-family: "Berenika";
+    src: url(../public/Berenika-ojp0.ttf);
+}
+@font-face {
+    font-family: "Milwich";
+    src: url(../public/Milwich-21do.ttf)
+}
+@font-face {
+    font-family: "Valentine Cupcake";
+    src: url(../public/Valentine\ Cupcake.ttf)
+}
+@font-face {
+    font-family: "Handmade";
+    src: url(../public/Handmade\ 2.otf)
+}
+@font-face {
+    font-family: "Nexa";
+    src: url(../public/Nexa-ExtraLight.ttf)
+}
+@font-face {
+    font-family: "Garet";
+    src: url(../public/Garet-Book.ttf)
+}
+@font-face {
+    font-family: "Comfortaa";
+    src: url(../public/Comfortaa-Light.ttf)
 }

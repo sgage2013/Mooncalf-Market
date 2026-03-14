@@ -4,6 +4,9 @@ import ProfileButton from "./ProfileButton";
 import { useAppSelector } from "../../redux/store";
 import { ISubCategory, ICategory } from "../../redux/types/category";
 import {ICartItem} from "../../redux/types/cart";
+import Badge from '@mui/material/Badge'
+import IconButton from '@mui/material/IconButton'
+import BackpackIcon from '@mui/icons-material/Backpack'
 import "./Navigation.css";
 
 function Navigation(): JSX.Element {
@@ -30,7 +33,7 @@ function Navigation(): JSX.Element {
           <div className="search-logo">
  <div className="logo-container">
         <NavLink to="/home">
-          <img src="/logo.jpg" alt="Home Logo" className="logo" />
+          <img src="/logo-3.png" alt="Home Logo" className="logo" />
         </NavLink>
           </div>
       </div>
@@ -41,18 +44,13 @@ function Navigation(): JSX.Element {
             </button>
           </div>
           <div className="cart-profile-group">
-          <div>
             <NavLink to="/cart" className="cart-link">
-              <img
-                src="/knapsack.svg"
-                alt="knapsack"
-                className="shopping-cart"
-                />
-                { totalItems > 0 && (
-                <span className="cart-item-count">{totalItems}</span>
-                )}
+            <IconButton aria-label="cart">
+              <Badge badgeContent={totalItems} color="secondary">
+                <BackpackIcon className='shopping-cart'/>
+                </Badge>
+            </IconButton>
             </NavLink>
-          </div>
           <div className="profile-cart">
                  <ProfileButton />
           </div>

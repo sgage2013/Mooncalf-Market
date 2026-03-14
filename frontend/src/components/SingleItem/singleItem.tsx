@@ -118,9 +118,6 @@ function SingleItem() {
 
   return (
     <div className="main-container">
-      <div className="item-name">
-        <p>{item.name}</p>
-      </div>
       <div className="item-details">
         <div className="image-gallery-container">
           <div className="image-gallery">
@@ -158,6 +155,8 @@ function SingleItem() {
           )}
         </div>
         <div className="item-info">
+          <p className="item-title">{item.name}</p>
+          <div className="price-rating">
           <p className="price">
             $
             {typeof item.price === "string"
@@ -176,8 +175,9 @@ function SingleItem() {
               <span>({item.stars.toFixed(1)})</span>
             </div>
           ) : (
-            <p>No Ratings Yet</p>
+            <p className="no-ratings">No Ratings Yet</p>
           )}
+          </div>
           <p className="description">{item.description}</p>
           <div className="item-actions">
             <button className="add-to-cart" onClick={handleAddToCart}>
