@@ -1,15 +1,16 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { FaUserCircle } from 'react-icons/fa';
+import { FaUserCircle } from "react-icons/fa";
+import Avatar from "@mui/material/Avatar";
 import { thunkLogout } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useAppSelector } from "../../redux/store";
-import {useNavigate} from "react-router-dom";
-import './Navigation.css';
+import { useNavigate } from "react-router-dom";
+import "./Navigation.css";
 
-function ProfileButton():JSX.Element {
+function ProfileButton(): JSX.Element {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const user = useAppSelector((store) => store.session.user);
@@ -24,7 +25,7 @@ function ProfileButton():JSX.Element {
   useEffect(() => {
     if (!showMenu) return;
 
-    const closeMenu = (e:any) => {
+    const closeMenu = (e: any) => {
       if (ulRef.current && !ulRef.current.contains(e.target)) {
         setShowMenu(false);
       }
@@ -58,12 +59,13 @@ function ProfileButton():JSX.Element {
                 <button onClick={(e) => logout(e)}>Log Out</button>
               </li>
               <li>
-                <button onClick={() => {
-                   closeMenu();
-                   navigate('/users/profile');
-                }}>
+                <button
+                  onClick={() => {
+                    closeMenu();
+                    navigate("/users/profile");
+                  }}
+                >
                   Edit Profile
-
                 </button>
               </li>
             </>

@@ -5,6 +5,7 @@ import { useParams, NavLink, useNavigate } from "react-router-dom";
 import { IItem } from "../../redux/types/item";
 import { getSubcategoryItemsThunk } from "../../redux/items";
 import { Rating } from "@mui/material";
+import "../Categories/Categories.css";
 
 function SubcategoryItems() {
   const { categoryId, subCategoryId } = useParams<{
@@ -50,7 +51,7 @@ function SubcategoryItems() {
       <h2>Items</h2>
       <div className="items-grid">
         {items.map((item: IItem) => (
-          <div className="item-card" key={item.id}>
+          <div className="item" key={item.id}>
             <NavLink
               to={`/category/${item.categoryId}/${item.subCategoryId}/items/${item.id}`}
             >

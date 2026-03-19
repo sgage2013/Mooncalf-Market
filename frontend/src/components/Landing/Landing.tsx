@@ -15,11 +15,10 @@ export default function LandingPage() {
     };
 
     return (
-        <div className="main-container">
+        <div className="main">
             <div className="sigil">🜃</div>
 
             <div className="message-container">
-                <p className="main-message"></p>
                 <p className="main-message">
                 Non-magicals will be mildly confused. Proceed anyway?
                 </p>
@@ -28,13 +27,16 @@ export default function LandingPage() {
                 </p>
 
             </div>
+            <div className="door-container">
+
             <img
             src="/glowing-door.jpg"
             alt="Glowing Magical Door"
             className={`door ${doorOpen ? 'door-open' : 'door-closed'}`}
             onClick={handleEnter}
             />
-            <p className="sub-message">Will you step through the portal?</p>
+            <p className="bottom-message">Will you step through the portal?</p>
+            </div>
 
         </div>
     );

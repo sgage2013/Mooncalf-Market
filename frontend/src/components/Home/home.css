@@ -1,91 +1,187 @@
 .main-container {
-    padding: 20px;
-    min-height: 100vh;
-    width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
-.header {
-    background-color: silver;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+.home-container {
+  background-color: silver;
+
+  padding: 20px;
+  margin-bottom: 40px;
+  overflow: hidden;
+  width: 100%;
+  overflow-x: hidden;
 }
-.header-center {
-    display: flex;
-    width: 100%;
-    max-width: 1200px;
-    justify-content: space-between;
-    align-items: center;
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-image: url("public/hero-bg-3.png");
+  background-position: center;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgb(3, 3, 3);
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+.hero-content {
+  z-index: 2;
+  padding: 30px;
+}
+.hero-headline {
+  font-family: "Cinzel", serif;
+  font-size: 75px;
+  margin-top: 15px;
+  margin-bottom: 65px;
+  text-shadow: 1px 1px 3px rgb(103, 52, 112);
+}
+.hero-subheadline {
+  font-family: "Dumbledor", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-style: italic;
+  color: #8b4789;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.05em;
+}
+.highest-rated,
+.new-arrivals {
+  margin-bottom: 3rem;
 }
 
-.home-container {
-    width: auto;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: silver;
-    box-shadow: 0 0 10px black;
-    border-radius: 8px;
-    margin-bottom: 40px;;
-}
-.new-arrivals {
-    margin-bottom: 40px;
-}
-/* .highest-rated h2,
+.highest-rated h2,
 .new-arrivals h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: black;
-} */
-.items-grid{
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 10px;
-    padding-bottom: 15px;
-    scrollbar-width: thin;
-    scrollbar-color: plum;
+  font-family: "Cinzel", serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  font-weight: 500;
+  color: #222222;
+  margin-bottom: 1.3rem;
+  text-align: left;
 }
-.item-card{
-    flex: 0 0 auto;
-    width: 250px;
-    border: 1px solid midnightblue;
-    border-radius: 8px;
-    overflow: hidden;
-    text-align: center;
-    padding: 15px;
-    background-color: silver;
-    box-shadow: 0 2px 5px black;
-    transition: transform 0.2s ease-in-out;
+
+.new-arrivals .items-grid,
+.highest-rated .items-grid {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  gap: 1.25rem;
+  padding: 0.5rem 0 1.5rem 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #c896ff #f0f0f0;
 }
+
+.new-arrivals .items-grid::-webkit-scrollbar,
+.highest-rated .items-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.new-arrivals .items-grid::-webkit-scrollbar-track,
+.highest-rated .items-grid::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+.new-arrivals .items-grid::-webkit-scrollbar-thumb,
+.highest-rated .items-grid::-webkit-scrollbar-thumb {
+  background: #c896ff;
+  border-radius: 10px;
+}
+
+.new-arrivals .items-grid::-webkit-scrollbar-thumb:hover,
+.highest-rated .items-grid::-webkit-scrollbar-thumb:hover {
+  background: #8b4789;
+}
+
+.new-arrivals .item-card,
+.highest-rated .item-card {
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+}
+.item-card {
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+  transition: transform 0.2s ease;
+  position: relative;
+}
+
 .item-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px gray;
+  transform: translateY(-2px);
 }
-.item-image {
-    max-width: 100%;
-    height: 200px;
-    object-fit: contain;
-    border-radius: 4px;
-    margin-bottom: 10px;
-}
-.item-price {
-    font-size: 16px;
-    font-weight: bold;
-    color: black;
-}
-.item-rating{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-}
-.item-avg-rating{
-    font-size: 10px;
-    color: gold;
-}
+
 .item-card a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  background: rgb(189, 189, 189);
+  transition: transform 0.2s ease;
+}
+
+.item-card:hover .item-image {
+  transform: scale(1.02);
+}
+.item-card a > *:not(.item-image) {
+  padding: 0 0.25rem;
+}
+
+.home-container .item-title {
+  font-family: "Dumbledor", serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #222222;
+  margin: 0.5rem 0.25rem 0.25rem 0.25rem;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 2.4em;
+}
+
+.item-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0.25rem 0.25rem;
+}
+
+.item-rating .MuiRating-root {
+  font-size: 0.875rem;
+}
+
+.item-avg-rating {
+  font-family: "Knights Quest";
+  font-size: 10px;
+  color: #595959;
+  font-weight: 400;
+}
+
+.item-price {
+  font-family: "Knights Quest";
+  font-size: 1.125rem;
+  color: #222222;
+  letter-spacing: 0.75px;
+}
+
+.item-rating .MuiRating-icon {
+  color: #c896ff;
+}
+
+.item-rating .MuiRating-iconFilled {
+  color: #8b4789;
+}
+
+.item-rating .MuiRating-iconEmpty {
+  color: #050505;
 }
