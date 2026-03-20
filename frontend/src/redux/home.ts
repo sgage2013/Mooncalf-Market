@@ -27,6 +27,10 @@ export const getHomeDataThunk = (): any => async (dispatch: any) => {
     }));
 }
     }catch(e) {
+        if (retries > 0) {
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                return attempt(retries - 1);
+            }
       const error = e as Response;
       return await error.json();
     }
