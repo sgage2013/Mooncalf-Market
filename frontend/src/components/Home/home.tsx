@@ -15,13 +15,14 @@ function Home() {
   );
   const user = useAppSelector((state) => state.session.user);
   const [loading, setLoading] = useState(true);
+  const sessionLoading = useAppSelector((state) => state.session.loading);
   const [errors, setErrors] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!user && !loading) {
+    if (!user && !loading && !sessionLoading) {
       navigate("/login");
     }
-  }, [user, loading, navigate]);
+  }, [user, loading, sessionLoading, navigate]);
 
   useEffect(() => {
     const getHomeData = async () => {

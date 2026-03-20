@@ -16,57 +16,57 @@ body {
 }
 @font-face {
     font-family: 'Fairy Dust';
-    src: url(../public/FairyDustB.ttf);
+    src: url(/FairyDustB.ttf);
 }
 @font-face {
     font-family: 'Dumbledor';
-    src: url(../public/dum3.ttf);
+    src: url(/dum3.ttf);
 }
 @font-face {
     font-family: 'Harry P';
-    src: url(../public/HARRYP__.TTF);
+    src: url(/HARRYP__.TTF);
 }
 @font-face {
     font-family: "Knights Quest";
-    src: url(../public/Knights\ Quest.ttf);
+    src: url(/Knights\ Quest.ttf);
 }
 @font-face {
     font-family: "Fairies";
-    src: url(../public/Fairies-LWRZ.ttf);
+    src: url(/Fairies-LWRZ.ttf);
 }
 @font-face {
     font-family: "Irish";
-    src: url(../public/IrishuncialfabetaBold-2OEBd.ttf);
+    src: url(/IrishuncialfabetaBold-2OEBd.ttf);
 }
 @font-face {
     font-family: "Kings and Pirates";
-    src: url(../public/KingsAndPirates-p7EAK.ttf);
+    src: url(/KingsAndPirates-p7EAK.ttf);
 }
 @font-face {
     font-family: "Berenika";
-    src: url(../public/Berenika-ojp0.ttf);
+    src: url(/Berenika-ojp0.ttf);
 }
 @font-face {
     font-family: "Milwich";
-    src: url(../public/Milwich-21do.ttf)
+    src: url(/Milwich-21do.ttf)
 }
 @font-face {
     font-family: "Valentine Cupcake";
-    src: url(../public/Valentine\ Cupcake.ttf)
+    src: url(/Valentine\ Cupcake.ttf)
 }
 @font-face {
     font-family: "Handmade";
-    src: url(../public/Handmade\ 2.otf)
+    src: url(/Handmade\ 2.otf)
 }
 @font-face {
     font-family: "Nexa";
-    src: url(../public/Nexa-ExtraLight.ttf)
+    src: url(/Nexa-ExtraLight.ttf)
 }
 @font-face {
     font-family: "Garet";
-    src: url(../public/Garet-Book.ttf)
+    src: url(/Garet-Book.ttf)
 }
 @font-face {
     font-family: "Comfortaa";
-    src: url(../public/Comfortaa-Light.ttf)
+    src: url(/Comfortaa-Light.ttf)
 }
