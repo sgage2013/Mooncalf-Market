@@ -24,7 +24,8 @@
     "fill-schema": "npx dotenv sequelize db:migrate && npx dotenv sequelize db:seed:all",
     "build-db": "npx sequelize db:drop && npx sequelize db:create",
     "db:production": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all",
-    "build-development": "rimraf ./dist && tsc"
+    "build-development": "rimraf ./dist && tsc",
+    "db:clear:seeds": "dotenv -- psql $DATABASE_URL -c 'DELETE FROM \"SequelizeData\";'"
   },
   "license": "ISC",
   "dependencies": {
