@@ -206,39 +206,29 @@ function SingleItem() {
                   {new Date(review.createdAt).toLocaleDateString()}
                 </span>
 
-                {user &&
-                  user.id === review.userId &&
-                  (console.log(
-                    "user.id:",
-                    user.id,
-                    "review.userId:",
-                    review.userId
-                  ),
-                  (
-                    <div className="review-actions">
-                      <OpenModalButton
-                        buttonText="Update Review"
-                        modalComponent={
-                          <UpdateReviewModal
-                            itemId={item.id}
-                            review={review as IExistingReview}
-                            onSuccess={handleReviewClose}
-                          />
-                        }
-                        onModalClose={handleReviewClose}
-                      />
-                    </div>
-                  ))}
                 {user && user.id === review.userId && (
-                  <OpenModalButton
-                    buttonText="Delete Review"
-                    modalComponent={
-                      <DeleteReviewModal review={review as IExistingReview}
-                        onSuccess={handleReviewClose}
-                      />
-                    }
-                    onModalClose={handleReviewClose}
-                  />
+                  <div className="review-actions">
+                    <OpenModalButton
+                      buttonText="Update Review"
+                      modalComponent={
+                        <UpdateReviewModal
+                          itemId={item.id}
+                          review={review as IExistingReview}
+                          onSuccess={handleReviewClose}
+                        />
+                      }
+                      onModalClose={handleReviewClose}
+                    />
+                    <OpenModalButton
+                      buttonText="Delete Review"
+                      modalComponent={
+                        <DeleteReviewModal review={review as IExistingReview}
+                          onSuccess={handleReviewClose}
+                        />
+                      }
+                      onModalClose={handleReviewClose}
+                    />
+                  </div>
                 )}
               </div>
             ))}

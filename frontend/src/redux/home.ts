@@ -16,6 +16,7 @@ export const getHomeData = (data: {
 });
 
 export const getHomeDataThunk = (): any => async (dispatch: any) => {
+    const attempt = async (retries: number = 3): Promise<void> => {
     try{
     const res = await csrfFetch('/api/home');
     const data = await res.json();
@@ -34,6 +35,8 @@ export const getHomeDataThunk = (): any => async (dispatch: any) => {
       const error = e as Response;
       return await error.json();
     }
+}
+return attempt();
 };
 
 const initialState: IHomeState = {

@@ -63,8 +63,7 @@ function Cart() {
         </div>
       ) : (
         <div className="cart-contents">
-          <div className="cart-header">
-          <div className="cart-summary">
+          <div className="cart-main-column">
             {cartItems.map((item: ICartItem) => (
               <CartItem 
               key={item.id} 
@@ -73,17 +72,18 @@ function Cart() {
               onRemoveFromCart={handleRemoveFromCart}
             />
             ))}
-          </div>
-          <div className='cart-summary-details'>
-            <p>Total Items: {totalItems}</p>
-            </div>
+
+            <p className="cart-total-items">Total Items: {totalItems}</p>
           </div>
           <div className="cart-totals">
             <h2>Order Summary</h2>
+            <div className="cart-totals-line">
+
             <p>Subtotal: ${cartState.subTotal.toFixed(2)}</p>
             <p>Tax: ${cartState.tax.toFixed(2)}</p>
             <p>Shipping: ${cartState.shipping.toFixed(2)}</p>
-            <p>Order Total: ${cartState.orderTotal.toFixed(2)}</p>
+            <p className="order-total">Order Total: ${cartState.orderTotal.toFixed(2)}</p>
+            </div>
             <button className="checkout-button" onClick={() => navigate("/checkout")}>Checkout</button>
             <button className="empty-knapsack-button" onClick={handleClearCart}>Empty Knapsack</button>
           </div>

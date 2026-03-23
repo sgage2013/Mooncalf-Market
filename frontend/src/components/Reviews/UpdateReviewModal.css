@@ -22,22 +22,30 @@
     padding: 10px;
     border-radius: 4px;
     border: 1px solid #0b0b0b;
+    font-family: 'comfortaa';
+}
+.update-review-modal textarea:focus {
+    border-radius: 4px;
+    border: 1px solid #0b0b0b;
+    outline: 2px solid #b879fa;
 }
 .update-review-modal button {
-    width: 45%;
-    padding: 10px;
-    background-color: #1e1e1e;
+   background: linear-gradient(135deg, #c896ff 0%, #8b4789 100%);
     color: white;
+    padding: 0.5rem 1rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-    margin-right: 15px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.813rem;
+    transition: all 0.2s ease;
 }
 .update-review-modal button:hover {
-    background-color: #1b1b1b61;
+      transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(200, 150, 255, 0.3);
 }
 .error-messages {
-    color: rgb(128, 1, 1);
+    color: #7d2835;
     font-size: 0.9em;
     margin-top: 5px;
     margin-bottom: 10px;
