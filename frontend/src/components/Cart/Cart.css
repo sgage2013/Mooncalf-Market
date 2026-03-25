@@ -58,7 +58,7 @@
     margin-top: 10px;
 }
 .cart-totals {
-     flex: 0 0 280px;
+    flex: 0 0 280px;
     position: sticky;
     top: 100px;
     background: white;
@@ -112,4 +112,6 @@
 .checkout-button:hover, .empty-knapsack-button:hover {
     background-color: #a648c8;
     cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(93, 9, 124, 0.808);
 }

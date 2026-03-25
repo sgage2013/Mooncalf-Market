@@ -1,44 +1,73 @@
 .checkout-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     padding: 20px;
     background-color: silver;
+    min-height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-.checkout-container h1 {
-    font-size: medium;
-    margin-bottom: 20px;
-    text-align: center;;
+.checkout-layout{
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
 }
-.checkout-details,
-.order-summary {
-    width: 100%;
-    max-width: 600px;
-    background-color: grey;
+.checkout-details {
+    flex: 0 0 300px;
+    background-color: silver;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px black;
 }
 .checkout-details button {
-    background-color: rgb(39, 39, 39);
+    background: linear-gradient(135deg, #c896ff 0%, #8b4789 100%);
     color: white;
-    padding: 10px 20px;
+    padding: 0.50rem 1rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 0.875rem;
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    margin: 0.5rem 0rem;
+    width: 100%;
 }
 .checkout-details button:hover {
-    background-color: rgb(59, 59, 59);
+   background: linear-gradient(135deg, #c896ff 0%, #673265 100%);
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+.checkout-details p{
+    font-size: 1.3rem;
+    color: #383838;
+    font-family: 'dumbledor';
+    margin-top: 10px;
 }
 .order-summary {
+    top: 100px;
     display: flex;
     flex-direction: column;
+    flex: 2.5;
     gap: 10px;
+    background-color: whitesmoke;
+    padding: 1.5rem;
+    border-radius: 8px;
+    gap: 1rem;
+
+}
+.order-summary h2 {
+    font-family: 'Cinzel', serif !important;
+    font-size: 1.55rem !important;
+    font-weight: 500 !important;
+    color: #8b4789 !important;
+    padding-bottom: 0.75rem;
+    margin: 0;
 }
 .order-items {
-    border-bottom: 1px solid black;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+     display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #131313;
 }
 .order-item {
     display: flex;
@@ -51,29 +80,43 @@
     height: 75px;
     object-fit: cover;
     border-radius: 4px;
-    box-shadow: 0 2px 8px black;
+    box-shadow: 0 2px 8px rgb(81, 20, 119);
+    flex-shrink: 0;
 }
 .item-details {
-    text-align: left;
+    flex: 1;
 }
 .item-name {
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-size: 1.13rem !important;
+}
+.item-quantity {
+    font-size: 1.09rem !important;
+    font-family: 'dumbledor';
+    margin: 0 !important;
+}
+.item-price {
+    font-size: 1.1rem !important;
 }
 .order-total {
-    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
 }
 .order-total p {
     display: flex;
-    justify-content: space-around;
-    margin: 5px;
-    font-weight: bold;
+    justify-content: space-between;
+    font-family: 'dumbledor';
+    margin: 0 !important;
 }
 .order-total-amount {
-    border-top: 1 px solid black;
-    padding-top: 10px;
+    padding-top: 0.75rem;
+    border-top: 1px solid #20152839;
+    margin-top: 0.25rem;
 }
 .order-total-amount p {
-    font-size: large;
-    color: black;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #8b4789 !important;
+    margin: 0;
 }
