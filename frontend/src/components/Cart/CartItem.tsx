@@ -42,7 +42,6 @@ function CartItem({
             ))}
             <option value="0">Remove</option>
           </select>
-          <p>Item Total: ${itemTotal}</p>
         </div>
         <p className="cart-item-total">Total: ${itemTotal}</p>
       </div>

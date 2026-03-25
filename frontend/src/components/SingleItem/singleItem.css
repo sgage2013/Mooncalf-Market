@@ -217,6 +217,8 @@
     line-height: 1.5;
     color: #333;
     margin: 0.75rem 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .review-author {
@@ -236,23 +238,6 @@
     display: flex;
     gap: 0.5rem;
     margin-top: 1rem;
-}
-
-.review-actions button {
-    background: linear-gradient(135deg, #c896ff 0%, #8b4789 100%);
-    color: white;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-family: 'Cinzel', serif;
-    font-size: 0.813rem;
-    transition: all 0.2s ease;
-}
-
-.review-actions button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(200, 150, 255, 0.3);
 }
 .no-reviews {
     font-family: 'Cinzel';
