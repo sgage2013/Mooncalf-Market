@@ -21,7 +21,6 @@ function CheckoutForm() {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const backendUrl =
     import.meta.env.VITE_BACKEND_URL || "https://mooncalf-market.onrender.com";
-  
 
   useEffect(() => {
     if (!user) {
@@ -39,7 +38,7 @@ function CheckoutForm() {
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
       const data = await res.json();
       if (res.ok && data.clientSecret) {
@@ -85,15 +84,15 @@ function CheckoutForm() {
         },
       });
     if (stripeError) {
-      if(stripeError.decline_code === 'insufficient_funds') {
+      if (stripeError.decline_code === "insufficient_funds") {
         setErrors("Insufficient funds, please try a different card.");
-      } else if (stripeError.decline_code === 'generic_decline') {
+      } else if (stripeError.decline_code === "generic_decline") {
         setErrors("Payment declined, please try a different card.");
       } else {
-      setErrors("Invalid card details");
-    }
-    setIsLoading(false);
-    return;
+        setErrors("Invalid card details");
+      }
+      setIsLoading(false);
+      return;
     }
 
     if (!paymentIntent || paymentIntent.status !== "succeeded") {
@@ -110,7 +109,7 @@ function CheckoutForm() {
     };
 
     const createdOrder = await (dispatch as any)(
-      createOrderThunk(paymentIntent.id, shippingInfo)
+      createOrderThunk(paymentIntent.id, shippingInfo),
     );
     if (createdOrder?.id) {
       navigate(`/checkout/success/${createdOrder.id}`);
@@ -132,50 +131,41 @@ function CheckoutForm() {
     setZip("12345");
     setErrors(null);
     setIsLoading(false);
-  }
+  };
 
   return (
     <div className="checkout-form">
       <h2>Checkout</h2>
-      <p>Please enter your payment details.</p>
-      <p>Demo card numbers are provided below</p>
       <form onSubmit={handleSubmit}>
         <div className="card-element-container">
-        <CardElement />
+          <CardElement
+            options={{
+              style: {
+                base: {
+                  fontSize: "16px",
+                  color: "#383838",
+                  fontFamily: "serif",
+                  "::placeholder": { color: "#8b4789" },
+                },
+                invalid: {
+        color: '#9e2146',
+      },
+              },
+            }}
+          />
         </div>
         {errors && <div className="errors">{errors}</div>}
-        <div className="demo-cards">
-          <h3>Demo Card Numbers</h3>
-          <ul>
-            <li>
-              Success: 4242 4242 4242 4242
-              <br />
-              Exp: 12/34
-              <br />
-              CVC: 123
-              <br />
-              Zip: 12345
-            </li>
-            <li>
-              Declined: 4000 0000 0000 0002
-              <br />
-              Exp: 12/34
-              <br />
-              CVC: 123
-              <br />
-              Zip: 12345
-            </li>
-            <li>
-              Insufficient Funds: 4000 0000 0000 9995
-              <br />
-              Exp: 12/34
-              <br />
-              CVC: 123
-              <br />
-              Zip: 12345
-            </li>
-          </ul>
-        </div>
+        <details className="demo-cards-details">
+          <summary>View Demo Card Numbers</summary>
+          <div className="demo-cards">
+            <ul>
+              <li>Success: 4242 4242 4242 4242 | Exp: 12/34 | CVC: 123</li>
+              <li>Declined: 4000 0000 0000 0002 | Exp: 12/34 | CVC: 123</li>
+              <li>Funds: 4000 0000 0000 9995 | Exp: 12/34 | CVC: 123</li>
+            </ul>
+          </div>
+        </details>
+
         <div className="shipping-info">
           <h3>Shipping Information</h3>
           <label>
@@ -187,24 +177,26 @@ function CheckoutForm() {
               required
             />
           </label>
-          <label>
-            City:
-            <input
-              type="text"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              required
-            />
-          </label>
-          <label>
-            State:
-            <input
-              type="text"
-              value={state}
-              onChange={(e) => setState(e.target.value)}
-              required
-            />
-          </label>
+          <div className="shipping-grid">
+            <label>
+              City:
+              <input
+                type="text"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              State:
+              <input
+                type="text"
+                value={state}
+                onChange={(e) => setState(e.target.value)}
+                required
+              />
+            </label>
+          </div>
           <label>
             Zip Code:
             <input

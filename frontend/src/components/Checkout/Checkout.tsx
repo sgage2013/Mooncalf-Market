@@ -3,8 +3,16 @@ import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { useNavigate } from "react-router-dom";
 import { ICartState, ICartItem } from "../../redux/types/cart";
 import { getCartItemsThunk } from "../../redux/cart";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import OpenModalButton from "../OpenModalButton";
 import CheckoutForm from "./CheckoutForm";
 import "./Checkout.css";
+
+console.log("My Key is:", import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe(
+  import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
+);
 
 function Checkout() {
   const user = useAppSelector((state) => state.session.user);
@@ -14,6 +22,7 @@ function Checkout() {
   const cartItems: ICartItem[] = cartState.cart?.cartItems || [];
   const [showForm, setShowForm] = useState(false);
   const [errors, setErrors] = useState<string | null>(null);
+
 
   useEffect(() => {
     if (!user) {
@@ -101,20 +110,17 @@ function Checkout() {
               </p>
             </div>
           </div>
-        </div>
          <div className="checkout-details">
-          <h2> Payment Information</h2>
+          {/* <h2> Payment Information</h2> */}
           {errors && <p className="error">{errors}</p>}
-          {showForm ? (
-            <CheckoutForm />
-          ) : (
-            <form onSubmit={handleSubmit}>
-              <p>Click place order to proceed to a secure payment page</p>
-            </form>
-          )}
-          <form onSubmit={handleSubmit}>
-            <button type="submit">Place Order</button>
-          </form>
+          {/* <form onSubmit={handleSubmit}> */}
+          <OpenModalButton
+    buttonText="Place Order"
+    modalComponent={<Elements stripe ={stripePromise}><CheckoutForm /></Elements>}
+    onModalClose={() => {}}
+/>
+          {/* </form> */}
+        </div>
         </div>
       </div>
     </div>
