@@ -1,46 +1,161 @@
 .checkout-success-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: silver;
-    border-radius: 8px;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem;
+  background-color: silver;
+  min-height: 100vh;
+  text-align: center;
 }
-.checkout-success-container h1 {
-    color: #3f034b;
-    font-size: x-large;
-    margin-bottom: 10px;
+.success-icon {
+  font-size: 4rem;
+  margin-bottom: 0;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(200, 150, 255, 0.6));
+  line-height: 1;
 }
-.order-summary h2 {
-    color: #a648c8;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    border-bottom: 2px solid black;
-    padding-bottom: 10px;
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
-.order-summary p {
-    color: #333;
-    font-size: 1.25rem;
-    margin: 5px 0;
+.success-icon-reflection {
+  font-size: 4rem;
+  transform: scaleY(-1);
+  opacity: 0.25;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 40%, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 40%, black 100%);
+  filter: blur(2px);
+  line-height: 1;
+  margin-bottom: 1.5rem;
 }
-.order-items h2{
-    color: black;
-    font-size: large;
-    margin-bottom: 10px;
-    border-bottom: 2px solid black;
-    padding-bottom: 10px;
+
+.success-header {
+  font-family: "Cinzel", serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 0.75rem;
 }
-.order-items p, 
+
+.success-subtext {
+  font-family: "dumbledor";
+  font-size: 1.2rem;
+  color: #454444;
+  margin: 0.25rem 0;
+}
+
+.order-number {
+  font-family: "Cinzel", serif;
+  color: #8b4789;
+  font-weight: 600;
+}
+
+.success-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.order-summary h2,
+.order-items h2,
+.shipping-info h2 {
+  font-family: "Cinzel", serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #8b4789;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #d78df9;
+  margin-bottom: 1rem;
+}
+
+.order-summary p,
 .shipping-info p {
-    color: black;
-    font-size: medium;
-    margin: 5px 0;
+  font-family: "dumbledor";
+  font-size: 1.25rem;
+  color: #454444;
+  margin: 0.25rem 0;
 }
+
+.success-item-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.success-item-list li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.success-item-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
 .order-item-image {
-    width: 75px;
-    height: 75px;
-    object-fit: cover;
-    border-radius: 4px;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #e8e8e8;
+  flex-shrink: 0;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.item-name {
+  font-family: "Cinzel", serif;
+  font-size: 0.875rem;
+  color: rgb(134, 59, 172);
+  margin: 0 0 4px 0;
+}
+
+.item-price {
+  font-family: "dumbledor";
+  font-size: 0.8rem;
+  color: #262626;
+  margin: 0;
+}
+
+.checkout-button {
+  background: linear-gradient(135deg, #c896ff 0%, #8b4789 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Cinzel", serif;
+  font-size: 0.938rem;
+  width: 30%;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px rgba(200, 150, 255, 0.2);
+}
+
+.checkout-button:hover {
+  background: linear-gradient(135deg, #c896ff 0%, #673265 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(200, 150, 255, 0.4);
 }

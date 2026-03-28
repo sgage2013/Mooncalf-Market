@@ -20,7 +20,6 @@ function Checkout() {
   const navigate = useNavigate();
   const cartState: ICartState = useAppSelector((state) => state.cart);
   const cartItems: ICartItem[] = cartState.cart?.cartItems || [];
-  const [showForm, setShowForm] = useState(false);
   const [errors, setErrors] = useState<string | null>(null);
 
 
@@ -45,10 +44,6 @@ function Checkout() {
     }
   }, [cartItems, navigate]);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setShowForm(true);
-  };
 
   const totalItems = cartItems.reduce(
     (total, item) => total + item.quantity,
@@ -111,15 +106,12 @@ function Checkout() {
             </div>
           </div>
          <div className="checkout-details">
-          {/* <h2> Payment Information</h2> */}
           {errors && <p className="error">{errors}</p>}
-          {/* <form onSubmit={handleSubmit}> */}
           <OpenModalButton
     buttonText="Place Order"
     modalComponent={<Elements stripe ={stripePromise}><CheckoutForm /></Elements>}
     onModalClose={() => {}}
 />
-          {/* </form> */}
         </div>
         </div>
       </div>
