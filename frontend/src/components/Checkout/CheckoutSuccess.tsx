@@ -8,36 +8,10 @@ import "./CheckoutSuccess.css";
 const CheckoutSuccess = () => {
   const navigate = useNavigate();
   const user = useAppSelector((state) => state.session.user);
-  // const order: IOrderPreview | null = useAppSelector(
-  //   (state) => state.order.order
-  // );
-  const order = {
-  orderNumber: "MC-777-X",
-  status: "Summoned",
-  orderTotal: 49.99,
-  shippingAddress: {
-    address: "42 Wallaby Way",
-    city: "Sydney",
-    state: "NSW",
-    zip: "2000"
-  },
-  items: [
-    {
-      itemId: 101,
-      name: "Miniature Cauldron",
-      mainImageUrl: "https://mooncalf-market.s3.amazonaws.com/cauldron.jpg", // Use a real URL from your site
-      price: 15.99,
-      quantity: 1
-    },
-    {
-      itemId: 202,
-      name: "Potion Crafting for Beginners",
-      mainImageUrl: "https://mooncalf-market.s3.amazonaws.com/book.jpg",
-      price: 34.00,
-      quantity: 1
-    }
-  ]
-};
+  const order: IOrderPreview | null = useAppSelector(
+    (state) => state.order.order
+  );
+
   const dispatch = useAppDispatch();
   const { orderId } = useParams<{ orderId: string }>();
 
