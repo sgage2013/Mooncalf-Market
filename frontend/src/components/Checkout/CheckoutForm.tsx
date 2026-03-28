@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../redux/store";
+import { useModal } from "../../context/Modal";
 import { createOrderThunk } from "../../redux/order";
 import { csrfFetch } from "../../redux/csrf";
 import "./CheckoutForm.css";
@@ -12,6 +13,7 @@ function CheckoutForm() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.session.user);
+  const {closeModal} = useModal();
   const [address, setAddress] = useState<string>("");
   const [city, setCity] = useState<string>("");
   const [state, setState] = useState<string>("");
@@ -112,6 +114,7 @@ function CheckoutForm() {
       createOrderThunk(paymentIntent.id, shippingInfo),
     );
     if (createdOrder?.id) {
+      closeModal();
       navigate(`/checkout/success/${createdOrder.id}`);
       setAddress("");
       setCity("");
@@ -207,11 +210,11 @@ function CheckoutForm() {
             />
           </label>
         </div>
-        <button type="submit" disabled={!stripe || isLoading}>
-          {isLoading ? "Processing..." : "Pay"}
-        </button>
         <button type="button" onClick={handleDemo}>
           Demo Shipping
+        </button>
+        <button type="submit" disabled={!stripe || isLoading}>
+          {isLoading ? "Processing..." : "Pay"}
         </button>
       </form>
     </div>

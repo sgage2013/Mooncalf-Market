@@ -36,20 +36,35 @@ h2 {
     font-family: 'Cinzel';
     font-weight: lighter;
 } 
-.subcategories {
+.subcategories ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+}
+
+.subcategories li::before {
+    content: '✦';
+    color: #8e2ac4;
+    margin-right: 4px;
+    font-size: 0.75rem;
+    animation: twinkle 2s ease-in-out infinite;
+}
+@keyframes twinkle {
+    0%, 100% { 
+        opacity: 1; 
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.3; 
+        transform: scale(0.8);
+    }
 }
  .subcategory-link {
     display: inline-block;
     color: rgb(140, 4, 244);
     font-family: 'dumbledor';
     font-size: 1.2rem;
-    font-weight: bold;
+    font-weight: 200;
     padding: 6px 10px;
     border-radius: 6px;
     text-decoration: none;
