@@ -1,4 +1,4 @@
-#🔮 Mooncalf Market
+# 🔮 Mooncalf Market
 
 A fantasy-themed e-commerce web application inspired by the wizarding world. Think Diagon Alley meets Amazon! Browse magical creatures, enchanted treats, and ancient tomes then checkout (securely 😉) using your galleons!
 
@@ -6,7 +6,7 @@ A fantasy-themed e-commerce web application inspired by the wizarding world. Thi
 
 ---
 
-##Screenshots: _Coming Soon_
+## Screenshots: _Coming Soon_
 
 ---
 
@@ -55,7 +55,7 @@ A fantasy-themed e-commerce web application inspired by the wizarding world. Thi
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/mooncalf-market.git
+git clone https://github.com/sgage2013/mooncalf-market.git
 cd mooncalf-market
 ```
 
@@ -78,6 +78,7 @@ JWT_EXPIRES_IN=604800
 
 # SQLite (development)
 DB_FILE=dist/db/dev.db
+```
 
  
 > ⚠️ **Note:** Stripe checkout requires a secure HTTPS connection and will not function in local development. To test checkout, use the live demo link above.
