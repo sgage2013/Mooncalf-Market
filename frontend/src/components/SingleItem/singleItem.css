@@ -220,7 +220,6 @@
   word-break: break-word;
   overflow-wrap: break-word;
 }
-
 .review-author {
   font-family: "dumbledor";
   font-size: 1.08rem;
@@ -228,7 +227,6 @@
   color: #222222;
   margin-right: 0.75rem;
 }
-
 .review-date {
   font-family: "dumbledor";
   font-size: 0.93rem;
@@ -249,6 +247,29 @@
   border-radius: 12px;
   margin-bottom: 1.5rem;
 }
+.review-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.review-actions button {
+  background: linear-gradient(135deg, #c896ff 0%, #8b4789 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Cinzel", serif;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(200, 150, 255, 0.2);
+}
+.review-actions button:hover {
+  background: linear-gradient(135deg, #c896ff 0%, #673265 100%);
+  cursor: pointer;
+  transform: translateY(-2px);
+}
 .review-action {
   display: flex;
   gap: 1rem;
@@ -264,31 +285,33 @@
   border-radius: 8px;
   cursor: pointer;
   font-family: "Cinzel", serif;
-  font-size: 0.938rem;
+  font-size: 0.9rem;
   transition: all 0.2s ease;
   box-shadow: 0 2px 8px rgba(200, 150, 255, 0.2);
 }
 
 .review-action button:hover {
+  background: linear-gradient(135deg, #c896ff 0%, #673265 100%);
+  cursor: pointer;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(200, 150, 255, 0.4);
 }
 
 .view-all-reviews {
-  background: rgba(200, 150, 255, 0.15);
-  color: #8b4789;
+  background: linear-gradient(135deg, #c896ff 0%, #8b4789 100%);
+  color: white;
   padding: 0.75rem 1.5rem;
-  border: 2px solid #c896ff;
+  border: none;
   border-radius: 8px;
   cursor: pointer;
   font-family: "Cinzel", serif;
-  font-size: 0.938rem;
-  text-decoration: none;
-  display: inline-block;
+  font-size: 0.9rem;
   transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(200, 150, 255, 0.2);
+  text-decoration: none;
 }
 
 .view-all-reviews:hover {
-  background: rgba(200, 150, 255, 0.25);
+  background: linear-gradient(135deg, #c896ff 0%, #673265 100%);
+  cursor: pointer;
   transform: translateY(-2px);
 }

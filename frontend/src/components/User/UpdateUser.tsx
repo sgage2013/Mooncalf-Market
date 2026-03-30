@@ -95,6 +95,13 @@ const UpdateUser = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 size="small"
+                 sx={{
+        '& .MuiOutlinedInput-root': {
+            fontFamily: 'dumbledor',
+            '&:hover fieldset': { borderColor: '#c896ff' },
+            '&.Mui-focused fieldset': { borderColor: '#8b4789' },
+        }
+    }}
               />
 
               <Button
@@ -112,7 +119,7 @@ const UpdateUser = () => {
                 variant="outlined"
                 onClick={cancelEdit}
                 size="small"
-              >
+            >
                 Cancel
               </Button>
             </div>
@@ -126,6 +133,14 @@ const UpdateUser = () => {
                   readOnly: true,
                 }}
                 fullWidth
+                sx={{
+        '& .MuiOutlinedInput-root': {
+            fontFamily: 'dumbledor',
+            fontSize: '1.15rem',
+            '&:hover fieldset': { borderColor: '#c896ff' },
+            '&.Mui-focused fieldset': { borderColor: '#8b4789' },
+        }
+    }}
               />
               <div className="edit-button">
                 <button type="button" onClick={() => startEdit(key)}>
