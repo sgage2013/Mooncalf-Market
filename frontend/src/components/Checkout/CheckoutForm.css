@@ -84,9 +84,11 @@
   padding: 5px;
   box-shadow: #c896ff 0px 2px 4px;
   border-radius: 4px;
-  font-size: medium;
+  font-size: 1.1rem;
   background-color: rgba(225, 224, 224, 0.641);
   color: black;
+  font-family: "dumbledor", serif;
+  border: none;
 }
 .card-element-container {
   margin: 20px 0;

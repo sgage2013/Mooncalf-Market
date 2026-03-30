@@ -107,7 +107,7 @@
     font-size: 0.875rem;
     transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
     margin: 0.5rem 0rem;
-    width: 100%;
+    width: 100% !important;
 }
 .checkout-button:hover, .empty-knapsack-button:hover {
     background-color: #a648c8;

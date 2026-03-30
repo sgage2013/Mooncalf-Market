@@ -12,12 +12,16 @@
 }
 
 .update-container h2 {
-  margin-bottom: 24px;
-  color: #333;
+  font-family: "Cinzel", serif;
+  margin-bottom: 1.5rem;
+  color: #222;
   font-size: 1.5rem;
+  font-weight: 500;
   text-align: center;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #d78df9;
+  width: 100%;
 }
-
 
 .field-container {
   display: flex;
@@ -27,35 +31,15 @@
   max-width: 450px;
   margin-bottom: 18px;
   gap: 10px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .field-container label {
   flex-shrink: 0;
   min-width: 100px;
-  color: #555;
-  font-weight: 600;
-}
-
-
-.user-field {
-  background-color: #fff;
-  color: #333;
-  padding: 10px 14px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 15px;
-}
-
-.edit-field {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-grow: 1;
-}
-
-.edit-input {
-  flex-grow: 1;
+  color: rgb(140, 4, 244);
+  font-family: "Cinzel", serif;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
 .edit-button {
@@ -66,14 +50,28 @@
 .edit-button button,
 .MuiButton-root.edit-button {
   font-size: 0.8rem;
-  padding: 6px 12px;
+  padding: 3px 10px;
+  margin-left: 8px;
   border-radius: 6px;
+  background: linear-gradient(135deg, #c896ff 0%, #8b4789 100%);
+  color: white;
+  font-family: "Cinzel", serif;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  border: none;
 }
 
 .edit-button.cancel {
-  border: 1px solid #ccc;
-  background-color: white;
-  color: #555;
+  font-size: 0.8rem;
+  padding: 3px 10px;
+  margin-left: 8px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #c896ff 0%, #8b4789 100%);
+  color: white;
+  font-family: "Cinzel", serif;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  border: none;
 }
 
 .success {
@@ -83,14 +81,41 @@
 }
 
 .error {
-  color: red;
-  font-weight: 500;
-  margin-top: 12px;
+  background-color: #faf1e6;
+  border-left: 5px solid #e2577f;
+  border-top: 1px solid #e2577f;
+  border-bottom: 1px solid #e2577f;
+  color: #9e2146;
+  font-family: "dumbledor", serif;
+  font-size: 1.15rem;
+  padding: 12px 15px;
+  margin: 15px 0;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(139, 71, 137, 0.1);
+  animation: shake 0.4s ease-in-out;
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
 }
 
-
-.delete-profile {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
+.delete-profile button {
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  margin-left: 8px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #c896ff 0%, #8b4789 100%);
+  color: white;
+  font-family: "Cinzel", serif;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  border: none;
 }
