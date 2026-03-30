@@ -81,7 +81,6 @@ DB_FILE=dist/db/dev.db
 ```
 
  
-> ⚠️ **Note:** Stripe checkout requires a secure HTTPS connection and will not function in local development. To test checkout, use the live demo link above.
 
 
 > 4. Run the application:
@@ -97,6 +96,7 @@ npm run dev
 
 
 ## Demo Credentials
+> ⚠️ **Note:** Stripe checkout requires a secure HTTPS connection and will not function in local development. To test checkout, use the live demo link above.
 
 ### Demo Card Numbers (Stripe Test Mode)
  
