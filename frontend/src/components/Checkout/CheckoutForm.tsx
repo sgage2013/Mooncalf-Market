@@ -162,9 +162,9 @@ function CheckoutForm() {
           <summary>View Demo Card Numbers</summary>
           <div className="demo-cards">
             <ul>
-              <li>Success: 4242 4242 4242 4242 | Exp: 12/34 | CVC: 123</li>
-              <li>Declined: 4000 0000 0000 0002 | Exp: 12/34 | CVC: 123</li>
-              <li>No Funds: 4000 0000 0000 9995 | Exp: 12/34 | CVC: 123</li>
+              <li>Success: 4242 4242 4242 4242 | Exp: 12/34 | CVC: 123 | Zip: 12345</li>
+              <li>Declined: 4000 0000 0000 0002 | Exp: 12/34 | CVC: 123 | Zip: 12345</li>
+              <li>No Funds: 4000 0000 0000 9995 | Exp: 12/34 | CVC: 123 | Zip: 12345</li>
             </ul>
           </div>
         </details>
