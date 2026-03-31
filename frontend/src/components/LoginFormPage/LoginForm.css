@@ -39,22 +39,22 @@ label{
     color: #e8b9f8;
     font-style: italic;
 }
-.login-form-container[type="text"],
-.login-form-container[type="password"],
-.login-form-container[type="email"]{
+.login-form-container [type="text"],
+.login-form-container [type="password"],
+.login-form-container [type="email"]{
     background: rgba(110, 110, 110, 0.6);
     border: 2px solid rgba(200, 150, 255, 0.3);
     border-radius: 8px;
     padding: 4px;
     font-size: 1rem;
     color: #f0e6d2;
-    font-family: 'Cinzel', serif;
+    font-family: "Cinzel", serif;
     transition: all 0.3s ease;
     outline: none;
 }
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="email"]:focus {
+.login-form-container [type="text"]:focus,
+.login-form-container [type="password"]:focus,
+.login-form-container [type="email"]:focus {
     border-color: rgba(200, 150, 255, 0.8);
     box-shadow: 
        0 0 15px rgba(200, 150, 255, 0.4),
@@ -73,43 +73,36 @@ input[type="email"]:focus {
     gap: 1rem;
     margin-top: 1rem;
 }
-
-.demo-button {
-    margin-top: 0.5rem;
-}
 .login-form-container button {
-    padding: 0.85rem 1.5rem;
-    font-size: 1rem;
-    font-family: 'Cinzel', serif;
-    font-weight: 500;
-    border: 2px solid rgba(200, 150, 255, 0.5);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    letter-spacing: 0.05em;
-    background: rgba(200, 150, 255, 0.15);
-    color: #f0e6d2;
-    box-shadow: 0 0 10px rgba(200, 150, 255, 0.2);
+  background: linear-gradient(135deg, #c896ff 0%, #8b4789 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Cinzel", serif;
+  font-size: 0.938rem;
+  width: 30%;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px rgba(200, 150, 255, 0.2);
 }
 .login-form-container button:hover{
-    background: rgba(193, 137, 252, 0.25);;
-    border-color: rgba(200, 150, 255, 0.8);
-    box-shadow: 
-        0 0 20px rgba(184, 136, 235, 0.5),
-        0 0 30px rgba(189, 132, 251, 0.3);
-    transform: translateY(-2px);
+  background: linear-gradient(135deg, #c896ff 0%, #673265 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(200, 150, 255, 0.4);
 }
-button[type="submit"] {
+.demo-button{
     animation: buttonGlow 3s ease-in-out infinite;
 }
 @keyframes buttonGlow {
     0%, 100% {
-        box-shadow: 0 0 10px rgba(200, 150, 255, 0.2);
+        box-shadow: 0 0 10px rgb(130, 106, 157);
     }
     50% {
-        box-shadow: 0 0 25px rgba(200, 150, 255, 0.4);
+        box-shadow: 0 0 25px rgb(176, 117, 243);
     }
 }
  .demo-button button {
