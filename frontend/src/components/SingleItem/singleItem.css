@@ -254,16 +254,15 @@
   flex-wrap: wrap;
 }
 .review-actions button {
+  font-size: 0.8rem;
+  padding: 3px 10px;
+  border-radius: 6px;
   background: linear-gradient(135deg, #c896ff 0%, #8b4789 100%);
   color: white;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
   font-family: "Cinzel", serif;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(200, 150, 255, 0.2);
+  font-size: 0.75rem;
+  border-radius: 6px;
+  border: none;
 }
 .review-actions button:hover {
   background: linear-gradient(135deg, #c896ff 0%, #673265 100%);
