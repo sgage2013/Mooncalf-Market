@@ -146,7 +146,7 @@
   cursor: pointer;
   font-family: "Cinzel", serif;
   font-size: 0.938rem;
-  width: 30%;
+  width: 30% !important;
   transition:
     background 0.2s ease,
     transform 0.2s ease,
