@@ -86,7 +86,7 @@ const CheckoutSuccess = () => {
         <div className="error">Accio order...</div>
       )}
   <button 
-      className="checkout-button" 
+      className="return-button" 
       onClick={() => navigate('/home')}
     >
       Return to Market
