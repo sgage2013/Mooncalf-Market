@@ -152,7 +152,7 @@
     transform 0.2s ease,
     box-shadow 0.2s ease;
   box-shadow: 0 2px 8px rgba(200, 150, 255, 0.2);
-}
+  margin-top: 2rem;
 
 .return-button:hover {
   background: linear-gradient(135deg, #c896ff 0%, #673265 100%);
