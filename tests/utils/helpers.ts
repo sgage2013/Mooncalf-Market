@@ -1,6 +1,7 @@
 import { expect, Page } from "@playwright/test";
 
 export async function login(page: Page) {
+  
   // Navigate to the landing page
   await page.goto("https://mooncalf-market.onrender.com/");
 
@@ -21,9 +22,11 @@ export async function login(page: Page) {
 }
 
 export async function clearCart(page: Page) {
+
   // Navigate to the cart page
   await page.goto("https://mooncalf-market.onrender.com/cart");
 
+  //Creat an itemCount variable to store the number of items in the cart
   let itemCount = await page.locator(".cart-item").count();
 
   // If there are items in the cart, click the "Empty Knapsack" button
@@ -33,7 +36,8 @@ export async function clearCart(page: Page) {
   // Click the "Empty Knapsack" button to clear the cart
   await page.getByRole("button", { name: "Empty Knapsack" }).click();
 } else {
-  // If there are no items in the cart, just return
+
+  // If there are no items in the cart, just click return
   await page.getByRole('link', {name: "Time to visit the shops" }).click();
 }
 }

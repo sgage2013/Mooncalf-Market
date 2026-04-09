@@ -33,7 +33,6 @@ function categoriesReducer(
 ): ICategoryState {
   switch (action.type) {
     case GET_CATEGORIES:
-      console.log("Categories received in reducer:", action.payload);
       return { ...state, categories: action.payload, errors: null };
     default:
       return state;
