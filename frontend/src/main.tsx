@@ -19,7 +19,7 @@ declare global {
 
 
 if (import.meta.env.VITE_NODE_ENV !== "production") {
-  restoreCSRF();
+  await restoreCSRF();
   window.csrfFetch = csrfFetch;
   window.store = store;
   window.sessionActions = sessionActions;

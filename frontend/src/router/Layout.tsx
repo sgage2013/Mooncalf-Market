@@ -48,7 +48,7 @@ export default function Layout(): JSX.Element {
   return (
     <>
       <ModalProvider>
-        {!hasNav && <Navigation />}
+        {!hasNav && isLoaded && <Navigation />}
         <Elements stripe={stripePromise} options={{ appearance }}>
           {isLoaded && <Outlet />}
         </Elements>

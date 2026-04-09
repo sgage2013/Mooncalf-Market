@@ -13,41 +13,40 @@ function Home() {
   const { highestRated, newArrivals } = useAppSelector(
     (state) => state.home as IHomeState
   );
-  const user = useAppSelector((state) => state.session.user);
-  const [loading, setLoading] = useState(true);
-  const sessionLoading = useAppSelector((state) => state.session.loading);
+  const { user, loading } = useAppSelector((state) => state.session);
+  const [homeLoading, setHomeLoading] = useState(true);
   const [errors, setErrors] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!user && !loading && !sessionLoading) {
+    if (!user && !loading ) {
       navigate("/login");
     }
-  }, [user, loading, sessionLoading, navigate]);
+  }, [user, loading, navigate]);
 
   useEffect(() => {
     const getHomeData = async () => {
       setErrors(null);
-      setLoading(true);
+      setHomeLoading(true);
       try{
         await dispatch(getHomeDataThunk())
-        setLoading(false);
+        setHomeLoading(false);
         setErrors(null);
       } catch (error: any) {
         setErrors("Failed to load home data")
-        setLoading(false);
+        setHomeLoading(false);
       }
     }
     getHomeData();
   }, [dispatch]);
 
 
-  if (loading) {
+  if (homeLoading) {
     return <div>Loading home...</div>;
   }
 
   if (errors) {
     setErrors(errors)
-    setLoading(false)
+    setHomeLoading(false)
     return <div>Error: {errors}</div>;
   }
 
