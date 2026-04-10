@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("category navigation works correctly", async ({ page }) => {
-    
+
   // Define the category tab names and their corresponding URLs
   const tabs = [
     { name: "Cauldrons and Potions", expected: "/category/1" },
@@ -16,7 +16,7 @@ test("category navigation works correctly", async ({ page }) => {
     { name: "Broomsticks", expected: "/category/4" },
     { name: "Magical Creatures and Companions", expected: "/category/5" },
     { name: "Books and Scrolls", expected: "/category/6" },
-    { name: "Candy and Treats", url: "/category/7" },
+    { name: "Candy and Treats", expected: "/category/7" },
   ];
 
   // Reload the page to ensure we are starting from the home page

@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poiret+One&family=Quicksand:wght@300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Almendra+Display&display=swap');
 
 body {
@@ -44,7 +45,7 @@ body {
 }
 @font-face {
     font-family: "Berenika";
-    src: url(/Berenika-ojp0.ttf);
+    src: url(/Berenika-ojp0.ttf) format('truetype');
 }
 @font-face {
     font-family: "Milwich";
@@ -70,3 +71,7 @@ body {
     font-family: "Comfortaa";
     src: url(/Comfortaa-Light.ttf)
 }
+@font-face {
+    font-family: "Cormorant";
+    src: url(/Cormorant-Regular.ttf)
+ }
