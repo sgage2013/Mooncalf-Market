@@ -29,12 +29,19 @@ export async function clearCart(page: Page) {
   //Creat an itemCount variable to store the number of items in the cart
   let itemCount = await page.locator(".cart-item").count();
 
-  // If there are items in the cart, click the "Empty Knapsack" button
+  //Initialize a foor loop to determine if there are items in the cart
   if (itemCount > 0) { 
+    //Wait for the first cart item to be visible
   await page.locator(".cart-item").first().waitFor();
   
   // Click the "Empty Knapsack" button to clear the cart
   await page.getByRole("button", { name: "Empty Knapsack" }).click();
+
+  //Once the cart is emptied, click the link to return to the home page
+  await page.getByRole('link', {name: "Time to visit the shops" }).click();
+
+
+
 } else {
 
   // If there are no items in the cart, just click return
