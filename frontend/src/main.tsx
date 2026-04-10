@@ -17,7 +17,7 @@ declare global {
   }
 }
 
-
+async function startApp() {
 if (import.meta.env.VITE_NODE_ENV !== "production") {
   await restoreCSRF();
   window.csrfFetch = csrfFetch;
@@ -33,3 +33,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     </ReduxProvider>
   </React.StrictMode>
 );
+}
+
+startApp();
