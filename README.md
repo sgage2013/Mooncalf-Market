@@ -20,6 +20,7 @@ A fantasy-themed e-commerce web application inspired by the wizarding world. Thi
 - **Secure Checkout** — Real-time payment processing via the Stripe API.
 - **Order Confirmation** — Post-purchase order summary with shipping details.
 - **User Profiles** — Edit profile fields and manage your account.
+- **Automated Testing** - End-to-end test coverage using Playwright across Chromium and Firefox, with automated runs via GitHub Actions CI/CD pipeline on every push.
 
 ---
 
@@ -42,6 +43,10 @@ A fantasy-themed e-commerce web application inspired by the wizarding world. Thi
 ### APIs & Services
 - **Stripe API** - Secure payment processing
 - **JWT** - Authentication via signed tokens
+
+- ### Testing
+- -Playwright
+- -Github Actions
 
 ---
 
