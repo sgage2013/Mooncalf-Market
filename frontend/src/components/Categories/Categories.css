@@ -117,16 +117,3 @@ h2 {
     aspect-ratio: 1 / 1;
     object-fit: cover;
 }
-.item-rating {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    padding: 0 10px 10px;
-}
-.item-avg-rating {
-    margin-left: 3px;
-    color: rgb(6, 6, 6);
-    font-weight: thin;
-    font-size: 14px;
-}
