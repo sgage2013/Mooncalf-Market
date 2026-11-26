@@ -4,14 +4,14 @@ import ProfileButton from "./ProfileButton";
 import { useAppSelector } from "../../redux/store";
 import { ISubCategory, ICategory } from "../../redux/types/category";
 import {ICartItem} from "../../redux/types/cart";
-import Badge from '@mui/material/Badge'
-import IconButton from '@mui/material/IconButton'
-import BackpackIcon from '@mui/icons-material/Backpack'
+import SearchIcon from '@mui/icons-material/Search'
+import BackpackOutlinedIcon from '@mui/icons-material/BackpackOutlined'
 import "./Navigation.css";
 
 function Navigation(): JSX.Element {
   const categories = useAppSelector((state) => state.categories.categories);
   const [hoverCategory, setHoverCategory] = useState<ICategory | null>(null);
+  const user = useAppSelector((state) => state.session.user);
   const cartItems = useAppSelector((state) => state.cart.cart?.cartItems || []);
 
   const handleCategoryHover = (category: ICategory) => {
@@ -24,40 +24,55 @@ function Navigation(): JSX.Element {
     (acc: number, item: ICartItem) => acc + item.quantity,
     0
   );
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  alert("Search function coming soon!");
+};
 
 
   return (
     <>
+    <div className="nav-wrapper">
       <header className="main-header">
         <div className="header-top">
           <div className="search-logo">
+        <NavLink to="/home" className="logo-link">
  <div className="logo-container">
-        <NavLink to="/home">
-          <img src="/logo-3.png" alt="Home Logo" className="logo" />
-        </NavLink>
+          <img src="/logo.png" alt="Home Logo" className="logo" />
           </div>
+          <span className='logo-name'>MOONCALF MARKET</span>
+        </NavLink>
       </div>
-          <div className="search-bar">
-            <input type="text" placeholder="Search" className="search-input" />
+          <form
+            className="search-bar"
+                onSubmit={handleSearch}
+          >
+            <SearchIcon className="search-icon" />
+            <input
+              type="text"
+              placeholder="Search wands, cloaks, potions..."
+              className="search-input"
+            />
             <button type="submit" className="search-button">
               Search
             </button>
-          </div>
+          </form>
           <div className="cart-profile-group">
+            <div className="profile-cart">
+              <ProfileButton />
+              {!user && <span className="nav-action-label">Sign in</span>}
+            </div>
+
             <NavLink to="/cart" className="cart-link">
-            <IconButton aria-label="cart">
-              <Badge badgeContent={totalItems} color="secondary">
-                <BackpackIcon className='shopping-cart'/>
-                </Badge>
-            </IconButton>
+              <BackpackOutlinedIcon className="shopping-cart" />
+              <span className="nav-action-label">Knapsack</span>
+              <span className="cart-badge">{totalItems}</span>
             </NavLink>
-          <div className="profile-cart">
-                 <ProfileButton />
           </div>
         </div>
-                </div>
       </header>
       <nav className="categories-nav">
+        <div className="categories-nav-inner">
         
         {categories.map((category: ICategory) => (
             <div
@@ -89,7 +104,9 @@ function Navigation(): JSX.Element {
                 )}
             </div>
           ))}
+        </div>
       </nav>
+    </div>
     </>
   );
 }

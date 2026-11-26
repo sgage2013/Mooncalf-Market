@@ -25,5 +25,5 @@ test('add to cart functionality works correctly', async ({ page }) => {
   await page.getByRole('button', { name: 'Add to Cart' }).click();
 
   // Assert that the cart count has updated to 1
-  await expect(page.locator('[class*="MuiBadge-badge"]')).toHaveText('1');
+  await expect(page.locator('[class*="cart-badge"]')).toHaveText('1');
 });
