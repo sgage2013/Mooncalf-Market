@@ -21,11 +21,6 @@ function CategoryPage() {
   const [loading, setLoading] = useState(true);
   const [errors, seterrors] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (!user) {
-      navigate("/login");
-    }
-  }, [user, navigate]);
 
   useEffect(() => {
     if (categoryId) {
