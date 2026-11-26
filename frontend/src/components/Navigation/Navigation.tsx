@@ -66,7 +66,7 @@ function Navigation(): JSX.Element {
             <NavLink to="/cart" className="cart-link">
               <BackpackOutlinedIcon className="shopping-cart" />
               <span className="nav-action-label">Knapsack</span>
-              <span className="knapsack-badge">{totalItems}</span>
+              <span className="cart-badge">{totalItems}</span>
             </NavLink>
           </div>
         </div>

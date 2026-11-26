@@ -14,7 +14,7 @@
 .main-header *::after {
   box-sizing: border-box;
 }
-.main-header .header-top {
+.header-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,7 +36,7 @@
   color: #b8b5c4;
   transition: color 0.2s ease;
 }
-.knapsack-badge {
+.cart-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -179,14 +179,11 @@
 .logo-container {
   display: grid;
   place-items: center;
-  /* justify-content: center; */
   height: 40px;
   width: 40px;
   flex:  0 0 40px;
   border-radius: 50%;
   overflow: hidden;
-  /* border: 1px solid rgba(245, 197, 66, 0.45); */
-  /* background: rgba(245, 197, 66, 0.08); */
   box-shadow: 0 0 0 1px rgba(245, 197, 66, 0.45);
   padding: 0px;
   transition:
