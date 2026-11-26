@@ -24,7 +24,7 @@ function Navigation(): JSX.Element {
     (acc: number, item: ICartItem) => acc + item.quantity,
     0
   );
-  const handleSearch = (e) => {
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   alert("Search function coming soon!");
 };
