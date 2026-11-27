@@ -9,7 +9,6 @@ import OpenModalButton from "../OpenModalButton";
 import CheckoutForm from "./CheckoutForm";
 import "./Checkout.css";
 
-console.log("My Key is:", import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 const stripePromise = loadStripe(
   import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
 );
