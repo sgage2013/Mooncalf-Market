@@ -48,7 +48,6 @@ router.post(
                 });
 
                 if (!user || !bcrypt.compareSync(password, user.hashedPassword.toString())) {
-                    console.log("?")
                     const err = new LoginError('Invalid credentials', 401);
                     err.status = 401;
                     throw err

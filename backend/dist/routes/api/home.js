@@ -15,6 +15,8 @@ const auth_1 = require("../../utils/auth");
 const models_1 = __importDefault(require("../../db/models"));
 const router = require("express").Router();
 const { Item, Review, Category, SubCategory } = models_1.default;
+
+
 router.get("/", auth_1.validateUser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const categories = yield Category.findAll({

@@ -6,7 +6,7 @@ const router = require("express").Router();
 
 const { Item, Review, Category, SubCategory } = db;
 
-router.get("/", validateUser, async (req: ValidUser, res: Response) => {
+router.get("/", async (req: ValidUser, res: Response) => {
   try {
     const categories = await Category.findAll({
       attributes: ['id', 'name'],
